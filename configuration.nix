@@ -11,6 +11,7 @@
       ./zsh
       ./doas.nix
       ./git.nix
+      ./vim.nix
       inputs.home-manager.nixosModule
     ];
 
@@ -22,13 +23,11 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "huantian-desktop";
-  
+
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/Phoenix";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -84,7 +83,7 @@
   services.xserver.displayManager.autoLogin.user = "huantian";
 
   nixpkgs.config.allowUnfree = true;
-  
+
   nix.extraOptions = "experimental-features = nix-command flakes";
 
   environment.systemPackages = with pkgs; [
@@ -93,8 +92,8 @@
     kate
     latte-dock
     discord
-    vim
     wget
+    element
   ];
 
   programs.gnupg.agent = {

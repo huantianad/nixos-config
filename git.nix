@@ -2,6 +2,8 @@
 
 {
   config = {
+    environment.systemPackages = [ pkgs.git ];
+
     home-manager.users.huantian.programs = {
       git = {
         enable = true;
@@ -21,7 +23,7 @@
           core.autocrlf = "input";
           init.defaultBranch = "main";
         };
-      }; 
+      };
     };
   };
 }
