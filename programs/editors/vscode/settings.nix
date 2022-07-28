@@ -2,7 +2,7 @@
 
 {
     #############
-    # General ##
+    ## General ##
     #############
 
     # Terminal Setup
