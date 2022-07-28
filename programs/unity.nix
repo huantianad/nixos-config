@@ -38,25 +38,23 @@ let
       mesa
     ];
 
-    # Use dpkg to unpack in installPhase
-    dontUnpack = true;
+    unpackPhase = "dpkg -x $src .";
 
-    installPhase = ''
-      mkdir -p $out
-      dpkg -x $src $out
+    installPhase= ''
+      # this will also create $out
+      install -d -m755 $out/bin
 
-      mv $out/usr/share/ $out/share
-      rmdir $out/usr/
+      mv usr/share/ $out/share
+      mv opt/ $out/opt
 
       substituteInPlace $out/share/applications/unityhub.desktop \
         --replace /opt/ $out/opt/
 
-      install -d -m755 $out/bin
       ln -s $out/opt/unityhub/unityhub-bin $out/bin/unityhub
     '';
 
     meta = with lib; {
-      description = "Helps download and manage Unity Projects and installations.";
+      description = "Download and manage Unity Projects and installations.";
       homepage = "https://unity3d.com/";
       license = licenses.unfree;
       maintainers = with stdenv.lib.maintainers; [ ];
