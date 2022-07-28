@@ -12,5 +12,6 @@
     };
 
     home-manager.users.huantian.home.stateVersion = "22.05";
+    home-manager.users.huantian.nixpkgs.config.allowUnfree = true;
   };
 }

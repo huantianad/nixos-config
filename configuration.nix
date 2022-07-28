@@ -3,9 +3,18 @@
 {
   imports = [
     inputs.home-manager.nixosModule
+    inputs.declarative-cachix.nixosModules.declarative-cachix
     ./hardware-configuration.nix
     ./programs
     ./system
+  ];
+
+  nixpkgs.overlays = [
+    inputs.fenix.overlay
+  ];
+
+  cachix = [
+    { name = "nix-community"; sha256 = "1955r436fs102ny80wfzy99d4253bh2i1vv1x4d4sh0zx2ssmhrk"; }
   ];
 
   environment.systemPackages = with pkgs; [
@@ -19,6 +28,15 @@
     file
     gcc
     bat
+
+    (fenix.complete.withComponents [
+      "cargo"
+      "clippy"
+      "rust-src"
+      "rustc"
+      "rustfmt"
+    ])
+    rust-analyzer-nightly
   ];
 
   services.usbmuxd.enable = true;

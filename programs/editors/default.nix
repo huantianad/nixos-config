@@ -2,9 +2,10 @@
 
 {
   imports = [
+    ./vscode
+
     ./jetbrains.nix
     ./vim.nix
-    ./vscode.nix
   ];
 
   config = {
