@@ -1,14 +1,14 @@
 {
-  description = "An example NixOS configuration";
+  description = "My amazing NixOS config! Very WIP.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self, nixpkgs, flake-utils, ... }:
+  outputs = inputs @ { self, nixpkgs, ... }:
   {
     nixosConfigurations = {
       huantian-desktop = inputs.nixpkgs.lib.nixosSystem {
@@ -20,4 +20,4 @@
       };
     };
   };
-} 
+}

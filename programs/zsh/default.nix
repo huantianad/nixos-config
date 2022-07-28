@@ -1,9 +1,9 @@
-{ pkgs, config, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   config = {
-    environment.systemPackages = [
-      pkgs.exa
+    environment.systemPackages = with pkgs; [
+      exa
     ];
 
     programs.zsh = {
@@ -22,7 +22,7 @@
         l="exa -lbFha --git";
         la="exa -lbhHigmuSa --git --color-scale";
         lx="exa -lbhHigmuSa@ --git --color-scale";
-        tree="exa --tree"; 
+        tree="exa --tree";
       };
 
       enableCompletion = true;
@@ -35,6 +35,10 @@
         customPkgs = [ pkgs.zsh-history-substring-search ];
       };
     };
+
+    fonts.fonts = with pkgs; [
+      meslo-lgs-nf
+    ];
 
     home-manager.users.huantian.programs = {
       zsh.enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   config = {
@@ -7,7 +7,7 @@
     security.doas.extraRules = [{
       users = [ "huantian" ];
       keepEnv = true;
-      persist = true;  
+      persist = true;
     }];
   };
 }
