@@ -20,7 +20,6 @@
   environment.systemPackages = with pkgs; [
     librewolf
     kate
-    (discord.override { withOpenASAR = true; })
     wget
     element-desktop
     tldr

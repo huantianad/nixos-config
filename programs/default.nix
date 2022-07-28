@@ -7,6 +7,7 @@
     ./xbindkeys
     ./zsh
 
+    ./discord.nix
     ./doas.nix
     ./git.nix
     ./unity.nix
