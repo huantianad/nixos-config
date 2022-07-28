@@ -3,6 +3,7 @@
 {
   imports = [
     ./gaming
+    ./xbindkeys
     ./zsh
 
     ./doas.nix
