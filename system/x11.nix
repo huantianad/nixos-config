@@ -13,6 +13,9 @@
     services.xserver.displayManager.sddm.enable = true;
     services.xserver.desktopManager.plasma5.enable = true;
 
+    # latte-dock for kde
+    environment.systemPackages =[ pkgs.latte-dock];
+
     # Enable automatic login for the user.
     services.xserver.displayManager.autoLogin.enable = true;
     services.xserver.displayManager.autoLogin.user = "huantian";

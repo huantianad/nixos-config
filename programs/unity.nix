@@ -12,6 +12,7 @@ let
 
     nativeBuildInputs = with pkgs; [
       autoPatchelfHook  # Auto wrap binary's dynamic library deps
+      wrapGAppsHook
       dpkg
     ];
 
@@ -38,9 +39,15 @@ let
       mesa
     ];
 
+    sourceRoot = ".";
     unpackPhase = "dpkg -x $src .";
 
+    dontConfigure = true;
+    dontBuild = true;
+
     installPhase= ''
+      runHook preInstall
+
       # this will also create $out
       install -d -m755 $out/bin
 
@@ -51,13 +58,15 @@ let
         --replace /opt/ $out/opt/
 
       ln -s $out/opt/unityhub/unityhub-bin $out/bin/unityhub
+
+      runHook postInstall
     '';
 
     meta = with lib; {
       description = "Download and manage Unity Projects and installations.";
       homepage = "https://unity3d.com/";
       license = licenses.unfree;
-      maintainers = with stdenv.lib.maintainers; [ ];
+      maintainers = with maintainers; [ ];
       platforms = [ "x86_64-linux" ];
     };
 

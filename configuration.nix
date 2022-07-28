@@ -9,19 +9,15 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    vscode
     librewolf
     kate
-    latte-dock
-    discord
+    (discord.override { withOpenASAR = true; })
     wget
     element-desktop
-    libimobiledevice
     tldr
     ark
     file
     gcc
-    jetbrains.rider
     bat
   ];
 
@@ -31,10 +27,6 @@
     enable = true;
     enableSSHSupport = true;
   };
-
-  fonts.fonts = with pkgs; [
-    fira-code
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
