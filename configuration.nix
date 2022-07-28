@@ -31,6 +31,7 @@
   i18n.defaultLocale = "en_US.utf8";
 
   services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.opengl.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -82,7 +83,17 @@
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "huantian";
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      steam = pkgs.steam.override {
+        extraPkgs = pkgs: [
+          pkgs.libssh
+          pkgs.brotli
+        ];
+      };
+    };
+  };
 
   nix.extraOptions = "experimental-features = nix-command flakes";
 
@@ -93,8 +104,22 @@
     latte-dock
     discord
     wget
-    element
+    element-desktop
+    libimobiledevice
+    tldr
+    ark
+    file
+    gcc
+    jetbrains.rider
+    unityhub
+    bat
+    lutris
   ];
+
+
+  services.usbmuxd.enable = true;
+
+  programs.steam.enable = true;
 
   programs.gnupg.agent = {
     enable = true;
