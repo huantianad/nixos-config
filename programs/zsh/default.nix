@@ -36,6 +36,7 @@
       };
     };
 
+    # Font that p10k uses, nerd font includes icons
     fonts.fonts = with pkgs; [
       meslo-lgs-nf
     ];
@@ -55,6 +56,14 @@
         bindkey '^[[B' history-substring-search-down
 
         source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
+
+        # Better SSH/Rsync/SCP Autocomplete
+        zstyle ':completion:*:(ssh|scp|ftp|sftp):*' hosts $hosts
+        zstyle ':completion:*:(ssh|scp|ftp|sftp):*' users $users
+
+        # Use bat for manpages
+        export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
       '';
     };
 

@@ -22,7 +22,6 @@
     file
     gcc
     jetbrains.rider
-    unityhub
     bat
   ];
 

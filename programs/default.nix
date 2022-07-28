@@ -7,6 +7,7 @@
 
     ./doas.nix
     ./git.nix
+    ./unity.nix
     ./vim.nix
   ];
 }
