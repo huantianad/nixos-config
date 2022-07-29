@@ -6,7 +6,11 @@
 
     environment.systemPackages = [
       (pkgs.discord-plugged.override {
-        # withOpenASAR = true;
+        discord-canary = pkgs.discord-canary.override {
+          nss = pkgs.nss_latest;
+          withOpenASAR = true;
+        };
+
         plugins = with inputs; [
           powercord-better-replies
           powercord-double-click-vc
