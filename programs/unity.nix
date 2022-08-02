@@ -29,18 +29,44 @@ let
       xorg.libXfixes
       xorg.libxcb
       xorg.libxshmfence
+      xorg.libXScrnSaver
+      xorg.libXtst
       expat
       libxkbcommon
       lttng-ust_2_12
       krb5
       at-spi2-core
       alsa-lib
-      nss
+      nss_latest
       libdrm
       mesa
       fontconfig  # Is this necessary?
       udev
       libudev0-shim  # Is this necessary?
+      xdg-utils
+      libnotify
+      libuuid
+      libsecret
+      cairo
+      openssl_3
+      libva
+      libappindicator
+      wayland
+    ];
+
+    libPath = with pkgs; lib.makeLibraryPath [
+      libva
+      openssl_3
+      cairo
+      xdg-utils
+      libnotify
+      libuuid
+      libsecret
+      udev
+      xorg.libXScrnSaver
+      xorg.libXtst
+      libappindicator
+      wayland
     ];
 
     sourceRoot = ".";
@@ -62,7 +88,10 @@ let
         --replace /opt/ $out/opt/
 
       wrapProgramShell $out/opt/unityhub/unityhub-bin \
-        --prefix LD_LIBRARY_PATH : ${pkgs.udev}/lib
+        --prefix LD_LIBRARY_PATH : ${libPath} \
+        --append-flags no-sandbox
+
+      chmod 4755 '$out/opt/unityhub/chrome-sandbox' || true
 
       runHook postInstall
     '';
