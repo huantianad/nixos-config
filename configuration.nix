@@ -27,17 +27,10 @@
     file
     gcc
     bat
-
-    (fenix.complete.withComponents [
-      "cargo"
-      "clippy"
-      "rust-src"
-      "rustc"
-      "rustfmt"
-    ])
-    rust-analyzer-nightly
+    vlc
   ];
 
+  programs.dconf.enable = true;
   services.usbmuxd.enable = true;
 
   programs.gnupg.agent = {

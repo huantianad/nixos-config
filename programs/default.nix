@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./dev
     ./editors
     ./gaming
     ./xbindkeys
