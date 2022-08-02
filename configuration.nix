@@ -28,7 +28,17 @@
     gcc
     bat
     vlc
+    killall
+    btop
+    gimp
   ];
+
+  services.gnome.gnome-keyring.enable = true;
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [ fcitx5-chinese-addons ];
+  };
 
   programs.dconf.enable = true;
   services.usbmuxd.enable = true;
