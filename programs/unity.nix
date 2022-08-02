@@ -14,6 +14,7 @@ let
       autoPatchelfHook  # Auto wrap binary's dynamic library deps
       wrapGAppsHook
       dpkg
+      makeShellWrapper
     ];
 
     buildInputs = with pkgs; [
@@ -37,6 +38,9 @@ let
       nss
       libdrm
       mesa
+      fontconfig  # Is this necessary?
+      udev
+      libudev0-shim  # Is this necessary?
     ];
 
     sourceRoot = ".";
@@ -48,16 +52,17 @@ let
     installPhase= ''
       runHook preInstall
 
-      # this will also create $out
-      install -d -m755 $out/bin
+      mkdir -p $out/bin
 
       mv usr/share/ $out/share
       mv opt/ $out/opt
+      ln -s $out/opt/unityhub/unityhub-bin $out/bin/unityhub
 
       substituteInPlace $out/share/applications/unityhub.desktop \
         --replace /opt/ $out/opt/
 
-      ln -s $out/opt/unityhub/unityhub-bin $out/bin/unityhub
+      wrapProgramShell $out/opt/unityhub/unityhub-bin \
+        --prefix LD_LIBRARY_PATH : ${pkgs.udev}/lib
 
       runHook postInstall
     '';
