@@ -11,7 +11,7 @@ let
     };
 
     nativeBuildInputs = with pkgs; [
-      autoPatchelfHook  # Auto wrap binary's dynamic library deps
+      autoPatchelfHook
       wrapGAppsHook
       dpkg
       makeShellWrapper
@@ -40,33 +40,22 @@ let
       nss_latest
       libdrm
       mesa
-      fontconfig  # Is this necessary?
-      udev
-      libudev0-shim  # Is this necessary?
-      xdg-utils
-      libnotify
-      libuuid
-      libsecret
-      cairo
-      openssl_3
-      libva
-      libappindicator
-      wayland
     ];
 
     libPath = with pkgs; lib.makeLibraryPath [
       libva
       openssl_3
+      openssl
       cairo
       xdg-utils
       libnotify
       libuuid
       libsecret
       udev
-      xorg.libXScrnSaver
-      xorg.libXtst
       libappindicator
       wayland
+      cpio
+      icu
     ];
 
     sourceRoot = ".";
@@ -82,19 +71,29 @@ let
 
       mv usr/share/ $out/share
       mv opt/ $out/opt
-      ln -s $out/opt/unityhub/unityhub-bin $out/bin/unityhub
 
+      # `unityhub` is a shell wrapper that runs `unityhub-bin`
+      # We don't need this so we can replace it with the binary directly.
+      rm $out/opt/unityhub/unityhub
+      mv $out/opt/unityhub/unityhub-bin $out/opt/unityhub/unityhub
+
+      # Link binary
+      ln -s $out/opt/unityhub/unityhub $out/bin/unityhub
+
+      # Replace absolute path to correctly point to nix store
       substituteInPlace $out/share/applications/unityhub.desktop \
-        --replace /opt/ $out/opt/
+        --replace /opt/unityhub/unityhub $out/opt/unityhub/unityhub
 
-      wrapProgramShell $out/opt/unityhub/unityhub-bin \
-        --prefix LD_LIBRARY_PATH : ${libPath} \
-        --append-flags no-sandbox
+      wrapProgramShell $out/opt/unityhub/unityhub \
+        --prefix LD_LIBRARY_PATH : ${libPath}
 
+      # From the .deb's postinst hook, not sure if necessary
       chmod 4755 '$out/opt/unityhub/chrome-sandbox' || true
 
       runHook postInstall
     '';
+
+    dontStrip = true;
 
     meta = with lib; {
       description = "Download and manage Unity Projects and installations.";
@@ -103,7 +102,6 @@ let
       maintainers = with maintainers; [ ];
       platforms = [ "x86_64-linux" ];
     };
-
   };
 in
   {
