@@ -3,7 +3,8 @@
 {
   config = {
     environment.systemPackages = with pkgs; [
-      direnv nix-direnv
+      direnv
+      nix-direnv
     ];
 
     # Nix options for derivations to persist garbage collection
@@ -17,7 +18,7 @@
 
     # Flake support
     nixpkgs.overlays = [
-      (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
+      (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
     ];
 
     home-manager.users.huantian.programs.zsh.initExtra = "eval \"\$(direnv hook zsh)\"";

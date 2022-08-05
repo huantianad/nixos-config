@@ -31,6 +31,8 @@
     killall
     btop
     gimp
+    qbittorrent
+    
   ];
 
   services.gnome.gnome-keyring.enable = true;

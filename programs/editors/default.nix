@@ -9,6 +9,10 @@
   ];
 
   config = {
+    environment.systemPackages = with pkgs; [
+      rnix-lsp
+    ];
+
     fonts.fonts = with pkgs; [
       fira-code
     ];

@@ -25,8 +25,7 @@
     declarative-cachix.url = "github:jonascarpay/declarative-cachix";
   };
 
-  outputs = inputs @ { self, nixpkgs, ... }:
-  {
+  outputs = inputs @ { self, nixpkgs, ... }: {
     nixosConfigurations = {
       huantian-desktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

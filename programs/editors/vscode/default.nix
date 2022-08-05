@@ -5,7 +5,7 @@
     enable = true;
     userSettings = import ./settings.nix { inherit pkgs; };
     extensions = with pkgs.vscode-extensions; [
-      matklad.rust-analyzer-nightly  # Provided by fenix
+      matklad.rust-analyzer-nightly # Provided by fenix
 
       njpwerner.autodocstring
       bungcip.better-toml

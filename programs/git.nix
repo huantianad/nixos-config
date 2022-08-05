@@ -7,7 +7,7 @@
     home-manager.users.huantian.programs = {
       git = {
         enable = true;
-        userName  = "huantian";
+        userName = "huantian";
         userEmail = "davidtianli@gmail.com";
 
         signing.key = "731A7A05AD8B3AE5956AC2274A0318E04E555DE5";
