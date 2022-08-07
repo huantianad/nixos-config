@@ -20,19 +20,16 @@
   environment.systemPackages = with pkgs; [
     librewolf
     kate
-    wget
     element-desktop
-    tldr
     ark
-    file
-    gcc
-    bat
     vlc
-    killall
-    btop
     gimp
     qbittorrent
-    
+    zoom-us
+  ];
+
+  services.xserver.desktopManager.plasma5.excludePackages = with pkgs; [
+    elisa # Default KDE video player, use VLC instead
   ];
 
   services.gnome.gnome-keyring.enable = true;

@@ -4,6 +4,12 @@
   config = {
     environment.systemPackages = with pkgs; [
       exa
+      killall
+      btop
+      wget
+      tealdeer
+      file
+      bat
     ];
 
     programs.zsh = {
@@ -14,15 +20,15 @@
         cat = "bat --style=plain";
         shutdown = "sudo shutdown now";
         reboot = "sudo reboot";
-        youtube-dl="yt-dlp";
+        youtube-dl = "yt-dlp";
         info = "info --vi-keys";
 
-        ls="exa";
-        ll="exa -lbFh --git";
-        l="exa -lbFha --git";
-        la="exa -lbhHigmuSa --git --color-scale";
-        lx="exa -lbhHigmuSa@ --git --color-scale";
-        tree="exa --tree";
+        ls = "exa";
+        ll = "exa -lbFh --git";
+        l = "exa -lbFha --git";
+        la = "exa -lbhHigmuSa --git --color-scale";
+        lx = "exa -lbhHigmuSa@ --git --color-scale";
+        tree = "exa --tree";
       };
 
       enableCompletion = true;
@@ -31,8 +37,7 @@
 
       ohMyZsh = {
         enable = true;
-        plugins = [ "git" "python" "man" "sudo" "history-substring-search" ];
-        customPkgs = [ pkgs.zsh-history-substring-search ];
+        plugins = [ "git" "python" "man" "sudo" "history-substring-search" "rust" ];
       };
     };
 
@@ -43,7 +48,7 @@
 
     home-manager.users.huantian.programs = {
       zsh.enable = true;
-      zsh.initExtraFirst= ''
+      zsh.initExtraFirst = ''
         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
         fi
@@ -56,6 +61,9 @@
         bindkey '^[[B' history-substring-search-down
 
         source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
+
+        # tldr autocomplete
+        fpath+=${pkgs.tealdeer}/share/zsh/site-functions/'
 
         # Better SSH/Rsync/SCP Autocomplete
         zstyle ':completion:*:(ssh|scp|ftp|sftp):*' hosts $hosts
