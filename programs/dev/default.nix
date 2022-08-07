@@ -6,7 +6,7 @@
   ];
 
   config = {
-    enviornment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       gcc
     ];
   };
