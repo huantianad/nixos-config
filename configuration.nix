@@ -45,6 +45,8 @@
   programs.dconf.enable = true;
   services.usbmuxd.enable = true;
 
+  fonts.fonts = with pkgs; [ liberation_ttf ];
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
