@@ -11,6 +11,7 @@
       lutris
       polymc
       scarab
+      cockatrice
     ];
   };
 }

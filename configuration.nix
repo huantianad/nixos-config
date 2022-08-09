@@ -26,6 +26,9 @@
     gimp
     qbittorrent
     zoom-us
+    partition-manager
+    baobab
+    libreoffice-qt
   ];
 
   services.xserver.desktopManager.plasma5.excludePackages = with pkgs; [

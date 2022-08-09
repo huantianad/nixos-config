@@ -63,7 +63,7 @@
         source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
 
         # tldr autocomplete
-        fpath+=${pkgs.tealdeer}/share/zsh/site-functions/'
+        fpath+=${pkgs.tealdeer}/share/zsh/site-functions/
 
         # Better SSH/Rsync/SCP Autocomplete
         zstyle ':completion:*:(ssh|scp|ftp|sftp):*' hosts $hosts
