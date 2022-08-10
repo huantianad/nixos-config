@@ -6,7 +6,7 @@
   #############
 
   # Terminal Setup
-  "terminal.external.linuxExec" = "/usr/bin/zsh";
+  "terminal.external.linuxExec" = "${pkgs.zsh}/bin/zsh";
   "terminal.integrated.fontFamily" = "MesloLGS NF";
   "terminal.integrated.env.linux" = {
     "PYTHONPATH" = "\${workspaceFolder}";
