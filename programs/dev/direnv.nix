@@ -21,6 +21,6 @@
       (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
     ];
 
-    home-manager.users.huantian.programs.zsh.initExtra = "eval \"\$(direnv hook zsh)\"";
+    programs.zsh.ohMyZsh.plugins = [ "direnv" ];
   };
 }
