@@ -45,7 +45,15 @@
   programs.dconf.enable = true;
   services.usbmuxd.enable = true;
 
-  fonts.fonts = with pkgs; [ liberation_ttf ];
+  fonts.fonts = with pkgs; [
+    liberation_ttf
+
+    # Some CJK Fonts
+    source-han-serif
+    source-han-sans
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+  ];
 
   programs.gnupg.agent = {
     enable = true;
