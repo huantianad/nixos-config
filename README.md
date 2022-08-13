@@ -1,4 +1,4 @@
-[![MIT License](https://img.shields.io/github/license/divnix/devos)][mit]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 
 **Hello!** 👋 Welcome to my heavily WIP NixOS configurations! Using the new funny flakes!
