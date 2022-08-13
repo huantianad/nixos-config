@@ -11,7 +11,7 @@
       shell = pkgs.zsh;
     };
 
-    home-manager.users.huantian.home.stateVersion = "22.05";
+    home-manager.users.huantian.home.stateVersion = config.system.stateVersion;
     home-manager.users.huantian.nixpkgs.config.allowUnfree = true;
   };
 }
