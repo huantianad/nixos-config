@@ -21,8 +21,6 @@
 
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
-
-    declarative-cachix.url = "github:jonascarpay/declarative-cachix";
   };
 
   outputs = inputs @ { self, nixpkgs, ... }: {
