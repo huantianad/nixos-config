@@ -6,18 +6,33 @@
   #############
 
   # Terminal Setup
-  "terminal.external.linuxExec" = "${pkgs.zsh}/bin/zsh";
   "terminal.integrated.fontFamily" = "MesloLGS NF";
+  "terminal.external.linuxExec" = "/home/huantian/.nix-profile/bin/zsh";
+  "terminal.integrated.defaultProfile.linux" = "zsh";
+  "terminal.integrated.profiles.linux" = {
+    "bash" = {
+      "path" = "${pkgs.bash}/bin/bash";
+      "icon" = "terminal-bash";
+    };
+    "zsh" = {
+      "path" = "/home/huantian/.nix-profile/bin/zsh";
+    };
+    # "tmux" = {
+    #     "path" = "tmux";
+    #     "icon" = "terminal-tmux";
+    # };
+  };
   "terminal.integrated.env.linux" = {
     "PYTHONPATH" = "\${workspaceFolder}";
   };
+  # temp fix until https://github.com/microsoft/vscode/issues/158052
+  "terminal.integrated.shellIntegration.enabled" = false;
 
   # "workbench.colorTheme" = "Purple Wolf Theme";
   "workbench.iconTheme" = "material-icon-theme";
 
   "editor.fontSize" = 14;
   # JetBrains Mono; MonoLisa; Fira Code
-  # "editor.fontFamily" = "'Fira Code'; 'monospace'; monospace";
   "editor.fontFamily" = "Fira Code";
   "editor.fontLigatures" = true;
 
