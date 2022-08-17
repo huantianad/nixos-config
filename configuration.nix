@@ -30,8 +30,6 @@
     elisa # Default KDE video player, use VLC instead
   ];
 
-  services.gnome.gnome-keyring.enable = true;
-
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [ fcitx5-chinese-addons ];
