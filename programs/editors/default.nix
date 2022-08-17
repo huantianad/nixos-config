@@ -4,7 +4,7 @@
   imports = [
     ./vscode
 
-    ./jetbrains.nix
+    ./rider.nix
     ./vim.nix
   ];
 

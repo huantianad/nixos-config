@@ -28,9 +28,11 @@ let
 in
 {
   config = {
-    environment.systemPackages = [
-      rider
-    ];
+    environment.systemPackages = [ rider ];
+
+    # unity looks for rider in this location, trick it!
+    # doesn't seem to work with advanced unity integration yet tho.
+    # I have no idea how to make it work with that, what does the plugin need?
     home-manager.users.huantian.home.file = {
       ".local/share/applications/jetbrains-rider.desktop".text = ''
         Exec="${rider}/bin/rider"
