@@ -24,6 +24,7 @@
     partition-manager
     baobab
     libreoffice-qt
+    kalendar
   ];
 
   services.xserver.desktopManager.plasma5.excludePackages = with pkgs; [
@@ -51,6 +52,10 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+  };
+
+  services.cron = {
+    enable = true;
   };
 
   # This value determines the NixOS release from which the default

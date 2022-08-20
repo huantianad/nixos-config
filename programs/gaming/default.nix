@@ -12,6 +12,7 @@
       polymc
       scarab
       cockatrice
+      airshipper
     ];
   };
 }
