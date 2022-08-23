@@ -6,7 +6,7 @@
       dolphin-emu-beta
 
       # BPS and IPS patching
-      flips
+      # flips
     ];
 
     # GameCube controllers

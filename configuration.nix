@@ -17,6 +17,7 @@
     kate
     element-desktop
     ark
+    unrar
     vlc
     gimp
     qbittorrent
@@ -25,6 +26,8 @@
     baobab
     libreoffice-qt
     kalendar
+    audacity
+    obs-studio
   ];
 
   services.xserver.desktopManager.plasma5.excludePackages = with pkgs; [
@@ -57,6 +60,17 @@
   services.cron = {
     enable = true;
   };
+
+  # services.minecraft-server = {
+  #   enable = true;
+  #   declarative = true;
+  #   openFirewall = true;
+  #   eula = true;
+  #   serverProperties = {
+  #     motd = "hihi";
+  #     enforce-secure-profile = false;
+  #   };
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
