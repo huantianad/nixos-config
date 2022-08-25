@@ -28,6 +28,9 @@
     kalendar
     audacity
     obs-studio
+    yt-dlp
+    kid3
+    xorg.xkill
   ];
 
   services.xserver.desktopManager.plasma5.excludePackages = with pkgs; [
