@@ -23,13 +23,30 @@
     fenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self, nixpkgs, ... }: {
-    nixosConfigurations = {
-      huantian-desktop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./configuration.nix ];
-        specialArgs = { inherit inputs; };
+  outputs = inputs @ { self, nixpkgs, ... }:
+    let
+      system = "x86_64-linux";
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
       };
+
+      lib = nixpkgs.lib.extend (self: super: {
+        my = import ./lib { inherit pkgs inputs; lib = self; };
+      });
+    in
+    {
+      lib = lib.my;
+
+      nixosConfigurations = lib.my.mapHosts ./hosts {};
+
+      # nixosConfigurations = {
+      #   huantian-desktop = nixpkgs.lib.nixosSystem {
+      #     inherit system;
+      #     modules = [ ./configuration.nix ];
+      #     specialArgs = { inherit inputs; };
+      #   };
+      # };
     };
-  };
 }
