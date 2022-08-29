@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixos-hardware.url = github:NixOS/nixos-hardware/master;
+
     powercord-overlay.url = "github:LavaDesu/powercord-overlay";
     powercord-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
