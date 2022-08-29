@@ -28,10 +28,11 @@
     kalendar
     audacity
     obs-studio
-    yt-dlp
     kid3
-    xorg.xkill
   ];
+
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
 
   services.xserver.desktopManager.plasma5.excludePackages = with pkgs; [
     elisa # Default KDE video player, use VLC instead
