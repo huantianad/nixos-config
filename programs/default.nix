@@ -10,6 +10,7 @@
     ./discord.nix
     ./doas.nix
     ./git.nix
+    ./tauon.nix
     ./toolbox.nix
     ./unity.nix
     ./xbindkeys.nix
