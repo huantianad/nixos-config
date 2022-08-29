@@ -25,6 +25,8 @@
 
   outputs = inputs @ { self, nixpkgs, ... }:
     let
+      inherit (lib.my) mapModules mapModulesRec mapHosts;
+
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
@@ -39,7 +41,9 @@
     {
       lib = lib.my;
 
-      nixosConfigurations = lib.my.mapHosts ./hosts {};
+      nixosModules = lib.my.mapModulesRec ./modules import;
+
+      nixosConfigurations = mapHosts ./hosts { };
 
       # nixosConfigurations = {
       #   huantian-desktop = nixpkgs.lib.nixosSystem {
