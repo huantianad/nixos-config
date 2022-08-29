@@ -13,5 +13,6 @@
     ./tauon.nix
     ./toolbox.nix
     ./unity.nix
+    ./xbindkeys.nix
   ];
 }
