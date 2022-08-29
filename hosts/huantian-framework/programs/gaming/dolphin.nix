@@ -9,12 +9,12 @@
       # flips
     ];
 
-    # GameCube controllers
-    services.udev.packages = [ pkgs.dolphinEmu ];
+    # # GameCube controllers
+    # services.udev.packages = [ pkgs.dolphinEmu ];
 
-    # DolphinBar
-    services.udev.extraRules = ''
-      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0306", MODE="0666"
-    '';
+    # # DolphinBar
+    # services.udev.extraRules = ''
+    #   SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0306", MODE="0666"
+    # '';
   };
 }
