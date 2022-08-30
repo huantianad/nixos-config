@@ -30,6 +30,7 @@
     audacity
     obs-studio
     kid3
+    bitwarden
   ];
 
   # virtualisation.virtualbox.host.enable = true;
