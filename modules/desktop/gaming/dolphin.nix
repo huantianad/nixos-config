@@ -5,8 +5,9 @@ with lib.my;
 let cfg = config.modules.desktop.gaming.dolphin;
 in
 {
-  options.modules.desktop.gaming.dolphin = {
+  options.modules.desktop.gaming.dolphin = rec {
     enable = mkBoolOpt false;
+    setUdevRules = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
@@ -18,10 +19,10 @@ in
     ];
 
     # GameCube controllers
-    services.udev.packages = [ pkgs.dolphinEmu ];
+    services.udev.packages = mkIf cfg.setUdevRules [ pkgs.dolphinEmu ];
 
     # DolphinBar
-    services.udev.extraRules = ''
+    services.udev.extraRules = mkIf cfg.setUdevRules ''
       SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0306", MODE="0666"
     '';
   };
