@@ -9,8 +9,8 @@
   modules = {
     desktop = {
       kde.enable = true;
-      kde.latte-dock.enable = true;
-      kde.autoLogin = true;
+      kde.latte-dock.enable = false;
+      kde.autoLogin = false;
       random-apps.enable = true;
       fonts.enable = true;
       wayland.enable = true;
@@ -22,7 +22,7 @@
       gaming = {
         enable = true;
         dolphin.enable = true;
-        dolphin.setUdevRules = false;
+        dolphin.setUdevRules = true;
         steam.enable = true;
       };
 
