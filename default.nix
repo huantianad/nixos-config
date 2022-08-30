@@ -47,7 +47,7 @@ with lib.my;
   ## Some reasonable, global defaults
   # Use the latest kernel
   boot = {
-    kernelPackages = mkDefault pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       efi.canTouchEfiVariables = mkDefault true;
       systemd-boot.configurationLimit = 10;
