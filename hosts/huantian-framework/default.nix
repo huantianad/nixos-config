@@ -33,6 +33,13 @@
     bitwarden
   ];
 
+
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
+  # Fingerprint support
+  services.fprintd.enable = true;
+  security.pam.services."sddm".fprintAuth = true;
+
   # virtualisation.virtualbox.host.enable = true;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
 

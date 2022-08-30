@@ -46,7 +46,7 @@
     {
       lib = lib.my;
 
-      nixosModules = lib.my.mapModulesRec ./modules import;
+      nixosModules = mapModulesRec ./modules import;
 
       nixosConfigurations = mapHosts ./hosts { };
 

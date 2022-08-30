@@ -2,10 +2,10 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.hardware.audio;
+let cfg = config.modules.hardware.pipewire;
 in
 {
-  options.modules.hardware.audio = {
+  options.modules.hardware.pipewire = {
     enable = mkBoolOpt false;
   };
 

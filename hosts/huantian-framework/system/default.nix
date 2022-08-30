@@ -31,8 +31,5 @@
 
     hardware.steam-hardware.enable = true;
 
-    # Fingerprint support
-    services.fprintd.enable = true;
-    security.pam.services."sddm".fprintAuth = true;
   };
 }

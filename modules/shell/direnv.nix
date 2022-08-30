@@ -5,7 +5,7 @@ with lib.my;
 let cfg = config.modules.shell.direnv;
 in
 {
-  options.modules.dev.direnv = {
+  options.modules.shell.direnv = {
     enable = mkBoolOpt false;
   };
 

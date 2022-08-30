@@ -26,8 +26,9 @@
         discord.enable = true;
         fcitx.enable = true;
         tauon.enable = true;
-        toolbox.enable = false;
+        jetbrains-toolbox.enable = false;
         unity.enable = true;
+        webcord.enable = false;
         xbindkeys.enable = true;
       };
     };
