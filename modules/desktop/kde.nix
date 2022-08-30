@@ -8,6 +8,7 @@ in
   options.modules.desktop.kde = {
     enable = mkBoolOpt false;
     latte-dock.enable = mkBoolOpt false;
+    autoLogin = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
@@ -22,7 +23,7 @@ in
     environment.systemPackages = mkIf cfg.latte-dock.enable [ pkgs.latte-dock ];
 
     # Enable automatic login for the user.
-    services.xserver.displayManager.autoLogin.enable = true;
+    services.xserver.displayManager.autoLogin.enable = cfg.autoLogin;
     services.xserver.displayManager.autoLogin.user = "huantian";
 
     nixpkgs.config.librewolf.enablePlasmaBrowserIntegration = true;

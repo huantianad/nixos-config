@@ -9,6 +9,8 @@
   modules = {
     desktop = {
       kde.enable = true;
+      kde.latte-dock.enable = true;
+      kde.autoLogin = true;
       random-apps.enable = true;
       fonts.enable = true;
       wayland.enable = true;
