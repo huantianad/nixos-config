@@ -50,6 +50,7 @@
 
   fonts.fonts = with pkgs; [
     liberation_ttf
+    fira-code
 
     # Some CJK Fonts
     source-han-serif
