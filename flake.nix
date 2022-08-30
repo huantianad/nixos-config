@@ -6,6 +6,9 @@
 
     nixos-hardware.url = github:NixOS/nixos-hardware/master;
 
+    webcord.url = "github:fufexan/webcord-flake";
+    webcord.inputs.nixpkgs.follows = "nixpkgs";
+
     powercord-overlay.url = "github:LavaDesu/powercord-overlay";
     powercord-overlay.inputs.nixpkgs.follows = "nixpkgs";
 

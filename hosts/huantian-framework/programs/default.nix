@@ -7,12 +7,13 @@
     ./gaming
     ./zsh
 
-    ./discord.nix
+    # ./discord.nix
     ./doas.nix
     ./git.nix
     ./tauon.nix
     ./toolbox.nix
     ./unity.nix
+    ./webcord.nix
     ./xbindkeys.nix
   ];
 }
