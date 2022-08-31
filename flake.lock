@@ -72,16 +72,15 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1661765532,
-        "narHash": "sha256-TW2/CeSuoYaBCTsSixGbF0+NncAtDZbmSXx5RPBSDT8=",
-        "owner": "fufexan",
+        "lastModified": 1661948914,
+        "narHash": "sha256-596RJgybMFUOWKkoMehqT5a7XuR6JkJg5zyqX/t1LuY=",
+        "owner": "nix-community",
         "repo": "dream2nix",
-        "rev": "a0e57d33511c53a9195c4764c5cb7736b4d4893e",
+        "rev": "dc3530785e7388398c40c2b4f5893a674b8bd557",
         "type": "github"
       },
       "original": {
-        "owner": "fufexan",
-        "ref": "electron",
+        "owner": "nix-community",
         "repo": "dream2nix",
         "type": "github"
       }
@@ -94,11 +93,11 @@
         "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
-        "lastModified": 1661842498,
-        "narHash": "sha256-5shFKoXfkeYQtbkPEhb2UQUZp0gD+Hdm8huEPN87kvM=",
+        "lastModified": 1661929115,
+        "narHash": "sha256-XnCL0aLeQIbh0Ua51m8lF4sQFGn9tc+8VZLOQ9UEDAA=",
         "owner": "nix-community",
         "repo": "fenix",
-        "rev": "b8d50e5b6662ba618fe7a28df478044327294aaa",
+        "rev": "82b14d02053f49d70c834f8e5ef6f07fe804d7eb",
         "type": "github"
       },
       "original": {
@@ -476,11 +475,11 @@
     "rust-analyzer-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1661790873,
-        "narHash": "sha256-tJmovMHKxd1Geq40YDUqSBELOooYB1ix99aEJKds6+4=",
+        "lastModified": 1661866297,
+        "narHash": "sha256-Q0aniSF4Skm7yYE1Z2Jikn0C7Hpjbk94eha2Y7GWjPk=",
         "owner": "rust-lang",
         "repo": "rust-analyzer",
-        "rev": "f02cd0a41d7381b1ef454b0141adacc188d3eee8",
+        "rev": "989b09d20cafc2b1eb9198e25701b9e2234d8ba0",
         "type": "github"
       },
       "original": {
@@ -531,11 +530,11 @@
         "webcord": "webcord_2"
       },
       "locked": {
-        "lastModified": 1661860914,
-        "narHash": "sha256-jO7Ut9SKQ8aq/K4C3ZyUeBnRQKYB9GMreSTem1pqERQ=",
+        "lastModified": 1661975448,
+        "narHash": "sha256-6LPYRkgeTmTcFJvKL5TIysqPYT/JPJfWdJViXOKkOrM=",
         "owner": "fufexan",
         "repo": "webcord-flake",
-        "rev": "a1ee6ae816e693f4bc43cc12a0a783b30147eb33",
+        "rev": "f41d41e5f736e1d366d36d79bab04e031f9d3d6d",
         "type": "github"
       },
       "original": {
