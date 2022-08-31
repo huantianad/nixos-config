@@ -49,13 +49,5 @@
       nixosModules = mapModulesRec ./modules import;
 
       nixosConfigurations = mapHosts ./hosts { };
-
-      # nixosConfigurations = {
-      #   huantian-desktop = nixpkgs.lib.nixosSystem {
-      #     inherit system;
-      #     modules = [ ./configuration.nix ];
-      #     specialArgs = { inherit inputs; };
-      #   };
-      # };
     };
 }

@@ -7,6 +7,7 @@ in
 {
   options.modules.desktop.programs.tauon = {
     enable = mkBoolOpt false;
+    openFirewall = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
@@ -16,8 +17,8 @@ in
       })
     ];
 
-    # networking.firewall = {
-    #   allowedTCPPorts = [ 7590 ];
-    # };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ 7590 ];
+    };
   };
 }

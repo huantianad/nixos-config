@@ -8,9 +8,11 @@
 
   modules = {
     desktop = {
-      kde.enable = true;
-      kde.latte-dock.enable = true;
-      kde.autoLogin = true;
+      kde = {
+        enable = true;
+        latte-dock.enable = true;
+        autoLogin = true;
+      };
       random-apps.enable = true;
       fonts.enable = true;
 
@@ -28,7 +30,10 @@
       programs = {
         discord.enable = true;
         fcitx.enable = true;
-        tauon.enable = true;
+        tauon = {
+          enable = true;
+          openFirewall = true;
+        };
         jetbrains-toolbox.enable = false;
         unity.enable = true;
         webcord.enable = false;
@@ -65,8 +70,8 @@
 
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  # virtualisation.virtualbox.host.enable = true;
-  # virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
 
   programs.dconf.enable = true;
   services.usbmuxd.enable = true;
