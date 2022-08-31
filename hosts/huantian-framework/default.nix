@@ -3,6 +3,7 @@
 {
   imports = [
     inputs.nixos-hardware.nixosModules.framework
+    ../home.nix
     ./hardware-configuration.nix
   ];
 
