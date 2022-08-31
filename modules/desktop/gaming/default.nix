@@ -16,6 +16,7 @@ in
       scarab
       cockatrice
       airshipper
+      tetrio-desktop
     ];
   };
 }
