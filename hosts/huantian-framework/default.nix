@@ -69,6 +69,11 @@
 
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  # Some battery life tuning
+  services.tlp.enable = true;
+  # Disable power-profiles-daemon as it conflicts with tlp
+  services.power-profiles-daemon.enable = false;
+
   # Fingerprint support
   services.fprintd.enable = true;
   security.pam.services."sddm".fprintAuth = true;
