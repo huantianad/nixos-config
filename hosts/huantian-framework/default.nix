@@ -77,4 +77,19 @@
   # Fingerprint support
   services.fprintd.enable = true;
   security.pam.services."sddm".fprintAuth = true;
+
+  # Touchpad gestures
+  environment.systemPackages = with pkgs; [
+    (libinput-gestures.overrideAttrs (attrs: {
+      postFixup = attrs.postFixup + ''
+        substituteInPlace "$out/share/systemd/user/libinput-gestures.service" --replace "/usr/bin/libinput-gestures" "$out/bin/libinput-gestures"
+      '';
+    }))
+    # wmctrl
+    ydotool
+  ];
+
+  services.xserver.libinput.touchpad = {
+    naturalScrolling = true;
+  };
 }

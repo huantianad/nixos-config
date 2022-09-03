@@ -6,7 +6,7 @@
     users.users.huantian = {
       isNormalUser = true;
       description = "David Li";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "input" ];
       shell = pkgs.zsh;
     };
 
