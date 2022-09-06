@@ -2,10 +2,10 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.programs.discord;
+let cfg = config.modules.desktop.programs.powercord;
 in
 {
-  options.modules.desktop.programs.discord = {
+  options.modules.desktop.programs.powercord = {
     enable = mkBoolOpt false;
   };
 

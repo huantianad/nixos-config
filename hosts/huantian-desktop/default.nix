@@ -28,7 +28,7 @@
       };
 
       programs = {
-        discord.enable = true;
+        powercord.enable = true;
         fcitx.enable = true;
         tauon = {
           enable = true;

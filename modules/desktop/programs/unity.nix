@@ -127,6 +127,7 @@ let
 
       cat >$out/opt/unityhub/unityhub <<EOL
       #!${pkgs.bash}/bin/bash
+      export GDK_BACKEND=x11
       export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib:/usr/lib32"
       export GSETTINGS_SCHEMA_DIR=${pkgs.glib.getSchemaPath pkgs.gtk3}
       export QML2_IMPORT_PATH="${pkgs.libsForQt5.full}/lib/qt-5.15.5/qml:\$QML2_IMPORT_PATH"
