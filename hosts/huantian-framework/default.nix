@@ -24,9 +24,9 @@
 
       gaming = {
         enable = true;
-        dolphin.enable = true;
-        dolphin.setUdevRules = true;
-        steam.enable = true;
+        dolphin.enable = false;
+        dolphin.setUdevRules = false;
+        steam.enable = false;
       };
 
       programs = {
@@ -34,7 +34,7 @@
         fcitx.enable = true;
         tauon.enable = true;
         jetbrains-toolbox.enable = false;
-        unity.enable = true;
+        unity.enable = false;
         webcord.enable = true;
         xbindkeys.enable = false;
       };

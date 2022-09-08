@@ -23,7 +23,7 @@
       gaming = {
         enable = true;
         dolphin.enable = true;
-        dolphin.setUdevRules = false;
+        dolphin.setUdevRules = true;
         steam.enable = true;
       };
 
