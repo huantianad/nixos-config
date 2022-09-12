@@ -92,4 +92,10 @@
   services.xserver.libinput.touchpad = {
     naturalScrolling = true;
   };
+
+  # This is used for ambient light sensor, but disable it for now
+  # Since it breaks the function keys alternate layer
+  boot.blacklistedKernelModules = [
+    "hid_sensor_hub"
+  ];
 }
