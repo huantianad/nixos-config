@@ -20,7 +20,7 @@ in
 
     home-manager.users.huantian.home.file = {
       ".librewolf/librewolf.overrides.cfg".text = ''
-        # defaultPref("webgl.dxgl.enabled", true);
+        defaultPref("webgl.dxgl.enabled", true);
         defaultPref("webgl.disabled", false);
 
         defaultPref("webgl.enable-webgl2", true);
