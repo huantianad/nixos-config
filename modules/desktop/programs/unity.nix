@@ -159,6 +159,12 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ unityhub ];
+    environment.systemPackages = [
+      (pkgs.unityhub.overrideAttrs (attrs: {
+        buildCommand = attrs.buildCommand + ''
+          ln -s $out/bin/unityhub-2.3.2 $out/bin/unityhub
+        '';
+      }))
+    ];
   };
 }
