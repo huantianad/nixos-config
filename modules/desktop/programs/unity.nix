@@ -7,11 +7,11 @@ let
 
   unityhub = pkgs.stdenv.mkDerivation rec {
     name = "unityhub";
-    version = "3.2.0";
+    version = "3.3.0";
 
     src = pkgs.fetchurl {
       url = "https://hub-dist.unity3d.com/artifactory/hub-debian-prod-local/pool/main/u/unity/unityhub_amd64/unityhub-amd64-${version}.deb";
-      sha256 = "0276s4b2h6z8djv2vm7jx5brgg3z1gifj0pajvwmxs7ac5nf4gb6";
+      sha256 = "sha256-W5NPOvIUFDyNuauUDXD/jaMD5USPO/7Wty6FuxtFbRk=";
     };
 
     nativeBuildInputs = with pkgs; [
@@ -39,6 +39,7 @@ let
       krb5
       at-spi2-core
       alsa-lib
+      libpulseaudio # Not a ldd thing, but needed for sound to work
       nss_latest
       libdrm
       mesa
@@ -49,8 +50,8 @@ let
       gnome2.pango
 
       libva
-      openssl_3
       openssl
+      openssl_1_1
       cairo
       xdg-utils
       libnotify
@@ -160,11 +161,12 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      (pkgs.unityhub.overrideAttrs (attrs: {
-        buildCommand = attrs.buildCommand + ''
-          ln -s $out/bin/unityhub-2.3.2 $out/bin/unityhub
-        '';
-      }))
+      unityhub
+      # (pkgs.unityhub.overrideAttrs (attrs: {
+      #   buildCommand = attrs.buildCommand + ''
+      #     ln -s $out/bin/unityhub-2.3.2 $out/bin/unityhub
+      #   '';
+      # }))
     ];
   };
 }
