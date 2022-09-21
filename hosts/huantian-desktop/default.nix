@@ -57,7 +57,9 @@
       pipewire.enable = true;
     };
 
-    services = { };
+    services = {
+      usbmuxd.enable = true;
+    };
 
     shell = {
       zsh.enable = true;
@@ -82,7 +84,6 @@
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
   programs.dconf.enable = true;
-  services.usbmuxd.enable = true;
 
   services.cron = {
     enable = true;

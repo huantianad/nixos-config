@@ -55,7 +55,9 @@
       pipewire.enable = true;
     };
 
-    services = { };
+    services = {
+      usbmuxd.enable = true;
+    };
 
     shell = {
       zsh.enable = true;
@@ -80,13 +82,9 @@
 
   # Touchpad gestures
   environment.systemPackages = with pkgs; [
-    (libinput-gestures.overrideAttrs (attrs: {
-      postFixup = attrs.postFixup + ''
-        substituteInPlace "$out/share/systemd/user/libinput-gestures.service" --replace "/usr/bin/libinput-gestures" "$out/bin/libinput-gestures"
-      '';
-    }))
-    # wmctrl
+    libinput-gestures
     ydotool
+    checkra1n
   ];
 
   services.xserver.libinput.touchpad = {
