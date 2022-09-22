@@ -19,13 +19,17 @@ in
     services.xserver.displayManager.sddm.enable = true;
     services.xserver.desktopManager.plasma5.enable = true;
 
-    # latte-dock for kde
-    environment.systemPackages = mkIf cfg.latte-dock.enable [ pkgs.latte-dock ];
+    environment.systemPackages = with pkgs; [
+      libsForQt5.sddm-kcm  # Settings menu for SDDM in KDE
+    ] ++ lib.optionals cfg.latte-dock.enable [
+      latte-dock
+    ];
 
     # Enable automatic login for the user.
     services.xserver.displayManager.autoLogin.enable = cfg.autoLogin;
     services.xserver.displayManager.autoLogin.user = "huantian";
 
+    # TODO: turn this on only when librewolf is on
     nixpkgs.config.librewolf.enablePlasmaBrowserIntegration = true;
 
     # Enable touchpad support (enabled default in most desktopManager).
