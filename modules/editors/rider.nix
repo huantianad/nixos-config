@@ -21,6 +21,7 @@ let
 
   rider = pkgs.jetbrains.rider.overrideAttrs (attrs: {
     postInstall = ''
+      # wrap rider in my custom fhs which has some dependencies
       mv $out/bin/rider $out/bin/.rider-unwrapped
 
       cat >$out/bin/rider <<EOL
@@ -29,6 +30,16 @@ let
       EOL
 
       chmod +x $out/bin/rider
+
+      ## Making Unity Rider plugin work!
+      # unity plugins looks for a build.txt at ../../build.txt, relative to binary
+      # same for hte product-info.json, both are used for BuildVersion and Numbers
+      ln -s $out/rider/build.txt $out/
+      ln -s $out/rider/product-info.json $out/
+
+      # looks for ../../plugins/rider-unity, relative to binary
+      # it needs some dll file in there, which it uses to bind to rider
+      ln -s $out/rider/plugins $out/plugins
     '' + attrs.postInstall or "";
   });
 in
@@ -40,9 +51,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [ rider ];
 
-    # unity looks for rider in this location, trick it!
-    # doesn't seem to work with advanced unity integration yet tho.
-    # I have no idea how to make it work with that, what does the plugin need?
+    # unity looks for rider binary path in this location, trick it!
     home-manager.users.huantian.home.file = {
       ".local/share/applications/jetbrains-rider.desktop".text = ''
         Exec="${rider}/bin/rider"
