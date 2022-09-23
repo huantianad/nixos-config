@@ -63,7 +63,7 @@ let
       cpio
       icu
 
-      # editor
+      # Editor dependencies
       libglvnd #ligbl
       xorg.libX11
       xorg.libXcursor
@@ -73,16 +73,17 @@ let
       zlib
       clang
 
+      # these are probably not needed
       libsForQt5.full
       xorg.libXinerama
       hicolor-icon-theme
       gtk4
 
-      # for me personally
+      # My Unity projects depend on these
       harfbuzz
       libogg
 
-      # bug reporter stuff???
+      # Bug Reporter dependencies
       fontconfig
       freetype
       lsb-release
@@ -92,13 +93,6 @@ let
       name = "${name}-fhs-env";
       targetPkgs = pkgs: unityhub.extraLibs;
       runScript = "";
-      extraBuildCommands = ''
-        # mkdir -p $out/usr/share/glib-2.0
-        # ln -s ${pkgs.glib.getSchemaPath pkgs.gtk3} $out/usr/share/glib-2.0/schemas
-        mkdir -p $out/usr/lib/qt5/
-        ln -s ${pkgs.libsForQt5.full}/lib/qt-5.15.5/qml $out/usr/lib/qt5/qml
-        ln -s ${pkgs.libsForQt5.full}/lib/qt-5.15.5/plugins $out/usr/lib/qt5/plugins
-      '';
     };
 
     sourceRoot = ".";
@@ -110,34 +104,28 @@ let
     installPhase = ''
       runHook preInstall
 
-      mkdir -p $out/bin
-
+      mkdir $out
       mv usr/share/ $out/share
       mv opt/ $out/opt
 
       # `unityhub` is a shell wrapper that runs `unityhub-bin`
-      # Which we don't need and replace with our own custom wrapper later
-      rm $out/opt/unityhub/unityhub
-
-      # Link binary
-      ln -s $out/opt/unityhub/unityhub $out/bin/unityhub
-
-      # Replace absolute path to correctly point to nix store
-      substituteInPlace $out/share/applications/unityhub.desktop \
-        --replace /opt/unityhub/unityhub $out/opt/unityhub/unityhub
-
+      # Which we don't need and replace with our own custom wrapper
       cat >$out/opt/unityhub/unityhub <<EOL
       #!${pkgs.bash}/bin/bash
-      export GDK_BACKEND=x11
-      export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib:/usr/lib32"
       export GSETTINGS_SCHEMA_DIR=${pkgs.glib.getSchemaPath pkgs.gtk3}
-      export QML2_IMPORT_PATH="${pkgs.libsForQt5.full}/lib/qt-5.15.5/qml:\$QML2_IMPORT_PATH"
-      export QT_PLUGIN_PATH="${pkgs.libsForQt5.full}/lib/qt-5.15.5/plugins:\$QT_PLUGIN_PATH"
       ${fhsEnv}/bin/${name}-fhs-env $out/opt/unityhub/unityhub-bin "\$@"
       EOL
       chmod +x $out/opt/unityhub/unityhub
 
-      # From the .deb's postinst hook, not sure if necessary
+      # Link binary
+      mkdir $out/bin
+      ln -s $out/opt/unityhub/unityhub $out/bin/unityhub
+
+      # Replace absolute path in desktop file to correctly point to nix store
+      substituteInPlace $out/share/applications/unityhub.desktop \
+        --replace /opt/unityhub/unityhub $out/opt/unityhub/unityhub
+
+      # From the .deb's postInstall hook, not sure if necessary
       chmod 4755 '$out/opt/unityhub/chrome-sandbox' || true
 
       runHook postInstall
@@ -162,11 +150,6 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [
       unityhub
-      # (pkgs.unityhub.overrideAttrs (attrs: {
-      #   buildCommand = attrs.buildCommand + ''
-      #     ln -s $out/bin/unityhub-2.3.2 $out/bin/unityhub
-      #   '';
-      # }))
     ];
   };
 }
