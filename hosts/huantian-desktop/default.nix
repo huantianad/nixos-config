@@ -28,7 +28,7 @@
       };
 
       programs = {
-        powercord.enable = false;
+        powercord.enable = true;
         webcord.enable = false;
 
         fcitx.enable = true;
@@ -70,13 +70,6 @@
       nix.enable = true;
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    (discord-canary.override {
-      nss = pkgs.nss_latest;
-      withOpenASAR = true;
-    })
-  ];
 
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
