@@ -29,9 +29,6 @@ in
     services.xserver.displayManager.autoLogin.enable = cfg.autoLogin;
     services.xserver.displayManager.autoLogin.user = "huantian";
 
-    # TODO: turn this on only when librewolf is on
-    nixpkgs.config.librewolf.enablePlasmaBrowserIntegration = true;
-
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
 
