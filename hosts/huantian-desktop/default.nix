@@ -31,6 +31,7 @@
         powercord.enable = true;
         webcord.enable = false;
 
+        butler.enable = true;
         fcitx.enable = true;
         tauon = {
           enable = true;

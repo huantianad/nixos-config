@@ -37,6 +37,7 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [ self.overlay ];
       };
 
       lib = nixpkgs.lib.extend (self: super: {
@@ -46,8 +47,15 @@
     {
       lib = lib.my;
 
+      overlay = final: prev: {
+        my = self.packages."${system}";
+      };
+
       nixosModules = mapModulesRec ./modules import;
 
       nixosConfigurations = mapHosts ./hosts { };
+
+      packages."${system}" =
+        mapModules ./packages (p: pkgs.callPackage p { });
     };
 }

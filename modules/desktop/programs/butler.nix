@@ -7,10 +7,10 @@ let
 in
 {
   options.modules.desktop.programs.butler = {
-    enable = mkBoolOpt true;
+    enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ (pkgs.callPackage (import ./butler) { }) ];
+    environment.systemPackages = [ pkgs.my.butler ];
   };
 }
