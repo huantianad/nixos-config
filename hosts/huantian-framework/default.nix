@@ -85,6 +85,7 @@
     libinput-gestures
     ydotool
     checkra1n
+    my.xmage
   ];
 
   home-manager.users.huantian.home.file =
