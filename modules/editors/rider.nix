@@ -12,7 +12,9 @@ let
     name = "rider-fhs";
     runScript = "";
     targetPkgs = pkgs: with pkgs; [
-      dotnetCombined
+      # temp fix until https://github.com/NixOS/nixpkgs/pull/194797
+      # dotnetCombined
+      dotnetCorePackages.sdk_6_0
       dotnetPackages.Nuget
       mono
       msbuild
