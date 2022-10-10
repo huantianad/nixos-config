@@ -79,6 +79,14 @@
 
   programs.dconf.enable = true;
 
+  environment.systemPackages = with pkgs; with inputs.jtoinar.packages.${pkgs.system}; [
+    # aw-webui
+    # aw-qt
+    # aw-server-rust
+    # aw-watcher-afk
+    # aw-watcher-window
+  ];
+
   services.cron = {
     enable = true;
   };

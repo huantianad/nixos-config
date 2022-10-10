@@ -26,6 +26,10 @@
 
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
+
+    # activitywatch
+    jtoinar.url = "github:huantianad/jtojnar-nixfiles";
+    jtoinar.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ { self, nixpkgs, ... }:
