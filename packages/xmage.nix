@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, jdk8, unzip }:
+{ lib, stdenv, fetchurl, p7zip, makeDesktopItem, jdk8 }:
 
 stdenv.mkDerivation rec {
   name = "xmage";
@@ -9,16 +9,25 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-kgmHQvUToPSm3aXRrav9BAalYlnmvICXCcGHvrA1kkk=";
   };
 
+  # Use p7zip to extract because of weird unicode deck names.
   unpackPhase = ''
-    ${unzip}/bin/unzip $src || echo "pain"
+    ${p7zip}/bin/7z x -y $src
   '';
+
+  desktopFile = makeDesktopItem {
+    name = "xmage";
+    desktopName = "XMage";
+    exec = "xmage";
+    icon = "xmage";
+  };
 
   installPhase = ''
     mkdir -p $out/bin
     cp -rv ./* $out
-    cat << EOS > $out/bin/xmage
-exec ${jdk8}/bin/java -Xms1G -Xmx2G -Dfile.encoding=UTF-8 -jar $out/xmage/mage-client/lib/mage-client-1.4.50.jar
-EOS
+
+    cat << EOF > $out/bin/xmage
+    exec ${jdk8}/bin/java -Xms1G -Xmx2G -Dfile.encoding=UTF-8 -jar $out/xmage/mage-client/lib/mage-client-1.4.50.jar
+    EOF
     chmod +x $out/bin/xmage
   '';
 
@@ -26,7 +35,7 @@ EOS
     description = "Magic Another Game Engine";
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
     license = licenses.mit;
-    maintainers = with maintainers; [ matthiasbeyer ];
+    maintainers = with maintainers; [ huantian ];
     homepage = "http://xmage.de/";
   };
 }
