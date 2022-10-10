@@ -80,8 +80,8 @@ in
         "editor.bracketPairColorization.enabled" = true;
         "editor.rulers" = [ 120 ];
 
-        "editor.cursorBlinking" = "phase";
-        "editor.cursorSmoothCaretAnimation" = true;
+        "editor.cursorBlinking" = mkIf (!config.modules.desktop.wayland.enable) "phase";
+        "editor.cursorSmoothCaretAnimation" = mkIf (!config.modules.desktop.wayland.enable) true;
         "editor.smoothScrolling" = true;
 
         # Auto-suggest
