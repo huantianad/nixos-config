@@ -14,6 +14,8 @@ in
       kate
       element-desktop
       ark
+      # ark already comes with this, but we need it for dolphin extracting
+      p7zip
       unrar
       vlc
       gimp
