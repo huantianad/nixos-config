@@ -299,11 +299,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1664449551,
-        "narHash": "sha256-iTStJtZB1+MppkT+95Ckqy2NDaISb+QcUkOAa0DS0io=",
+        "lastModified": 1665271265,
+        "narHash": "sha256-4Nn0T5YoR3bBLFnPy6Tkc8zzmzMTBjSGZq05c5hKhEI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "864ff685fe6443101a0a8f3950d21bcb4330e56a",
+        "rev": "e1f1160284198a68ea8c7fffbbb1436f99e46ef9",
         "type": "github"
       },
       "original": {
@@ -329,11 +329,11 @@
         "nixpkgs-mozilla": "nixpkgs-mozilla"
       },
       "locked": {
-        "lastModified": 1665271470,
-        "narHash": "sha256-+JwG4JetP0fWkzeDv8G7x8EdK51zwV3YaZcx8OiIYtI=",
+        "lastModified": 1665442006,
+        "narHash": "sha256-MaRF8bXSFu7Jv5/tQ8D7TLYmf1nJya5Y3igij8WbHCI=",
         "owner": "huantianad",
         "repo": "jtojnar-nixfiles",
-        "rev": "2dae4e436ba3963ee232eca587fb677f3df265fe",
+        "rev": "111d163da218a4e38e16ec30ddc046207fa33c35",
         "type": "github"
       },
       "original": {
@@ -387,15 +387,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1663263996,
-        "narHash": "sha256-nJ6NydI0dm0ZsGfKhu1uyyj6icxZ4fvmsgXqKgYZc2s=",
+        "lastModified": 1665436643,
+        "narHash": "sha256-zTx/GDs3tsazEolWL1z1wXZ1Of4biCgCFKNhu6EY3Mk=",
         "owner": "nix-community",
         "repo": "napalm",
-        "rev": "cfb58e79f2ef995387102debb084f2c2fb674085",
+        "rev": "7a97ead66c5a6eff841d78b5748264c6f8ec5235",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
+        "ref": "npm-pointers",
         "repo": "napalm",
         "type": "github"
       }
@@ -451,11 +452,11 @@
     "nixpkgs-mozilla": {
       "flake": false,
       "locked": {
-        "lastModified": 1657214286,
-        "narHash": "sha256-rO/4oymKXU09wG2bcTt4uthPCp1XsBZjxuCJo3yVXNs=",
+        "lastModified": 1664789696,
+        "narHash": "sha256-UGWJHQShiwLCr4/DysMVFrYdYYHcOqAOVsWNUu+l6YU=",
         "owner": "mozilla",
         "repo": "nixpkgs-mozilla",
-        "rev": "0508a66e28a5792fdfb126bbf4dec1029c2509e0",
+        "rev": "80627b282705101e7b38e19ca6e8df105031b072",
         "type": "github"
       },
       "original": {
