@@ -26,7 +26,6 @@ in
 
       extraConfig = {
         commit.gpgsign = true;
-        credential.helper = "store";
         core.autocrlf = "input";
         init.defaultBranch = "main";
 
