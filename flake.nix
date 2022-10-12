@@ -30,6 +30,9 @@
     # activitywatch
     jtoinar.url = "github:huantianad/jtojnar-nixfiles";
     jtoinar.inputs.nixpkgs.follows = "nixpkgs";
+
+    aw-watcher-custom.url = "github:huantianad/aw-watcher-custom";
+    aw-watcher-custom.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ { self, nixpkgs, ... }:

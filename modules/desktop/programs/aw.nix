@@ -16,6 +16,7 @@ in
       aw-server-rust
       aw-watcher-afk
       aw-watcher-window
+      inputs.aw-watcher-custom.defaultPackage.${pkgs.system}
     ];
   };
 }
