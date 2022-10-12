@@ -84,4 +84,7 @@
   services.cron = {
     enable = true;
   };
+
+  # Increase size of /run/user/1000
+  services.logind.extraConfig = "RuntimeDirectorySize=4G";
 }
