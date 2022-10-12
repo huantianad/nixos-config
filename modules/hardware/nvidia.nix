@@ -18,6 +18,8 @@ in
       driSupport32Bit = true;
     };
 
+    hardware.nvidia.forceFullCompositionPipeline = true;
+
     environment.systemPackages = with pkgs; [
       # Respect XDG conventions, damn it!
       (writeScriptBin "nvidia-settings" ''
