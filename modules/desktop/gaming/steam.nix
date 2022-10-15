@@ -28,7 +28,7 @@ in
             pkgs.brotli
           ];
           extraProfile = ''
-            # Fix "no gsettings schemas are installed on the system"
+            # Fix "No GSettings schemas are installed on the system"
             export GSETTINGS_SCHEMA_DIR=${pkgs.glib.getSchemaPath pkgs.gtk3}
           '';
         };
