@@ -66,10 +66,39 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.vim.defaultEditor = true;
-    environment.systemPackages = with pkgs; [
-      myVim
-      rnix-lsp
-    ];
+    programs.neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      defaultEditor = true;
+      configure = {
+        customRC = ''
+          set clipboard+=unnamedplus       " Use system clipboard
+
+          " Set lightline.vim theme
+          let g:lightline = {'colorscheme': 'darcula',}
+        '';
+
+        packages.myVimPackage = with pkgs.vimPlugins; {
+          start = [
+            lightline-vim
+            lightline-lsp
+          ];
+        };
+      };
+    };
+
+    environment.systemPackages = with pkgs;
+      let
+        clipboard-tool =
+          if config.modules.desktop.wayland.enable
+          then wl-clipboard
+          else xclip;
+      in
+      [
+        # myVim
+        rnix-lsp
+        clipboard-tool
+      ];
   };
 }
