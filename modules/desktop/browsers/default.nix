@@ -2,11 +2,13 @@
 
 with lib;
 with lib.my;
-{
-  config = {
-    environment.systemPackages = with pkgs; [ chromium ];
+let cfg = config.modules.desktop.browsers;
+in {
+  options.modules.desktop.browsers = {
+    default = mkOpt (with types; nullOr str) null;
+  };
 
-    nixpkgs.config.chromium.commandLineArgs = mkIf config.modules.desktop.wayland.enable
-      "--enable-features=UseOzonePlatform --ozone-platform=wayland";
+  config = mkIf (cfg.default != null) {
+    environment.variables.BROWSER = cfg.default;
   };
 }

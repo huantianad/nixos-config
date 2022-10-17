@@ -17,7 +17,9 @@
       fonts.enable = true;
 
       browsers = {
+        default = "librewolf";
         librewolf.enable = true;
+        chromium.enable = true;
       };
 
       gaming = {
