@@ -29,6 +29,8 @@ in
       obs-studio
       kid3
       soulseekqt
+      obsidian
+      ffmpeg_5
     ];
   };
 }
