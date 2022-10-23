@@ -20,7 +20,7 @@ in
     services.xserver.desktopManager.plasma5.enable = true;
 
     environment.systemPackages = with pkgs; [
-      libsForQt5.sddm-kcm  # Settings menu for SDDM in KDE
+      libsForQt5.sddm-kcm # Settings menu for SDDM in KDE
     ] ++ lib.optionals cfg.latte-dock.enable [
       latte-dock
     ];
