@@ -16,4 +16,6 @@ with lib;
 
   # Steam controller support
   hardware.steam-hardware.enable = true;
+  # Joycon and Pro Controller support
+  services.joycond.enable = true;
 }
