@@ -41,5 +41,7 @@ in
     services.xserver.desktopManager.plasma5.excludePackages = with pkgs; [
       elisa # Default KDE video player, use VLC instead
     ];
+
+    programs.partition-manager.enable = true;
   };
 }

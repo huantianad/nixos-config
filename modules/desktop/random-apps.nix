@@ -21,7 +21,6 @@ in
       gimp
       qbittorrent
       zoom-us
-      partition-manager
       baobab
       libreoffice-qt
       kalendar
