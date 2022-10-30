@@ -30,11 +30,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1664140963,
-        "narHash": "sha256-pFxDtOLduRFlol0Y4ShE+soRQX4kbhaCNBtDOvx7ykw=",
+        "lastModified": 1665870395,
+        "narHash": "sha256-Tsbqb27LDNxOoPLh0gw2hIb6L/6Ow/6lIBvqcHzEKBI=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "6acb1fe5f8597d5ce63fc82bc7fcac7774b1cdf0",
+        "rev": "a630400067c6d03c9b3e0455347dc8559db14288",
         "type": "github"
       },
       "original": {
@@ -455,11 +455,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1665271265,
-        "narHash": "sha256-4Nn0T5YoR3bBLFnPy6Tkc8zzmzMTBjSGZq05c5hKhEI=",
+        "lastModified": 1666649150,
+        "narHash": "sha256-kINnLxC0KFalUk4tVO/H5hUU7FVAOYYcUSWrsBpnl+I=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e1f1160284198a68ea8c7fffbbb1436f99e46ef9",
+        "rev": "7dc4e4ebd71280842b4d30975439980baaac9db8",
         "type": "github"
       },
       "original": {
@@ -485,11 +485,11 @@
         "nixpkgs-mozilla": "nixpkgs-mozilla_2"
       },
       "locked": {
-        "lastModified": 1665514649,
-        "narHash": "sha256-zLP2kMYMnrMzpcmYZ6ha+i9ez2zNZCXbCOV8Y8vsS+4=",
+        "lastModified": 1667165497,
+        "narHash": "sha256-h1CMhsQcqs4tmSmXgdgIZIV/08T54FdwyDzhako0tD0=",
         "owner": "huantianad",
         "repo": "jtojnar-nixfiles",
-        "rev": "3ab63a10e7cb50347f81b2fb064eb0ec2d1bb0bc",
+        "rev": "49b9d865d4a0135cb15b1eabcf8e0868cf29bcef",
         "type": "github"
       },
       "original": {
@@ -619,16 +619,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1665436643,
-        "narHash": "sha256-zTx/GDs3tsazEolWL1z1wXZ1Of4biCgCFKNhu6EY3Mk=",
+        "lastModified": 1666256523,
+        "narHash": "sha256-MSzf6kYKW+QCtPyPp4/pgYMTh6F1Yf9mnfiFX360RpM=",
         "owner": "nix-community",
         "repo": "napalm",
-        "rev": "7a97ead66c5a6eff841d78b5748264c6f8ec5235",
+        "rev": "61f33f63fbab96e42d4537776091945939ea1a85",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "npm-pointers",
         "repo": "napalm",
         "type": "github"
       }
