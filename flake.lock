@@ -485,11 +485,11 @@
         "nixpkgs-mozilla": "nixpkgs-mozilla_2"
       },
       "locked": {
-        "lastModified": 1667165497,
-        "narHash": "sha256-h1CMhsQcqs4tmSmXgdgIZIV/08T54FdwyDzhako0tD0=",
+        "lastModified": 1667167266,
+        "narHash": "sha256-vlG5EU9uN2kzpk9w2qPXkQG4i3PjMsY6X6UGqDnxWSU=",
         "owner": "huantianad",
         "repo": "jtojnar-nixfiles",
-        "rev": "49b9d865d4a0135cb15b1eabcf8e0868cf29bcef",
+        "rev": "10f3d325771edf11cad8dd3c25fe4d0153cb4126",
         "type": "github"
       },
       "original": {
