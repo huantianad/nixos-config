@@ -44,6 +44,7 @@
 
     dev = {
       cc.enable = true;
+      tex.enable = true;
     };
 
     editors = {
