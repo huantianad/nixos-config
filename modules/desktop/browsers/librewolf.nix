@@ -36,6 +36,7 @@ in
         defaultPref("dom.webaudio.enabled", true);
 
         defaultPref("identity.fxaccounts.enabled", true);
+        defaultPref("services.sync.engine.passwords", false);
       '';
     };
   };
