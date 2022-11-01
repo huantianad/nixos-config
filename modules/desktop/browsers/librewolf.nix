@@ -34,6 +34,8 @@ in
         defaultPref("dom.event.clipboardevents.enabled", true);
 
         defaultPref("dom.webaudio.enabled", true);
+
+        defaultPref("identity.fxaccounts.enabled", true);
       '';
     };
   };
