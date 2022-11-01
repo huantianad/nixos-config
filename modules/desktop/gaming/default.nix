@@ -16,7 +16,7 @@ in
       scarab
       cockatrice
       airshipper
-      (tetrio-desktop.overrideAttrs (oldAttrs:
+      (tetrio-desktop.overrideAttrs ( oldAttrs:
         let
           tetrio-plus = fetchzip {
             url = "https://gitlab.com/UniQMG/tetrio-plus/uploads/a9647feffc484304ee49c4d3fd4ce718/tetrio-plus_0.23.13_app.asar.zip";
