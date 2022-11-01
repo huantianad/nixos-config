@@ -30,6 +30,7 @@ in
       soulseekqt
       obsidian
       ffmpeg_5
+      bitwarden
     ];
   };
 }
