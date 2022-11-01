@@ -16,7 +16,8 @@ in
     ];
 
     environment.systemPackages = with pkgs; [
-      rnix-lsp
+      nixpkgs-fmt
+      nil
     ];
 
     home-manager.users.huantian.programs.vscode = {
@@ -210,8 +211,11 @@ in
         ## Nix ##
         #########
         "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "nix.serverSettings".nil.formatting.command = [ "nixpkgs-fmt" ];
         "[nix]" = {
           "editor.tabSize" = 2;
+          "editor.formatOnSave" = true;
         };
 
 
