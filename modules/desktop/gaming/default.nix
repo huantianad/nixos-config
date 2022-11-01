@@ -24,9 +24,19 @@ in
           };
         in
         {
-          installPhase = oldAttrs.installPhase + "
+          installPhase = ''
+            cp -R $TMP/tetrio-desktop/{usr/share,opt} $out/
             cp ${tetrio-plus}/app.asar $out/opt/TETR.IO/resources/
-          ";
+
+            wrapProgram $out/opt/TETR.IO/tetrio-desktop \
+              --prefix LD_LIBRARY_PATH : ${oldAttrs.libPath}:$out/opt/TETR.IO \
+              --prefix GSETTINGS_SCHEMA_DIR : ${pkgs.glib.getSchemaPath pkgs.gtk3}
+
+            ln -s $out/opt/TETR.IO/tetrio-desktop $out/bin/
+
+            substituteInPlace $out/share/applications/tetrio-desktop.desktop \
+              --replace "/opt/" "$out/opt/"
+          '';
         }
       ))
     ];
