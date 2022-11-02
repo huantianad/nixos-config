@@ -74,7 +74,7 @@ in
 
         "editor.fontSize" = 14;
         # JetBrains Mono; MonoLisa; Fira Code
-        "editor.fontFamily" = "Fira Code";
+        "editor.fontFamily" = "JetBrains Mono";
         "editor.fontLigatures" = true;
 
         "editor.guides.bracketPairs" = true;
