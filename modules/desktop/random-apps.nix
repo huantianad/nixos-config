@@ -31,6 +31,7 @@ in
       obsidian
       ffmpeg_5
       bitwarden
+      peek
     ];
   };
 }
