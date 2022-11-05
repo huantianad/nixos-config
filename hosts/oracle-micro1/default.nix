@@ -10,7 +10,7 @@
   system.stateVersion = "21.11";
 
   _module.args.nixinate = {
-    host = "oracle-micro2";
+    host = "oracle-micro1";
     sshUser = "huantian";
     buildOn = "remote";
     substituteOnTarget = true;
@@ -31,6 +31,7 @@
     };
 
     services = {
+      vaultwarden.enable = true;
     };
 
     shell = {

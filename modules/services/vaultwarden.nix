@@ -26,6 +26,8 @@ in
       };
     };
 
+    networking.firewall.allowedTCPPorts = [ 80 443 ];
+
     services.caddy = {
       enable = true;
       extraConfig = ''
@@ -47,7 +49,7 @@ in
         }
 
         # Notifications redirected to the websockets server
-        reverse_proxy /notifications/hub http://localhost:8812
+        reverse_proxy /notifications/hub http://localhost:3012
 
         # Proxy everything else to Rocket
         reverse_proxy http://localhost:8812 {
