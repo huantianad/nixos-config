@@ -664,6 +664,26 @@
         "type": "github"
       }
     },
+    "nixinate": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1666918008,
+        "narHash": "sha256-SqdXt8rPOj59mgIFwB+DvkzDbLWjrChw+UyVfMlS6Rg=",
+        "owner": "matthewcroughan",
+        "repo": "nixinate",
+        "rev": "118c71c5111ab218d0cca3e4c77303797344b409",
+        "type": "github"
+      },
+      "original": {
+        "owner": "matthewcroughan",
+        "repo": "nixinate",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1666873549,
@@ -943,6 +963,7 @@
         "fenix": "fenix",
         "home-manager": "home-manager_2",
         "jtoinar": "jtoinar",
+        "nixinate": "nixinate",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "powercord-better-replies": "powercord-better-replies",
