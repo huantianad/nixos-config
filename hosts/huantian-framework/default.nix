@@ -71,7 +71,6 @@
       doas.enable = true;
       git.enable = true;
       gnupg.enable = true;
-      nix.enable = true;
     };
   };
 

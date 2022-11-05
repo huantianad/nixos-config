@@ -2,7 +2,6 @@
 
 {
   config = {
-    users.mutableUsers = false;
     users.users.huantian = {
       isNormalUser = true;
       description = "David Li";

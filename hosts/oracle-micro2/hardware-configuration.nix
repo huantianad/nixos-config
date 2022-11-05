@@ -2,9 +2,10 @@
 {
   imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
 
+  boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.grub = {
+    configurationLimit = 5;
     efiSupport = true;
-    efiInstallAsRemovable = true;
     device = "nodev";
   };
 

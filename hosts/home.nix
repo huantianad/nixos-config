@@ -18,4 +18,13 @@ with lib;
   hardware.steam-hardware.enable = true;
   # Joycon and Pro Controller support
   services.joycond.enable = true;
+
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader = {
+      efi.canTouchEfiVariables = mkDefault true;
+      systemd-boot.configurationLimit = 10;
+      systemd-boot.enable = mkDefault true;
+    };
+  };
 }

@@ -15,6 +15,10 @@ with lib;
       vim.enable = true;
     };
 
+    services = {
+      ssh.enable = true;
+    };
+
     shell = {
       zsh.enable = true;
       doas.enable = true;

@@ -11,7 +11,7 @@
 
   _module.args.nixinate = {
     host = "oracle-micro2";
-    sshUser = "opc";
+    sshUser = "huantian";
     buildOn = "remote";
     substituteOnTarget = true;
     hermetic = false;
