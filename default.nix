@@ -48,7 +48,6 @@ with lib.my;
     };
 
   system.configurationRevision = with inputs; mkIf (self ? rev) self.rev;
-  system.stateVersion = "22.05";
 
   ## Some reasonable, global defaults
   # Use the latest kernel
