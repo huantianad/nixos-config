@@ -21,7 +21,6 @@ with lib;
 
     shell = {
       zsh.enable = true;
-      doas.enable = true;
       git.enable = true;
       gnupg.enable = true;
     };
