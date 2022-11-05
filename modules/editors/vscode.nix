@@ -25,19 +25,20 @@ in
       extensions = with pkgs.vscode-extensions; [
         matklad.rust-analyzer-nightly # Provided by fenix
 
-        njpwerner.autodocstring
-        bungcip.better-toml
         ms-dotnettools.csharp
         vadimcn.vscode-lldb
-        adpyke.codesnap
-
         redhat.java
+
+        njpwerner.autodocstring
+        bungcip.better-toml
+        redhat.vscode-yaml
+
         oderwat.indent-rainbow
         pkief.material-icon-theme
+        adpyke.codesnap
 
         github.vscode-pull-request-github
         eamodio.gitlens
-        redhat.vscode-yaml
       ];
 
 
