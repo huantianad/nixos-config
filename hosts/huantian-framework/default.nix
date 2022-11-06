@@ -34,7 +34,6 @@
       };
 
       programs = {
-        powercord.enable = false;
         fcitx.enable = true;
         tauon.enable = true;
         jetbrains-toolbox.enable = false;

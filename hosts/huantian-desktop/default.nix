@@ -34,8 +34,7 @@
       programs = {
         aw.enable = true;
 
-        powercord.enable = true;
-        webcord.enable = false;
+        webcord.enable = true;
 
         butler.enable = true;
         fcitx.enable = true;
