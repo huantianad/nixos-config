@@ -17,22 +17,7 @@
   };
 
   modules = {
-    desktop = {
-    };
-
-    dev = {
-    };
-
-    editors = {
-    };
-
-    hardware = {
-    };
-
     services = {
-    };
-
-    shell = {
     };
   };
 }

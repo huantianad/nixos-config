@@ -17,23 +17,8 @@
   };
 
   modules = {
-    desktop = {
-    };
-
-    dev = {
-    };
-
-    editors = {
-    };
-
-    hardware = {
-    };
-
     services = {
       vaultwarden.enable = true;
-    };
-
-    shell = {
     };
   };
 }
