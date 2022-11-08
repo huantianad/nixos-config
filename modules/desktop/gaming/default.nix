@@ -16,6 +16,7 @@ in
       scarab
       cockatrice
       airshipper
+      osu-lazer
       (tetrio-desktop.overrideAttrs ( oldAttrs:
         let
           tetrio-plus = fetchzip {
