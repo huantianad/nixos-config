@@ -5,7 +5,7 @@ with lib.my;
 let cfg = config.modules.desktop.gaming.dolphin;
 in
 {
-  options.modules.desktop.gaming.dolphin = rec {
+  options.modules.desktop.gaming.dolphin = {
     enable = mkBoolOpt false;
     setUdevRules = mkBoolOpt false;
   };
