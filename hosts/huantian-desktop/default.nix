@@ -34,9 +34,9 @@
       programs = {
         aw.enable = true;
 
-        webcord.enable = true;
+        # webcord.enable = true;
 
-        butler.enable = true;
+        butler.enable = false;
         fcitx.enable = true;
         tauon = {
           enable = true;
@@ -50,7 +50,7 @@
 
     dev = {
       cc.enable = true;
-      tex.enable = true;
+      tex.enable = false;
     };
 
     editors = {
@@ -88,6 +88,10 @@
   services.cron = {
     enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    (discord.override { withOpenASAR = true; })
+  ];
 
   # Increase size of /run/user/1000
   services.logind.extraConfig = "RuntimeDirectorySize=4G";

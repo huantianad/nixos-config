@@ -20,15 +20,12 @@ in
       vlc
       gimp
       qbittorrent
-      zoom-us
       baobab
       libreoffice-qt
-      kalendar
       audacity
       obs-studio
       kid3
       soulseekqt
-      obsidian
       ffmpeg_5
       bitwarden
       peek

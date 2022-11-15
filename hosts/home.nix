@@ -19,6 +19,8 @@ with lib;
   # Joycon and Pro Controller support
   services.joycond.enable = true;
 
+  boot.cleanTmpDir = true;
+
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
