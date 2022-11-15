@@ -12,7 +12,7 @@ in
 
   config = mkIf cfg.enable {
     nixpkgs.overlays = [
-      inputs.fenix.overlay
+      inputs.fenix.overlays.default
     ];
 
     environment.systemPackages = with pkgs; [
