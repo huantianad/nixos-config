@@ -30,7 +30,7 @@
         enable = true;
         dolphin.enable = false;
         dolphin.setUdevRules = false;
-        steam.enable = false;
+        steam.enable = true;
       };
 
       programs = {
