@@ -17,6 +17,7 @@ in
       cockatrice
       airshipper
       osu-lazer
+      pkgs.my.r2modman
       (tetrio-desktop.override {
         withTetrioPlus = true;
       })
