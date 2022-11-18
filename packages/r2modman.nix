@@ -1,23 +1,4 @@
-{ lib, stdenv, fetchurl
-, dpkg, autoPatchelfHook, wrapGAppsHook
-
-, xorg
-, glibc
-, dbus
-, cairo
-, nss_latest
-, gtk3
-, gnome2
-, libxkbcommon
-, libdrm
-, cups
-, mesa
-, alsa-lib
-
-, fontconfig
-, libpulseaudio
-, systemd
-}:
+{ lib, stdenv, fetchurl, dpkg, makeWrapper, steam-run }:
 
 stdenv.mkDerivation rec {
   name = "r2modman";
@@ -30,40 +11,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     dpkg
-    autoPatchelfHook
-    wrapGAppsHook
-  ];
-
-  buildInputs = [
-    # ldd xorg
-    xorg.libXcomposite
-    xorg.libXrandr
-    xorg.libXext
-    xorg.libXdamage
-    xorg.libXfixes
-    xorg.libxcb
-    xorg.libxshmfence
-    xorg.libXScrnSaver
-    xorg.libXtst
-
-    # ldd general
-    glibc
-    dbus
-    cairo
-    nss_latest
-    gtk3
-    gnome2.pango
-    libxkbcommon
-    libdrm
-    cups
-    mesa
-    alsa-lib
-  ];
-
-  libPath = lib.makeLibraryPath [
-    libpulseaudio
-    systemd
-    fontconfig
+    makeWrapper
   ];
 
   unpackCmd = ''
@@ -77,9 +25,10 @@ stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/bin
+    mkdir -p $out
     cp -r opt/ usr/share/ $out
 
+    mkdir -p $out/bin
     ln -s $out/opt/r2modman/r2modman $out/bin/
 
     substituteInPlace $out/share/applications/r2modman.desktop \
@@ -88,19 +37,22 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  dontWrapGApps = true;
-
   postFixup = ''
-    wrapProgram $out/opt/r2modman/r2modman \
-      --prefix LD_LIBRARY_PATH : ${libPath}:$out/opt/r2modman \
+    mv $out/opt/r2modman/r2modman $out/opt/r2modman/.r2modman-unwrapped
+    makeWrapper ${steam-run}/bin/steam-run $out/opt/r2modman/r2modman \
+      --add-flags $out/opt/r2modman/.r2modman-unwrapped \
       --add-flags --no-sandbox \
-      ''${gappsWrapperArgs[@]}
+      --prefix LD_LIBRARY_PATH : $out/opt/r2modman \
+      --argv0 r2modman
   '';
 
   meta = with lib; {
     description = "A simple and easy to use mod manager for several games using Thunderstore";
+    homepage = "https://github.com/ebkr/r2modmanPlus";
+    downloadPage = "https://github.com/ebkr/r2modmanPlus/releases";
+    changelog = "https://github.com/ebkr/r2modmanPlus/releases/tag/v${version}";
     license = licenses.mit;
     maintainers = with maintainers; [ huantian ];
-    homepage = "https://github.com/ebkr/r2modmanPlus";
+    platforms = [ "x86_64-linux" ];
   };
 }
