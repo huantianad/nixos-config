@@ -38,6 +38,7 @@
 
         butler.enable = false;
         fcitx.enable = true;
+        qmk.enable = true;
         tauon = {
           enable = true;
           openFirewall = true;

@@ -35,6 +35,7 @@
 
       programs = {
         fcitx.enable = true;
+        qmk.enable = true;
         tauon.enable = true;
         jetbrains-toolbox.enable = false;
         unity.enable = false;

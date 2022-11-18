@@ -37,6 +37,7 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
+  # Wrap program with steam-run, as it needs steam's dependencies to run games
   postFixup = ''
     mv $out/opt/r2modman/r2modman $out/opt/r2modman/.r2modman-unwrapped
     makeWrapper ${steam-run}/bin/steam-run $out/opt/r2modman/r2modman \
