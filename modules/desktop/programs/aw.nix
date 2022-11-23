@@ -11,12 +11,12 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with inputs.jtoinar.packages.${pkgs.system}; [
+    environment.systemPackages = with inputs.jtoinar.legacyPackages.${pkgs.system}; [
       aw-qt
       aw-server-rust
       aw-watcher-afk
       aw-watcher-window
-      inputs.aw-watcher-custom.defaultPackage.${pkgs.system}
+      inputs.aw-watcher-custom.packages.${pkgs.system}.default
     ];
   };
 }
