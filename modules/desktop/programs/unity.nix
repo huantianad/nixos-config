@@ -74,10 +74,8 @@ let
       clang
 
       # these are probably not needed
-      libsForQt5.full
       xorg.libXinerama
       hicolor-icon-theme
-      gtk4
 
       # My Unity projects depend on these
       harfbuzz
