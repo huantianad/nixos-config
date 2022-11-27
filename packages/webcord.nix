@@ -38,7 +38,7 @@ buildNpmPackage rec {
 
     makeWrapper '${electron}/bin/electron' $out/bin/webcord \
       --inherit-argv0 \
-      --add-flags $out/lib/node_modules/webcord/ \
+      --add-flags $out/lib/node_modules/webcord/
 
     runHook postInstall
   '';
