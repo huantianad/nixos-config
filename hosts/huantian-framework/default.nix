@@ -93,6 +93,8 @@
     my.xmage
   ];
 
+  services.fstrim.enable = true;
+
   home-manager.users.huantian.home.file =
     let
       ydotool-service = "${pkgs.ydotool}/share/systemd/user/ydotool.service";

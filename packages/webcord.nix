@@ -22,7 +22,7 @@ buildNpmPackage rec {
   # we don't need it anyways since we wrap the program with our nixpkgs electron
   ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
 
-  # remove husky commit hooks, they just error and aren't needed for packaging
+  # remove husky commit hooks, errors and aren't needed for packaging
   postPatch = ''
     rm -rf .husky
   '';
@@ -37,6 +37,7 @@ buildNpmPackage rec {
     install -Dm644 sources/assets/icons/app.png $out/share/icons/hicolor/256x256/apps/webcord.png
 
     makeWrapper '${electron}/bin/electron' $out/bin/webcord \
+      --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" \
       --inherit-argv0 \
       --add-flags $out/lib/node_modules/webcord/
 
