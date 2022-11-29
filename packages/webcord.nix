@@ -31,6 +31,9 @@ buildNpmPackage rec {
   installPhase = ''
     runHook preInstall
 
+    # Remove dev deps that aren't necessary for running the app
+    npm prune --omit=dev
+
     mkdir -p $out/lib/node_modules/webcord
     cp -r app node_modules sources package.json $out/lib/node_modules/webcord/
 
