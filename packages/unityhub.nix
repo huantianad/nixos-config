@@ -25,7 +25,6 @@ stdenv.mkDerivation rec {
       libxkbcommon
       lttng-ust_2_12
       krb5
-      at-spi2-core
       alsa-lib
       nss_latest
       libdrm
@@ -33,8 +32,9 @@ stdenv.mkDerivation rec {
       nspr
       atk
       dbus
-      at-spi2-atk
-      gnome2.pango
+      at-spi2-core
+      # at-spi2-atk - at-spi2-core used to be split up into 2 packages
+      pango
       xorg.libXcomposite
       xorg.libXrandr
       xorg.libXext
