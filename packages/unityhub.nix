@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, dpkg, makeWrapper, buildFHSUserEnv }:
+{ lib, stdenv, fetchurl, dpkg, makeWrapper, buildFHSUserEnv, extraPkgs ? pkgs: [ ] }:
 
 stdenv.mkDerivation rec {
   name = "unityhub";
@@ -73,15 +73,7 @@ stdenv.mkDerivation rec {
       fontconfig
       freetype
       lsb-release
-
-      # these are probably not needed
-      xorg.libXinerama
-      # hicolor-icon-theme
-
-      # My Unity projects depend on these
-      harfbuzz
-      libogg
-    ];
+    ] ++ extraPkgs pkgs;
   };
 
   unpackCmd = ''
@@ -119,10 +111,10 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "Download and manage Unity Projects and installations.";
+    description = "Official Unity3D app to download and manage Unity Projects and installations";
     homepage = "https://unity3d.com/";
     license = licenses.unfree;
-    maintainers = with maintainers; [ huantian ];
+    maintainers = with maintainers; [ tesq0 huantian ];
     platforms = [ "x86_64-linux" ];
   };
 }
