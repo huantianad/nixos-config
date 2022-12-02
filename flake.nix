@@ -28,6 +28,7 @@
       inherit (lib.my) mapModules mapModulesRec mapHosts;
 
       system = "x86_64-linux";
+      system-arm = "aarch64-linux";
 
       pkgs = import nixpkgs {
         inherit system;
@@ -35,8 +36,18 @@
         overlays = [ self.overlay ];
       };
 
+      arm-pkgs = import nixpkgs {
+        system = system-arm;
+        config.allowUnfree = true;
+        overlays = [ self.overlay ];
+      };
+
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib { inherit pkgs inputs; lib = self; };
+      });
+
+      arm-lib = nixpkgs.lib.extend (self: super: {
+        my = import ./lib { inherit inputs; pkgs = arm-pkgs; lib = self; };
       });
     in
     {
@@ -48,7 +59,8 @@
 
       nixosModules = mapModulesRec ./modules import;
 
-      nixosConfigurations = mapHosts ./hosts { };
+      nixosConfigurations = (mapHosts ./hosts { })
+        // (arm-lib.my.mapHosts ./arm-hosts { system = system-arm; });
 
       apps = inputs.nixinate.nixinate."${system}" self;
 

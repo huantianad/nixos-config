@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../server.nix
+    ../../hosts/server.nix
     ./hardware-configuration.nix
   ];
 
