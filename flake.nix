@@ -13,11 +13,12 @@
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
     # activitywatch
-    jtoinar.url = "github:jtojnar/nixfiles";
+    jtoinar.url = "github:huantianad/jtojnar-nixfiles";
     jtoinar.inputs.nixpkgs.follows = "nixpkgs";
 
     aw-watcher-custom.url = "github:huantianad/aw-watcher-custom";
     aw-watcher-custom.inputs.nixpkgs.follows = "nixpkgs";
+    aw-watcher-custom.inputs.jtojnar.follows = "jtoinar";
 
     nixinate.url = "github:matthewcroughan/nixinate";
     nixinate.inputs.nixpkgs.follows = "nixpkgs";
