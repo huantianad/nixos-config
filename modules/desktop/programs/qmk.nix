@@ -10,9 +10,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      qmk
-      qmk-udev-rules
-    ];
+    environment.systemPackages = [ pkgs.qmk ];
+
+    services.udev.packages = [ pkgs.qmk-udev-rules ];
   };
 }
