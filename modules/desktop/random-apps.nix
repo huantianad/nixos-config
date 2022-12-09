@@ -29,7 +29,6 @@ in
       ffmpeg_5
       bitwarden
       peek
-      via
     ];
   };
 }
