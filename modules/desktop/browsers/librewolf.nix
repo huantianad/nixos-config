@@ -10,13 +10,19 @@ in
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.config.librewolf.enablePlasmaBrowserIntegration =
-      config.modules.desktop.kde.enable;
+    # Fix opening links in firefox from fhs with older nss, #160923, #197118
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+    };
 
     environment.systemPackages = with pkgs;
       if config.modules.desktop.wayland.enable
       then [ librewolf-wayland ]
       else [ librewolf ];
+
+    nixpkgs.config.librewolf.enablePlasmaBrowserIntegration =
+      config.modules.desktop.kde.enable;
 
     home-manager.users.huantian.home.file = {
       ".librewolf/librewolf.overrides.cfg".text = ''
