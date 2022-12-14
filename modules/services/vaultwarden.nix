@@ -16,9 +16,7 @@ in
       config = {
         webVaultEnabled = true;
         logFile = "/var/log/vaultwarden";
-        websocketEnable = true;
-        ## websocketAddress = "0.0.0.0";
-        ## websocketPort = 3012;
+        websocketEnabled = true;
         signupsVerify = false;
         signupsAllowed = false;
         domain = "https://vw.huantian.dev";
@@ -32,6 +30,14 @@ in
       enable = true;
       extraConfig = ''
       https://vw.huantian.dev {
+        log {
+          level INFO
+          output file /var/log/caddy/vw.huantian.dev-access.log {
+            roll_size 10mb
+            roll_keep 20
+          }
+        }
+
         tls davidtianli@gmail.com
         encode gzip
 
@@ -50,6 +56,9 @@ in
 
         # Notifications redirected to the websockets server
         reverse_proxy /notifications/hub http://localhost:3012
+
+        # The negotiation endpoint is also proxied to Rocket
+        reverse_proxy /notifications/hub/negotiate http://localhost:8812
 
         # Proxy everything else to Rocket
         reverse_proxy http://localhost:8812 {
