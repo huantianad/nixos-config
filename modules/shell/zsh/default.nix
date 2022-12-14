@@ -25,7 +25,6 @@ in
     programs.zsh = {
       enable = true;
       shellAliases = {
-        sudo = "doas";
         e = "exit";
         cat = "bat --style=plain";
         shutdown = "sudo shutdown now";

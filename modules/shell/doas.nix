@@ -17,5 +17,7 @@ in
       keepEnv = true;
       persist = true;
     }];
+
+    programs.zsh.shellAliases.sudo = mkIf config.modules.shell.zsh.enable "doas";
   };
 }
