@@ -36,7 +36,6 @@
 
         # webcord.enable = true;
 
-        butler.enable = false;
         fcitx.enable = true;
         qmk.enable = true;
         tauon = {

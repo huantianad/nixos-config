@@ -1,17 +1,17 @@
-{ lib, stdenv, buildNpmPackage, fetchFromGitHub, copyDesktopItems, python3, electron, makeDesktopItem }:
+{ lib, stdenv, buildNpmPackage, fetchFromGitHub, copyDesktopItems, python3, electron_20, makeDesktopItem }:
 
 buildNpmPackage rec {
   name = "webcord";
-  version = "3.10.0";
+  version = "4.0.0";
 
   src = fetchFromGitHub {
     owner = "SpacingBat3";
     repo = "WebCord";
     rev = "v${version}";
-    sha256 = "sha256-xtCHAlONZkpLwTZuVcuwAUazP1HNXkT3w/r9lL6QjAA=";
+    sha256 = "sha256-e+y/M+/gjezHoNrdXeFhqtvxbPdhRSDOQlwK1nUhNfo=";
   };
 
-  npmDepsHash = "sha256-flPjW+xes/VFlskHIMIkVfP5JNMcyCfDTjSidCwBykI=";
+  npmDepsHash = "sha256-F6d58VxTpeYdpp2InbXY8gHM9o43dnect+DQAreoRQI=";
 
   nativeBuildInputs = [
     copyDesktopItems
@@ -39,7 +39,7 @@ buildNpmPackage rec {
 
     install -Dm644 sources/assets/icons/app.png $out/share/icons/hicolor/256x256/apps/webcord.png
 
-    makeWrapper '${electron}/bin/electron' $out/bin/webcord \
+    makeWrapper '${electron_20}/bin/electron' $out/bin/webcord \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" \
       --inherit-argv0 \
       --add-flags $out/lib/node_modules/webcord/

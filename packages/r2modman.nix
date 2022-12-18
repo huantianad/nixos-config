@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   name = "r2modman";
-  version = "3.1.33";
+  version = "3.1.34";
 
   src = fetchurl {
     url = "https://github.com/ebkr/r2modmanPlus/releases/download/v${version}/r2modman_${version}_amd64.deb ";
-    sha256 = "sha256-JhsxqRkDSo+o7Azuo1moOPnJLsz2U1MTLqKQ733XQSs=";
+    sha256 = "sha256-5crC2ARZIutn2um22MqJ4U0qEPk3ZEN4bLVUyItqWio=";
   };
 
   nativeBuildInputs = [
