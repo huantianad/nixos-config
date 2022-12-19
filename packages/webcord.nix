@@ -1,4 +1,5 @@
-{ lib, stdenv, buildNpmPackage, fetchFromGitHub, copyDesktopItems, python3, electron_20, makeDesktopItem }:
+{ lib, stdenv, buildNpmPackage, fetchFromGitHub, copyDesktopItems
+, python3, pipewire, libpulseaudio, electron_21, makeDesktopItem }:
 
 buildNpmPackage rec {
   name = "webcord";
@@ -16,6 +17,11 @@ buildNpmPackage rec {
   nativeBuildInputs = [
     copyDesktopItems
     python3
+  ];
+
+  libPath = lib.makeLibraryPath [
+    pipewire
+    libpulseaudio
   ];
 
   # npm install will error when electron tries to download its binary
@@ -39,9 +45,8 @@ buildNpmPackage rec {
 
     install -Dm644 sources/assets/icons/app.png $out/share/icons/hicolor/256x256/apps/webcord.png
 
-    makeWrapper '${electron_20}/bin/electron' $out/bin/webcord \
+    makeWrapper '${electron_21}/bin/electron' $out/bin/webcord \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" \
-      --inherit-argv0 \
       --add-flags $out/lib/node_modules/webcord/
 
     runHook postInstall
@@ -65,6 +70,6 @@ buildNpmPackage rec {
     changelog = "https://github.com/SpacingBat3/WebCord/releases/tag/v${version}";
     license = licenses.mit;
     maintainers = with maintainers; [ huantian ];
-    platforms = [ "x86_64-linux" ];
+    platforms = electron_21.meta.platforms;
   };
 }
