@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.nixos-hardware.nixosModules.framework
+    inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
     ../home.nix
     ./hardware-configuration.nix
   ];
@@ -110,10 +110,4 @@
   services.xserver.libinput.touchpad = {
     naturalScrolling = true;
   };
-
-  # This is used for ambient light sensor, but disable it for now
-  # Since it breaks the function keys alternate layer
-  boot.blacklistedKernelModules = [
-    "hid_sensor_hub"
-  ];
 }
