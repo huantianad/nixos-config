@@ -1,5 +1,5 @@
 { lib, stdenv, buildNpmPackage, fetchFromGitHub, copyDesktopItems
-, python3, pipewire, libpulseaudio, electron_21, makeDesktopItem }:
+, python3, pipewire, libpulseaudio, electron_21, xdg-utils, makeDesktopItem }:
 
 buildNpmPackage rec {
   name = "webcord";
@@ -47,7 +47,8 @@ buildNpmPackage rec {
 
     makeWrapper '${electron_21}/bin/electron' $out/bin/webcord \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" \
-      --add-flags $out/lib/node_modules/webcord/
+      --add-flags $out/lib/node_modules/webcord/ \
+      --prefix PATH : "${lib.makeBinPath [ xdg-utils ]}"
 
     runHook postInstall
   '';
