@@ -18,6 +18,8 @@ let
       dotnetPackages.Nuget
       mono
       msbuild
+      # Personal development stuff
+      xorg.libX11
     ];
   };
 
