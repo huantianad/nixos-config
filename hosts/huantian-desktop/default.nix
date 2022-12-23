@@ -100,6 +100,8 @@
   services.fstrim.enable = true;
 
   # Fix high refresh rate on KDE https://bugs.kde.org/show_bug.cgi?id=433094#c15
+  # Also turn off flipping in nvidia-settings
+  # and run nvidia-settings --load-config-only on startup
   environment.sessionVariables = {
     KWIN_X11_REFRESH_RATE = "155000";
     KWIN_X11_NO_SYNC_TO_VBLANK = "1";
