@@ -46,6 +46,7 @@ buildNpmPackage rec {
     install -Dm644 sources/assets/icons/app.png $out/share/icons/hicolor/256x256/apps/webcord.png
 
     makeWrapper '${electron_21}/bin/electron' $out/bin/webcord \
+      --prefix LD_LIBRARY_PATH : ${libPath}:$out/opt/webcord \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" \
       --add-flags $out/lib/node_modules/webcord/ \
       --prefix PATH : "${lib.makeBinPath [ xdg-utils ]}"
