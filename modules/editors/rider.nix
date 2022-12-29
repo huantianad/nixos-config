@@ -5,15 +5,10 @@ with lib.my;
 let
   cfg = config.modules.editors.rider;
 
-  dotnetCombined = with pkgs.dotnetCorePackages;
-    combinePackages [ sdk_6_0 ];
-
   rider-fhs = pkgs.buildFHSUserEnv {
     name = "rider-fhs";
     runScript = "";
     targetPkgs = pkgs: with pkgs; [
-      # temp fix until https://github.com/NixOS/nixpkgs/pull/194797
-      # dotnetCombined
       dotnetCorePackages.sdk_6_0
       dotnetPackages.Nuget
       mono
@@ -37,7 +32,7 @@ let
 
       ## Making Unity Rider plugin work!
       # unity plugins looks for a build.txt at ../../build.txt, relative to binary
-      # same for hte product-info.json, both are used for BuildVersion and Numbers
+      # same for the product-info.json, both are used for BuildVersion and Numbers
       ln -s $out/rider/build.txt $out/
       ln -s $out/rider/product-info.json $out/
 

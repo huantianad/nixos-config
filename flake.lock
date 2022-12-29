@@ -212,11 +212,11 @@
         "nixpkgs-mozilla": "nixpkgs-mozilla"
       },
       "locked": {
-        "lastModified": 1670197376,
-        "narHash": "sha256-6gXO00uW7D8XGir8tZnJ50YurFI6D77n7CUUmWd8DLk=",
+        "lastModified": 1672357359,
+        "narHash": "sha256-b5ZdJkQSFFemWcObEFbC+6VC9Zsi9+yu49+SQvbm4T4=",
         "owner": "huantianad",
         "repo": "jtojnar-nixfiles",
-        "rev": "79f96c75cc376537b02259ebefb2e00b41d391fa",
+        "rev": "44938247b86e67f30831fdb1df4468fa483e7c21",
         "type": "github"
       },
       "original": {
