@@ -90,7 +90,6 @@
     libinput-gestures
     ydotool
     checkra1n
-    my.xmage
   ];
 
   services.fstrim.enable = true;
