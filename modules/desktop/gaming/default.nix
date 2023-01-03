@@ -12,7 +12,9 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       lutris
-      prismlauncher
+      (prismlauncher.override {
+        jdks = [ jdk19 jdk17 jdk8 ];
+      })
       scarab
       cockatrice
       airshipper
