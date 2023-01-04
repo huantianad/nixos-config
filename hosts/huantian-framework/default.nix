@@ -59,6 +59,7 @@
       bluetooth.enable = true;
       intel.enable = true;
       pipewire.enable = true;
+      touchpad.enable = true;
     };
 
     services = {
@@ -74,6 +75,7 @@
     };
   };
 
+  services.fstrim.enable = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Some battery life tuning
@@ -81,32 +83,7 @@
   # Disable power-profiles-daemon as it conflicts with tlp
   services.power-profiles-daemon.enable = false;
 
-  # Fingerprint support
-  services.fprintd.enable = true;
-  security.pam.services."sddm".fprintAuth = true;
-
-  # Touchpad gestures
   environment.systemPackages = with pkgs; [
-    libinput-gestures
-    ydotool
     checkra1n
   ];
-
-  services.fstrim.enable = true;
-
-  home-manager.users.huantian.home.file =
-    let
-      ydotool-service = "${pkgs.ydotool}/share/systemd/user/ydotool.service";
-      gestures-service = "${pkgs.libinput-gestures}/share/systemd/user/libinput-gestures.service";
-    in
-    {
-      ".config/systemd/user/ydotool.service".source = ydotool-service;
-      ".config/systemd/user/default.target.wants/ydotool.service".source = ydotool-service;
-      ".config/systemd/user/libinput-gestures.service".source = gestures-service;
-      ".config/systemd/user/graphical-session.target.wants/libinput-gestures.service".source = gestures-service;
-    };
-
-  services.xserver.libinput.touchpad = {
-    naturalScrolling = true;
-  };
 }
