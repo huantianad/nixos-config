@@ -23,7 +23,7 @@
       browsers = {
         default = "librewolf";
         librewolf.enable = true;
-        chromium.enable = true;
+        chromium.enable = false;
       };
 
       gaming = {
