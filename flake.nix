@@ -56,6 +56,7 @@
 
       overlay = final: prev: {
         my = self.packages."${system}";
+        xdg-utils = final.my.xdg-utils;
       };
 
       nixosModules = mapModulesRec ./modules import;
