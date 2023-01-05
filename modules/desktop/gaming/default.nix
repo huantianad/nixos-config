@@ -12,9 +12,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       lutris
-      (prismlauncher.override {
-        jdks = [ jdk19 jdk17 jdk8 ];
-      })
+      prismlauncher
       scarab
       cockatrice
       airshipper
@@ -24,5 +22,9 @@ in
         withTetrioPlus = true;
       })
     ];
+
+    # Don't override `prismlauncher` as that makes Nix rebuild it
+    environment.variables.PRISMLAUNCHER_JAVA_PATHS = with pkgs;
+      lib.makeSearchPath "bin/java" [ jdk19 jdk11 ];
   };
 }
