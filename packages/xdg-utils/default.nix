@@ -3,7 +3,11 @@
 , w3m, gnugrep, gnused, coreutils, xset, perlPackages
 , mimiSupport ? false, gawk
 , glib
-, withXdgOpenUsePortalPatch ? true }:
+, withXdgOpenUsePortalPatch ? true
+, callPackage
+, withFlatpakXdgOpen ? true
+, flatpak-xdg-utils ? callPackage ../flatpak-xdg-utils.nix {}
+}:
 
 let
   # A much better xdg-open
@@ -19,6 +23,9 @@ let
   ];
 
 in
+
+assert lib.assertMsg (!(mimiSupport && withFlatpakXdgOpen))
+  "Options `mimiSupport` and `withFlatpakXdgOpen` both override `xdg-open` and cannot be used together ";
 
 stdenv.mkDerivation rec {
   pname = "xdg-utils";
@@ -68,6 +75,10 @@ stdenv.mkDerivation rec {
       --replace "gdbus" "${glib}/bin/gdbus"
 
     sed 's|\bwhich\b|type -P|g' -i "$out"/bin/*
+  '' +
+  # putting this at the as kind of a hack so that none of the above operats on the binary xdg-open
+  lib.optionalString withFlatpakXdgOpen ''
+    cp ${flatpak-xdg-utils}/bin/xdg-open $out/bin/xdg-open
   '';
 
   meta = with lib; {
