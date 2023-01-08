@@ -69,6 +69,9 @@ stdenv.mkDerivation rec {
       zlib
       clang
 
+      # GTK filepicker
+      gsettings-desktop-schemas
+
       # Bug Reporter dependencies
       fontconfig
       freetype
