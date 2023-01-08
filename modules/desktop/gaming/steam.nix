@@ -22,8 +22,7 @@ in
     nixpkgs.config.packageOverrides = pkgs: {
       steam = pkgs.steam.override {
         extraPkgs = pkgs: with pkgs; [
-          libssh
-          brotli
+          gsettings-desktop-schemas # GTK filepicker
         ];
       };
     };
