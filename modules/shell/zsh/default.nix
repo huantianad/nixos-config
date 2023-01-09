@@ -27,8 +27,6 @@ in
       shellAliases = {
         e = "exit";
         cat = "bat --style=plain";
-        shutdown = "sudo shutdown now";
-        reboot = "sudo reboot";
         youtube-dl = "yt-dlp";
         info = "info --vi-keys";
 
