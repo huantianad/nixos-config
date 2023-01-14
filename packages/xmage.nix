@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "http://xmage.today/files/mage-full_${version}.zip";
-    sha256 = "";
+    sha256 = "sha256-UkhspPhTzJwIApvFqSWQgtNCz60wmRWO7ARQdP3qJeY=";
   };
 
   # Use p7zip to extract because of weird unicode deck names.
@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
     cp -rv ./* $out
 
     cat << EOF > $out/bin/xmage
-    exec ${jdk8}/bin/java -Xms1G -Xmx2G -Dfile.encoding=UTF-8 -jar $out/xmage/mage-client/lib/mage-client-1.4.50.jar
+    cd /home/huantian/Games/xmage && exec ${jdk8}/bin/java -Xms1G -Xmx2G -Dfile.encoding=UTF-8 -jar $out/xmage/mage-client/lib/mage-client-1.4.50.jar
     EOF
     chmod +x $out/bin/xmage
   '';

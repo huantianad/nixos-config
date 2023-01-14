@@ -82,7 +82,7 @@ stdenv.mkDerivation rec {
   unpackPhase = ''
     runHook preUnpack
 
-    dpkg-deb -x $src src
+    dpkg-deb -x $src .
 
     runHook postUnpack
   '';
