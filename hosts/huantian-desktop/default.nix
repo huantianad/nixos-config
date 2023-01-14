@@ -92,6 +92,7 @@
   environment.systemPackages = with pkgs; [
     (discord.override { withOpenASAR = true; })
     (libsForQt5.callPackage ../../musescore.nix { })
+    my.xmage
   ];
 
   # Increase size of /run/user/1000
