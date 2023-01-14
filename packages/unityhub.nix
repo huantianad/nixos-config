@@ -79,7 +79,7 @@ stdenv.mkDerivation rec {
     ] ++ extraPkgs pkgs;
   };
 
-  unpackCmd = ''
+  unpackPhase = ''
     runHook preUnpack
 
     dpkg-deb -x $src src
@@ -99,7 +99,6 @@ stdenv.mkDerivation rec {
     # `unityhub` is a shell wrapper that runs `unityhub-bin`
     # Which we don't need and replace with our own custom wrapper
     makeWrapper ${fhsEnv}/bin/${name}-fhs-env $out/opt/unityhub/unityhub \
-      --inherit-argv0 \
       --add-flags $out/opt/unityhub/unityhub-bin
 
     # Link binary
