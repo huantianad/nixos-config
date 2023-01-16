@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
   # Use p7zip to extract because of weird unicode deck names.
   unpackPhase = ''
     runHook preUnpack
-    p7zip x -y $src
+    7z x -y $src
     runHook postUnpack
   '';
 
