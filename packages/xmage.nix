@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, p7zip, makeDesktopItem, jdk8 }:
+{ lib, stdenv, fetchurl, copyDesktopItems, p7zip, makeDesktopItem, jdk8 }:
 
 stdenv.mkDerivation rec {
   name = "xmage";
@@ -9,19 +9,26 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-UkhspPhTzJwIApvFqSWQgtNCz60wmRWO7ARQdP3qJeY=";
   };
 
+  nativeBuildInputs = [
+    copyDesktopItems
+    p7zip
+  ];
+
   # Use p7zip to extract because of weird unicode deck names.
   unpackPhase = ''
     runHook preUnpack
-    ${p7zip}/bin/7z x -y $src
+    p7zip x -y $src
     runHook postUnpack
   '';
 
-  desktopFile = makeDesktopItem {
-    name = "xmage";
-    desktopName = "XMage";
-    exec = "xmage";
-    icon = "xmage";
-  };
+  desktopItems = [
+    (makeDesktopItem {
+      name = "xmage";
+      desktopName = "XMage";
+      exec = "xmage";
+      icon = "xmage";
+    })
+  ];
 
   installPhase = ''
     mkdir -p $out/bin
