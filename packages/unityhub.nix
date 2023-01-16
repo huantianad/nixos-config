@@ -100,7 +100,7 @@ stdenv.mkDerivation rec {
     # `unityhub` is a shell wrapper that runs `unityhub-bin`
     # Which we don't need and replace with our own custom wrapper
     makeWrapper ${fhsEnv}/bin/${name}-fhs-env $out/opt/unityhub/unityhub \
-      --add-flags $out/opt/unityhub/unityhub-bin
+      --add-flags $out/opt/unityhub/unityhub-bin \
       --argv0 unityhub
 
     # Link binary
