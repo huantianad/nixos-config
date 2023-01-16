@@ -22,7 +22,9 @@ in
     nixpkgs.config.packageOverrides = pkgs: {
       steam = pkgs.steam.override {
         extraPkgs = pkgs: with pkgs; [
-          gsettings-desktop-schemas # GTK filepicker
+          # GTK filepicker
+          gsettings-desktop-schemas
+          hicolor-icon-theme
         ];
       };
     };

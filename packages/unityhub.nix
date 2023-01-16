@@ -71,6 +71,7 @@ stdenv.mkDerivation rec {
 
       # GTK filepicker
       gsettings-desktop-schemas
+      hicolor-icon-theme
 
       # Bug Reporter dependencies
       fontconfig
@@ -100,6 +101,7 @@ stdenv.mkDerivation rec {
     # Which we don't need and replace with our own custom wrapper
     makeWrapper ${fhsEnv}/bin/${name}-fhs-env $out/opt/unityhub/unityhub \
       --add-flags $out/opt/unityhub/unityhub-bin
+      --argv0 unityhub
 
     # Link binary
     mkdir -p $out/bin
