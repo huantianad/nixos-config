@@ -59,7 +59,7 @@
       bluetooth.enable = true;
       intel.enable = true;
       pipewire.enable = true;
-      touchpad.enable = true;
+      touchpad.enable = false;
     };
 
     services = {
