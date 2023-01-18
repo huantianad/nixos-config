@@ -67,8 +67,7 @@ in
         "terminal.integrated.env.linux" = {
           "PYTHONPATH" = "\${workspaceFolder}";
         };
-        # temp fix until https://github.com/microsoft/vscode/issues/158052
-        "terminal.integrated.shellIntegration.enabled" = false;
+        "terminal.integrated.persistentSessionReviveProcess" = "never";
 
         # "workbench.colorTheme" = "Purple Wolf Theme";
         "workbench.iconTheme" = "material-icon-theme";
