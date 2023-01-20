@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   name = "r2modman";
-  version = "3.1.34";
+  version = "3.1.35";
 
   src = fetchurl {
     url = "https://github.com/ebkr/r2modmanPlus/releases/download/v${version}/r2modman_${version}_amd64.deb ";
-    sha256 = "sha256-5crC2ARZIutn2um22MqJ4U0qEPk3ZEN4bLVUyItqWio=";
+    sha256 = "sha256-sLLAsFWQRXOh2NieY86SBQVDpB7sxKCvqsEVRJn5y8s=";
   };
 
   nativeBuildInputs = [
@@ -14,10 +14,10 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  unpackCmd = ''
+  unpackPhase = ''
     runHook preUnpack
 
-    dpkg-deb -x $src src
+    dpkg -x $src .
 
     runHook postUnpack
   '';
@@ -25,10 +25,10 @@ stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out
+    mkdir $out
     cp -r opt/ usr/share/ $out
 
-    mkdir -p $out/bin
+    mkdir $out/bin
     ln -s $out/opt/r2modman/r2modman $out/bin/
 
     substituteInPlace $out/share/applications/r2modman.desktop \
@@ -37,7 +37,8 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  # Wrap program with steam-run, as it needs steam's dependencies to run games.
+  # Wrap program with steam-run, as it needs steam's dependencies
+  # to interact with steam and run games.
   postFixup = ''
     mv $out/opt/r2modman/r2modman $out/opt/r2modman/.r2modman-unwrapped
     makeWrapper ${steam-run}/bin/steam-run $out/opt/r2modman/r2modman \
