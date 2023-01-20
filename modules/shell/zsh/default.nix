@@ -30,7 +30,8 @@ in
         youtube-dl = "yt-dlp";
         info = "info --vi-keys";
 
-        bump = "nix flake update && git add flake.lock && git commit -m 'flake.lock: update'";
+        # git diff to make sure nothing is staged
+        bump = "git diff --cached --exit-code && nix flake update && git add flake.lock && git commit -m 'flake.lock: update'";
 
         ls = "exa";
         ll = "exa -lbFh --git";
