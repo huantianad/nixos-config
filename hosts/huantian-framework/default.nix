@@ -83,6 +83,8 @@
   # Disable power-profiles-daemon as it conflicts with tlp
   services.power-profiles-daemon.enable = false;
 
+  services.thermald.enable = true;
+
   # Disable fingerprint auth on first login
   # SDDM fingerprint is buggy and I need to type password for KWallet anyway
   security.pam.services.sddm.fprintAuth = false;
