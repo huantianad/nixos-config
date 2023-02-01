@@ -21,9 +21,8 @@ with lib;
   # Joycon and Pro Controller support
   services.joycond.enable = true;
 
-  boot.cleanTmpDir = true;
-
   boot = {
+    cleanTmpDir = true;
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       efi.canTouchEfiVariables = mkDefault true;
@@ -31,4 +30,15 @@ with lib;
       systemd-boot.enable = mkDefault true;
     };
   };
+
+  # Fix opening links in firefox from fhs with older nss, #160923, #197118
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+  };
+
+  # Use alternate xdg-open that works with xdg-portal
+  environment.systemPackages = with pkgs; [
+    my.flatpak-xdg-utils
+  ];
 }

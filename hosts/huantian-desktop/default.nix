@@ -21,7 +21,7 @@
       browsers = {
         default = "librewolf";
         librewolf.enable = true;
-        chromium.enable = false;
+        chromium.enable = true;
       };
 
       gaming = {
@@ -93,6 +93,7 @@
     (discord.override { withOpenASAR = true; })
     (libsForQt5.callPackage ../../musescore.nix { })
     my.xmage
+    butler
   ];
 
   # Increase size of /run/user/1000

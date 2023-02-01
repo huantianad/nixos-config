@@ -10,12 +10,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    # Fix opening links in firefox from fhs with older nss, #160923, #197118
-    xdg.portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-    };
-
     environment.systemPackages = with pkgs;
       if config.modules.desktop.wayland.enable
       then [ librewolf-wayland ]
