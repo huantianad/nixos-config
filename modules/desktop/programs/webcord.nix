@@ -11,7 +11,7 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.my.webcord
+      pkgs.webcord
     ];
   };
 }
