@@ -9,9 +9,6 @@ with lib;
   # Network Manager + wifi
   networking.networkmanager.enable = true;
 
-  # Causes error on rebuild sometime, slows startup => disable
-  systemd.services.NetworkManager-wait-online.enable = false;
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [ pantum-driver ];

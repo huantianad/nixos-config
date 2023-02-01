@@ -96,6 +96,9 @@
     butler
   ];
 
+  # Causes error on rebuild sometime, slows startup => disable
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   # Increase size of /run/user/1000
   services.logind.extraConfig = "RuntimeDirectorySize=4G";
 
