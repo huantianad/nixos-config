@@ -1,4 +1,7 @@
-{ lib, stdenv, fetchurl, dpkg, makeWrapper, buildFHSUserEnv, extraPkgs ? pkgs: [ ] }:
+{ lib, stdenv, fetchurl, dpkg, makeWrapper, buildFHSUserEnv
+, extraPkgs ? pkgs: [ ]
+, extraLibs ? pkgs: [ ]
+}:
 
 stdenv.mkDerivation rec {
   name = "unityhub";
@@ -17,8 +20,23 @@ stdenv.mkDerivation rec {
   fhsEnv = buildFHSUserEnv {
     name = "${name}-fhs-env";
     runScript = "";
+    profile = "XDG_DATA_DIRS=\"\$XDG_DATA_DIRS:/usr/share/\"";
+
     targetPkgs = pkgs: with pkgs; [
-      # Unity Hub dependencies
+      xorg.libXrandr
+
+      # GTK filepicker
+      gsettings-desktop-schemas
+      hicolor-icon-theme
+
+      # Bug Reporter dependencies
+      fontconfig
+      freetype
+      lsb-release
+    ] ++ extraPkgs pkgs;
+
+    multiPkgs = pkgs: with pkgs; [
+      # Unity Hub ldd dependencies
       cups
       gtk3
       expat
@@ -33,10 +51,8 @@ stdenv.mkDerivation rec {
       atk
       dbus
       at-spi2-core
-      # at-spi2-atk - at-spi2-core used to be split up into 2 packages
       pango
       xorg.libXcomposite
-      xorg.libXrandr
       xorg.libXext
       xorg.libXdamage
       xorg.libXfixes
@@ -45,6 +61,7 @@ stdenv.mkDerivation rec {
       xorg.libXScrnSaver
       xorg.libXtst
 
+      # Unity Hub additional dependencies
       libva
       openssl_1_1
       cairo
@@ -57,7 +74,7 @@ stdenv.mkDerivation rec {
       wayland
       cpio
       icu
-      libpulseaudio # Not a ldd thing, but needed for sound to work
+      libpulseaudio
 
       # Editor dependencies
       libglvnd # provides ligbl
@@ -68,25 +85,10 @@ stdenv.mkDerivation rec {
       libxml2
       zlib
       clang
-
-      # GTK filepicker
-      gsettings-desktop-schemas
-      hicolor-icon-theme
-
-      # Bug Reporter dependencies
-      fontconfig
-      freetype
-      lsb-release
-    ] ++ extraPkgs pkgs;
+    ] ++ extraLibs pkgs;
   };
 
-  unpackPhase = ''
-    runHook preUnpack
-
-    dpkg-deb -x $src .
-
-    runHook postUnpack
-  '';
+  unpackCmd = "dpkg -x $curSrc src";
 
   dontConfigure = true;
   dontBuild = true;
@@ -97,7 +99,7 @@ stdenv.mkDerivation rec {
     mkdir -p $out
     mv opt/ usr/share/ $out
 
-    # `unityhub` is a shell wrapper that runs `unityhub-bin`
+    # `/opt/unityhub/unityhub` is a shell wrapper that runs `/opt/unityhub/unityhub-bin`
     # Which we don't need and replace with our own custom wrapper
     makeWrapper ${fhsEnv}/bin/${name}-fhs-env $out/opt/unityhub/unityhub \
       --add-flags $out/opt/unityhub/unityhub-bin \
