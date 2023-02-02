@@ -93,6 +93,7 @@
     (discord.override { withOpenASAR = true; })
     my.xmage
     butler
+    my.breath-theme
   ];
 
   # Causes error on rebuild sometime, slows startup => disable
