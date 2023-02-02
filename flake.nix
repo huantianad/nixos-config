@@ -26,7 +26,7 @@
 
   outputs = inputs @ { self, nixpkgs, ... }:
     let
-      inherit (lib.my) mapModules mapModulesRec mapHosts;
+      inherit (lib.my) mapModulesRec mapHosts;
 
       system = "x86_64-linux";
       system-arm = "aarch64-linux";
@@ -65,7 +65,6 @@
 
       apps = inputs.nixinate.nixinate."${system}" self;
 
-      packages."${system}" =
-        mapModules ./packages (p: pkgs.callPackage p { });
+      packages."${system}" = import ./packages { inherit pkgs; };
     };
 }
