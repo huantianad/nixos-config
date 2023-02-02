@@ -12,8 +12,10 @@ in
   config = mkIf cfg.enable {
     services.openssh = {
       enable = true;
-      permitRootLogin = "no";
-      passwordAuthentication = false;
+      settings = {
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+      };
     };
 
     users.users.root.openssh.authorizedKeys.keys = [
