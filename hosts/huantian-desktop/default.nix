@@ -33,10 +33,9 @@
 
       programs = {
         aw.enable = true;
-
-        # webcord.enable = true;
-
+        discord.enable = true;
         fcitx.enable = true;
+        gamemode.enable = true;
         qmk.enable = true;
         tauon = {
           enable = true;
@@ -44,6 +43,7 @@
         };
         jetbrains-toolbox.enable = false;
         unity.enable = true;
+        webcord.enable = false;
         xbindkeys.enable = true;
       };
     };
@@ -78,21 +78,13 @@
     };
   };
 
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
   programs.dconf.enable = true;
 
-  services.cron = {
-    enable = true;
-  };
-
   environment.systemPackages = with pkgs; [
-    (discord.override { withOpenASAR = true; })
     my.xmage
-    butler
     my.breath-theme
   ];
 
@@ -102,35 +94,11 @@
   # Increase size of /run/user/1000
   services.logind.extraConfig = "RuntimeDirectorySize=4G";
 
-  services.fstrim.enable = true;
-
   # Fix high refresh rate on KDE https://bugs.kde.org/show_bug.cgi?id=433094#c15
   # Also turn off flipping in nvidia-settings
   # and run nvidia-settings --load-config-only on startup
   environment.sessionVariables = {
     KWIN_X11_REFRESH_RATE = "155000";
     KWIN_X11_NO_SYNC_TO_VBLANK = "1";
-  };
-
-  programs.gamemode = {
-    enable = true;
-    enableRenice = true;
-    settings = {
-      general = {
-        renice = 10;
-      };
-
-      # Warning: GPU optimisations have the potential to damage hardware
-      gpu = {
-        apply_gpu_optimisations = "accept-responsibility";
-        gpu_device = 0;
-        amd_performance_level = "high";
-      };
-
-      custom = {
-        start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
-        end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
-      };
-    };
   };
 }

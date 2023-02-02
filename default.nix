@@ -3,22 +3,15 @@
 with lib;
 with lib.my;
 {
-  imports =
-    # I use home-manager to deploy files to $HOME; little else
-    [ inputs.home-manager.nixosModules.home-manager ]
-    # All my personal modules
-    ++ (mapModulesRec' (toString ./modules) import);
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ] ++ (mapModulesRec' (toString ./modules) import);
 
   # https://nix-community.github.io/home-manager/index.html#sec-install-nixos-module
   # "use the global pkgs that is configured via the system level nixpkgs options"
   # "This saves an extra Nixpkgs evaluation, adds consistency, and removes the dependency on NIX_PATH,
   #  which is otherwise used for importing Nixpkgs."
   home-manager.useGlobalPkgs = true;
-
-  # Common config for all nixos machines; and to ensure the flake operates
-  # soundly
-  # environment.variables.DOTFILES = config.dotfiles.dir;
-  # environment.variables.DOTFILES_BIN = config.dotfiles.binDir;
 
   # Configure nix and nixpkgs
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
@@ -44,7 +37,6 @@ with lib.my;
 
   system.configurationRevision = with inputs; mkIf (self ? rev) self.rev;
 
-  ## Some reasonable, global defaults
   # Just the bear necessities...
   environment.systemPackages = with pkgs; [
     bind

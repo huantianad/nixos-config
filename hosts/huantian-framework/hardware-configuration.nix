@@ -10,11 +10,14 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  services.fstrim.enable = true;
+
   fileSystems."/" = {
     device = "/dev/disk/by-label/root";
     fsType = "ext4";
   };
 
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-label/boot";
     fsType = "vfat";

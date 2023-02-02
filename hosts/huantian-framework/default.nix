@@ -75,14 +75,11 @@
     };
   };
 
-  services.fstrim.enable = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
   # Some battery life tuning
   services.tlp.enable = true;
   # Disable power-profiles-daemon as it conflicts with tlp
   services.power-profiles-daemon.enable = false;
-
+  # Thermal config
   services.thermald.enable = true;
 
   # Disable fingerprint auth on first login
