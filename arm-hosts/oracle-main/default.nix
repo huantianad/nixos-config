@@ -22,4 +22,11 @@
       synapse.enable = true;
     };
   };
+
+  # Minecraft server
+  programs.tmux.enable = true;
+  networking.firewall.allowedTCPPorts = [ 25565 ];
+  environment.systemPackages = with pkgs; [
+    jdk11_headless
+  ];
 }
