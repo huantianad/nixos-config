@@ -21,4 +21,14 @@ stdenv.mkDerivation rec {
   buildInputs = [
     glib
   ];
+
+  meta = with lib; {
+    description = "Simple portal-based commandline tools for use inside flatpak sandboxes";
+    homepage = "https://github.com/flatpak/flatpak-xdg-utils";
+    downloadPage = "https://github.com/flatpak/flatpak-xdg-utils/releases";
+    changelog = "https://github.com/flatpak/flatpak-xdg-utils/releases/tag/v${version}";
+    license = licenses.lgpl21Only;
+    maintainers = with maintainers; [ huantian ];
+    platforms = [ "x86_64-linux" ];
+  };
 }
