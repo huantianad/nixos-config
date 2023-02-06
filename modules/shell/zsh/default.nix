@@ -33,11 +33,11 @@ in
         # git diff to make sure nothing is staged
         bump = "git diff --cached --exit-code && nix flake update && git add flake.lock && git commit -m 'flake.lock: update'";
 
-        ls = "exa";
-        ll = "exa -lbFh --git";
-        l = "exa -lbFha --git";
-        la = "exa -lbhHigmuSa --git --color-scale";
-        lx = "exa -lbhHigmuSa@ --git --color-scale";
+        ls = "exa --group-directories-first";
+        ll = "exa -lbFh --git --group-directories-first";
+        l = "exa -lbFha --git --group-directories-first";
+        la = "exa -lbhHigmuSa --git --color-scale --group-directories-first";
+        lx = "exa -lbhHigmuSa@ --git --color-scale --group-directories-first";
         tree = "exa --tree";
       };
 
