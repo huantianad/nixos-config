@@ -82,7 +82,7 @@ in
         "editor.rulers" = [ 120 ];
 
         "editor.cursorBlinking" = mkIf (!config.modules.desktop.wayland.enable) "phase";
-        "editor.cursorSmoothCaretAnimation" = mkIf (!config.modules.desktop.wayland.enable) true;
+        "editor.cursorSmoothCaretAnimation" = mkIf (!config.modules.desktop.wayland.enable) "on";
         "editor.smoothScrolling" = true;
 
         # Auto-suggest
