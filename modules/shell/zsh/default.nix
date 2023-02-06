@@ -96,12 +96,5 @@ in
     home-manager.users.huantian.home.file = {
       ".p10k.zsh".source = ./.p10k.zsh;
     };
-
-    # Workaround nix command completion bug: https://github.com/nix-community/home-manager/issues/3361
-    nixpkgs.overlays = [
-      (final: prev: {
-        nix-zsh-completions = prev.nix-zsh-completions.overrideAttrs (old: { postPatch = "rm _nix"; });
-      })
-    ];
   };
 }
