@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   name = "r2modman";
-  version = "3.1.35";
+  version = "3.1.36";
 
   src = fetchurl {
     url = "https://github.com/ebkr/r2modmanPlus/releases/download/v${version}/r2modman_${version}_amd64.deb ";
-    sha256 = "sha256-sLLAsFWQRXOh2NieY86SBQVDpB7sxKCvqsEVRJn5y8s=";
+    sha256 = "sha256-P5Ysk6cr33z8q4cXQYXDewFoQDha4XXOqzZWl+nh8gk=";
   };
 
   nativeBuildInputs = [
@@ -14,13 +14,7 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  unpackPhase = ''
-    runHook preUnpack
-
-    dpkg -x $src .
-
-    runHook postUnpack
-  '';
+  unpackCmd = "dpkg -x $curSrc src";
 
   installPhase = ''
     runHook preInstall
