@@ -92,5 +92,12 @@ in
         export XDG_CACHE_HOME="$HOME/.cache"
       '';
     };
+
+    home-manager.users.huantian.home.file = {
+      ".config/tealdeer/config.toml".text = ''
+        [updates]
+        auto_update = true
+      '';
+    };
   };
 }
