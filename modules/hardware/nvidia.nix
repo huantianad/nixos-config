@@ -20,7 +20,5 @@ in
         libvdpau-va-gl
       ];
     };
-
-    hardware.nvidia.forceFullCompositionPipeline = true;
   };
 }
