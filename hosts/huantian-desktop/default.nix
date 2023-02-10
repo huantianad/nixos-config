@@ -10,10 +10,7 @@
 
   modules = {
     desktop = {
-      kde = {
-        enable = true;
-        autoLogin = true;
-      };
+      kde.enable = true;
       random-apps.enable = true;
       fonts.enable = true;
 

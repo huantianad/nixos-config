@@ -7,7 +7,6 @@ in
 {
   options.modules.desktop.kde = {
     enable = mkBoolOpt false;
-    autoLogin = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
@@ -21,10 +20,6 @@ in
     environment.systemPackages = with pkgs; [
       libsForQt5.sddm-kcm # Settings menu for SDDM in KDE
     ];
-
-    # Enable automatic login for the user.
-    services.xserver.displayManager.autoLogin.enable = cfg.autoLogin;
-    services.xserver.displayManager.autoLogin.user = "huantian";
 
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
