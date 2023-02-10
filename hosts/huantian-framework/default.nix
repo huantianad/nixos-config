@@ -13,7 +13,6 @@
     desktop = {
       kde = {
         enable = true;
-        latte-dock.enable = false;
         autoLogin = false;
       };
       random-apps.enable = true;

@@ -7,7 +7,6 @@ in
 {
   options.modules.desktop.kde = {
     enable = mkBoolOpt false;
-    latte-dock.enable = mkBoolOpt false;
     autoLogin = mkBoolOpt false;
   };
 
@@ -21,8 +20,6 @@ in
 
     environment.systemPackages = with pkgs; [
       libsForQt5.sddm-kcm # Settings menu for SDDM in KDE
-    ] ++ lib.optionals cfg.latte-dock.enable [
-      latte-dock
     ];
 
     # Enable automatic login for the user.
