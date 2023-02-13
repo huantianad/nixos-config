@@ -38,4 +38,7 @@ with lib;
   environment.systemPackages = with pkgs; [
     my.flatpak-xdg-utils
   ];
+
+  # Tell SSH to use ksshaskpass even when in terminal
+  environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
 }

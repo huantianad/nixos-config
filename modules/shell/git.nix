@@ -28,10 +28,7 @@ in
         commit.gpgsign = true;
         core.autocrlf = "input";
         init.defaultBranch = "main";
-
-        # temp workaround for git add -P while this is still an issue
-        # https://github.com/so-fancy/diff-so-fancy/issues/437
-        add.interactive.useBuiltin = false;
+        core.askpass = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
       };
     };
   };
