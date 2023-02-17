@@ -59,10 +59,6 @@ in
           "zsh" = {
             "path" = "/home/huantian/.nix-profile/bin/zsh";
           };
-          # "tmux" = {
-          #     "path" = "tmux";
-          #     "icon" = "terminal-tmux";
-          # };
         };
         "terminal.integrated.env.linux" = {
           "PYTHONPATH" = "\${workspaceFolder}";
@@ -141,7 +137,7 @@ in
 
         "python.defaultInterpreterPath" = "${pkgs.python310Full}/bin/python";
         "python.languageServer" = "Pylance";
-        "python.sortImports.args" = [ "-l" "120" ];
+        "isort.args" = [ "-l" "120" ];
         "python.analysis.typeCheckingMode" = "basic";
 
         "autoDocstring.startOnNewLine" = true;
