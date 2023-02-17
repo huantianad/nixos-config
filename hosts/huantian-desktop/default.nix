@@ -81,7 +81,6 @@
 
   environment.systemPackages = with pkgs; [
     my.xmage
-    breath-theme
   ];
 
   # Causes error on rebuild sometime, slows startup => disable
