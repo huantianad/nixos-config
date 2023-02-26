@@ -11,7 +11,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with inputs.jtoinar.legacyPackages.${pkgs.system}; [
+    environment.systemPackages = with inputs.aw.legacyPackages.${pkgs.system}; [
       aw-qt
       aw-server-rust
       aw-watcher-afk
