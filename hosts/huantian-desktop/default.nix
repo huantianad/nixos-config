@@ -29,7 +29,7 @@
 
       programs = {
         aw.enable = true;
-        discord.enable = true;
+        discord.enable = false;
         fcitx.enable = true;
         gamemode.enable = true;
         qmk.enable = true;
@@ -81,6 +81,7 @@
 
   environment.systemPackages = with pkgs; [
     my.xmage
+    armcord
   ];
 
   # Causes error on rebuild sometime, slows startup => disable
