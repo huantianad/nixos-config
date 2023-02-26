@@ -30,6 +30,7 @@ in
       bitwarden
       peek
       butler
+      musescore
     ];
   };
 }
