@@ -33,6 +33,7 @@ in
       peek
       butler
       musescore
+      wine64
     ];
   };
 }
