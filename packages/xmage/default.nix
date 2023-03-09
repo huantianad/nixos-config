@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   name = "xmage";
-  version = "1.4.51-dev_2022-12-19_08-39";
+  version = "1.4.51-dev_2023-03-04_14-42";
 
   src = fetchurl {
     url = "http://xmage.today/files/mage-full_${version}.zip";
-    sha256 = "sha256-UkhspPhTzJwIApvFqSWQgtNCz60wmRWO7ARQdP3qJeY=";
+    sha256 = "sha256-4E51cBguoOw7KCRvAkwjSPoeGtFLGS3HW4X+6Pj70zs=";
   };
 
   nativeBuildInputs = [
