@@ -12,7 +12,6 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       clang
-      gcc
       bear
       gdb
       cmake
