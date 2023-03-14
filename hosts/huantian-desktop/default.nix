@@ -82,6 +82,7 @@
   environment.systemPackages = with pkgs; [
     my.xmage
     armcord
+    jellyfin-media-player
   ];
 
   # Causes error on rebuild sometime, slows startup => disable
@@ -102,4 +103,6 @@
     KWIN_X11_REFRESH_RATE = "155000";
     KWIN_X11_NO_SYNC_TO_VBLANK = "1";
   };
+
+  networking.firewall.allowedTCPPorts = [ 8080 ];
 }
