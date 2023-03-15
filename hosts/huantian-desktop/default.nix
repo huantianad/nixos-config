@@ -28,6 +28,7 @@
       };
 
       programs = {
+        armcord.enable = true;
         aw.enable = true;
         discord.enable = false;
         fcitx.enable = true;
@@ -39,7 +40,6 @@
         };
         jetbrains-toolbox.enable = false;
         unity.enable = true;
-        webcord.enable = false;
         xbindkeys.enable = true;
       };
     };
@@ -81,7 +81,6 @@
 
   environment.systemPackages = with pkgs; [
     my.xmage
-    armcord
     jellyfin-media-player
   ];
 

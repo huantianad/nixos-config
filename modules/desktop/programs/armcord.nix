@@ -2,16 +2,16 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.programs.webcord;
+let cfg = config.modules.desktop.programs.armcord;
 in
 {
-  options.modules.desktop.programs.webcord = {
+  options.modules.desktop.programs.armcord = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.webcord
+      pkgs.armcord
     ];
   };
 }

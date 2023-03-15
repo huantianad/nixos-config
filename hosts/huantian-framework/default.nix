@@ -30,12 +30,12 @@
       };
 
       programs = {
+        armcord.enable = true;
         fcitx.enable = true;
         qmk.enable = true;
         tauon.enable = true;
         jetbrains-toolbox.enable = false;
         unity.enable = false;
-        webcord.enable = true;
         xbindkeys.enable = false;
       };
     };
@@ -81,6 +81,7 @@
   # Disable fingerprint auth on first login
   # SDDM fingerprint is buggy and I need to type password for KWallet anyway
   security.pam.services.sddm.fprintAuth = false;
+  security.pam.services.login.fprintAuth = false;
 
   environment.systemPackages = with pkgs; [
     checkra1n
