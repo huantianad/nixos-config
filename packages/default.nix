@@ -18,7 +18,5 @@ in {
 
   webcord = callPackage ./webcord { };
 
-  xdg-utils = callPackage ./xdg-utils { };
-
   xmage = callPackage ./xmage { };
 }

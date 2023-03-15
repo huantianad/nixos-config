@@ -21,7 +21,7 @@
 
   outputs = inputs @ { self, nixpkgs, ... }:
     let
-      inherit (lib.my) mapModulesRec mapHosts;
+      inherit (lib.my) mapModules mapModulesRec mapHosts;
 
       system = "x86_64-linux";
       system-arm = "aarch64-linux";
@@ -29,13 +29,13 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ self.overlay ];
+        overlays = [ self.overlay ] ++ (lib.attrValues self.overlays);
       };
 
       arm-pkgs = import nixpkgs {
         system = system-arm;
         config.allowUnfree = true;
-        overlays = [ self.overlay ];
+        overlays = [ self.overlay ] ++ (lib.attrValues self.overlays);
       };
 
       lib = nixpkgs.lib.extend (self: super: {
@@ -51,19 +51,9 @@
 
       overlay = final: prev: {
         my = self.packages."${system}";
-        ffmpeg_5 = prev.ffmpeg_5.overrideAttrs (old: {
-          postFixup = ''
-            addOpenGLRunpath ${placeholder "lib"}/lib/libavcodec.so
-            addOpenGLRunpath ${placeholder "lib"}/lib/libavutil.so
-          '';
-        });
-        ffmpeg_5-full = prev.ffmpeg_5-full.overrideAttrs (old: {
-          postFixup = ''
-            addOpenGLRunpath ${placeholder "lib"}/lib/libavcodec.so
-            addOpenGLRunpath ${placeholder "lib"}/lib/libavutil.so
-          '';
-        });
       };
+
+      overlays = mapModules ./overlays import;
 
       nixosModules = mapModulesRec ./modules import;
 

@@ -3,4 +3,4 @@
 
 **Hello!** 👋 Welcome to my heavily WIP NixOS configurations! Using the new funny flakes!
 
-Some help from cool configs like [this one ](https://github.com/hlissner/dotfiles) and [this one](https://github.com/colemickens/nixos-flake-example)!
+Some help from cool configs like [this one](https://github.com/hlissner/dotfiles) and [this one](https://github.com/colemickens/nixos-flake-example)!
