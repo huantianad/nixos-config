@@ -81,6 +81,7 @@
 
   environment.systemPackages = with pkgs; [
     my.xmage
+    my.discord-screenaudio
     jellyfin-media-player
   ];
 

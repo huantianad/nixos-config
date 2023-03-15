@@ -2,21 +2,23 @@
 
 let callPackage = pkgs.callPackage;
 in {
-  archipelago = callPackage ./archipelago {};
+  archipelago = callPackage ./archipelago { };
 
-  breath-theme = pkgs.libsForQt5.callPackage ./breath-theme {};
+  breath-theme = pkgs.libsForQt5.callPackage ./breath-theme { };
 
-  flatpak-xdg-utils = callPackage ./flatpak-xdg-utils {};
+  discord-screenaudio = pkgs.libsForQt5.callPackage ./discord-screenaudio { };
 
-  jetbrains-toolbox = callPackage ./jetbrains-toolbox {};
+  flatpak-xdg-utils = callPackage ./flatpak-xdg-utils { };
 
-  r2modman = callPackage ./r2modman {};
+  jetbrains-toolbox = callPackage ./jetbrains-toolbox { };
 
-  unityhub = callPackage ./unityhub {};
+  r2modman = callPackage ./r2modman { };
 
-  webcord = callPackage ./webcord {};
+  unityhub = callPackage ./unityhub { };
 
-  xdg-utils = callPackage ./xdg-utils {};
+  webcord = callPackage ./webcord { };
 
-  xmage = callPackage ./xmage {};
+  xdg-utils = callPackage ./xdg-utils { };
+
+  xmage = callPackage ./xmage { };
 }
