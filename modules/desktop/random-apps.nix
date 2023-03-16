@@ -15,9 +15,7 @@ in
       element-desktop
       ark
       # ark already comes with this, but we need it for dolphin extracting
-      (p7zip.override {
-        enableUnfree = true;
-      })
+      p7zip
       unrar
       vlc
       gimp
