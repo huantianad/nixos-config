@@ -34,11 +34,6 @@ with lib;
     xdgOpenUsePortal = true;
   };
 
-  # Use alternate xdg-open that works with xdg-portal
-  environment.systemPackages = with pkgs; [
-    my.flatpak-xdg-utils
-  ];
-
   # Tell SSH to use ksshaskpass even when in terminal
   environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
 }
