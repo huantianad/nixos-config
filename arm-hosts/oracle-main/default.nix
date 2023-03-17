@@ -27,6 +27,7 @@
   programs.tmux.enable = true;
   networking.firewall.allowedTCPPorts = [ 25565 ];
   environment.systemPackages = with pkgs; [
-    jdk17_headless
+    # jdk17_headless decursio
+    jre8
   ];
 }

@@ -2,7 +2,7 @@
 , python3, pipewire, libpulseaudio, xdg-utils, electron_22, makeDesktopItem }:
 
 buildNpmPackage rec {
-  name = "webcord";
+  pname = "webcord";
   version = "4.1.1";
 
   src = fetchFromGitHub {

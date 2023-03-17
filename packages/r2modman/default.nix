@@ -1,12 +1,12 @@
 { lib, stdenv, fetchurl, dpkg, makeWrapper, steam-run }:
 
 stdenv.mkDerivation rec {
-  name = "r2modman";
-  version = "3.1.38";
+  pname = "r2modman";
+  version = "3.1.39";
 
   src = fetchurl {
     url = "https://github.com/ebkr/r2modmanPlus/releases/download/v${version}/r2modman_${version}_amd64.deb ";
-    sha256 = "sha256-+lpNljfyJoWG+Vh/2r8f/xswgnUFfpGPlIDUExAfCns=";
+    sha256 = "sha256-Wy3C7acAD5g//DVua+8v3jGF3qHXnu/3vR2e0wcHCKk=";
   };
 
   nativeBuildInputs = [
