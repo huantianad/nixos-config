@@ -104,5 +104,8 @@
     KWIN_X11_NO_SYNC_TO_VBLANK = "1";
   };
 
+  # Earlyoom because unity + rider often locks up system with too much memory usage
+  services.earlyoom.enable = true;
+
   networking.firewall.allowedTCPPorts = [ 8080 ];
 }
