@@ -46,6 +46,7 @@
 
     dev = {
       cc.enable = true;
+      nim.enable = true;
       tex.enable = false;
     };
 
