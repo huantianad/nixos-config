@@ -11,5 +11,9 @@ in
 
   config = mkIf cfg.enable {
     services.usbmuxd.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      libimobiledevice
+    ];
   };
 }

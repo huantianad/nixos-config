@@ -36,5 +36,6 @@ in
     ];
 
     programs.partition-manager.enable = true;
+    programs.kdeconnect.enable = true;
   };
 }

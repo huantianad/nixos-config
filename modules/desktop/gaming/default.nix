@@ -21,6 +21,7 @@ in
       (tetrio-desktop.override {
         withTetrioPlus = true;
       })
+      melonDS
     ];
 
     # Don't override `prismlauncher` as that makes Nix rebuild it
