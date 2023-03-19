@@ -10,11 +10,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.qmk pkgs.via pkgs.vial ];
+    environment.systemPackages = [ pkgs.qmk pkgs.via ];
 
     services.udev.packages = [
-      pkgs.via
-      pkgs.vial
       (pkgs.qmk-udev-rules.overrideAttrs (attrs: {
         version = "0.19.2";
         src = pkgs.fetchFromGitHub {
