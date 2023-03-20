@@ -84,6 +84,7 @@
     my.xmage
     my.discord-screenaudio
     jellyfin-media-player
+    akregator
   ];
 
   # Causes error on rebuild sometime, slows startup => disable
