@@ -2,11 +2,11 @@
   "nodes": {
     "aw": {
       "locked": {
-        "lastModified": 1679018299,
-        "narHash": "sha256-xkPLIdwRzcavy2K+Kgt3lRpl/suVN9YtEm5RYvLJ66o=",
+        "lastModified": 1679773937,
+        "narHash": "sha256-c325QbZy5u1Z6F8AGTEUDYO5brdWWZEdpbwOoIJlO0w=",
         "owner": "huantianad",
         "repo": "nixpkgs",
-        "rev": "72d13304a93b36548e093e82926ef867bcedcefb",
+        "rev": "60d473e01adb56d9762e9d78101e90a53798aaf0",
         "type": "github"
       },
       "original": {
@@ -130,11 +130,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1679018299,
-        "narHash": "sha256-xkPLIdwRzcavy2K+Kgt3lRpl/suVN9YtEm5RYvLJ66o=",
+        "lastModified": 1679773937,
+        "narHash": "sha256-c325QbZy5u1Z6F8AGTEUDYO5brdWWZEdpbwOoIJlO0w=",
         "owner": "huantianad",
         "repo": "nixpkgs",
-        "rev": "72d13304a93b36548e093e82926ef867bcedcefb",
+        "rev": "60d473e01adb56d9762e9d78101e90a53798aaf0",
         "type": "github"
       },
       "original": {
