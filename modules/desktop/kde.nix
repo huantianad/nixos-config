@@ -30,7 +30,7 @@ in
       xkbVariant = "";
     };
 
-    services.xserver.desktopManager.plasma5.excludePackages = with pkgs; [
+    environment.plasma5.excludePackages = with pkgs; [
       elisa # Default KDE video player, use VLC instead
       kwrited # Use kate instead for my basic text editor
     ];
