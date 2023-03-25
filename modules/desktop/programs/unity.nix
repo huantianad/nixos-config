@@ -11,7 +11,7 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      (pkgs.my.unityhub.override {
+      (pkgs.unityhub.override {
         extraPkgs = pkgs: with pkgs; [
           harfbuzz
           libogg

@@ -4,7 +4,7 @@
 }:
 
 stdenv.mkDerivation rec {
-  name = "unityhub";
+  pname = "unityhub";
   version = "3.4.1";
 
   src = fetchurl {
@@ -18,8 +18,10 @@ stdenv.mkDerivation rec {
   ];
 
   fhsEnv = buildFHSUserEnv {
-    name = "${name}-fhs-env";
+    name = "${pname}-fhs-env";
     runScript = "";
+
+    # Seems to be needed for GTK filepickers to work in FHSUserEnv
     profile = "XDG_DATA_DIRS=\"\$XDG_DATA_DIRS:/usr/share/\"";
 
     targetPkgs = pkgs: with pkgs; [
@@ -85,6 +87,7 @@ stdenv.mkDerivation rec {
       libxml2
       zlib
       clang
+      git # for git-based packages in unity package manager
     ] ++ extraLibs pkgs;
   };
 
@@ -100,8 +103,8 @@ stdenv.mkDerivation rec {
     mv opt/ usr/share/ $out
 
     # `/opt/unityhub/unityhub` is a shell wrapper that runs `/opt/unityhub/unityhub-bin`
-    # Which we don't need and replace with our own custom wrapper
-    makeWrapper ${fhsEnv}/bin/${name}-fhs-env $out/opt/unityhub/unityhub \
+    # Which we don't need and overwrite with our own custom wrapper
+    makeWrapper ${fhsEnv}/bin/${pname}-fhs-env $out/opt/unityhub/unityhub \
       --add-flags $out/opt/unityhub/unityhub-bin \
       --argv0 unityhub
 
@@ -122,6 +125,5 @@ stdenv.mkDerivation rec {
     license = licenses.unfree;
     maintainers = with maintainers; [ tesq0 huantian ];
     platforms = [ "x86_64-linux" ];
-    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
   };
 }
