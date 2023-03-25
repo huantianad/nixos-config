@@ -9,7 +9,10 @@
 , kxmlgui
 , kglobalaccel
 , pipewire
-, pkg-config
+, xdg-desktop-portal
+, pulseaudio
+, libpulseaudio
+, systemd
 }:
 
 stdenv.mkDerivation rec {
@@ -32,7 +35,24 @@ stdenv.mkDerivation rec {
     knotifications
     kxmlgui
     kglobalaccel
+  ];
+
+  buildInputs = [
     pipewire
+    pipewire.pulse
+    xdg-desktop-portal
+    pulseaudio
+    libpulseaudio
+    systemd
+  ];
+
+  libPath = lib.makeLibraryPath [
+    pipewire
+    pipewire.pulse
+    xdg-desktop-portal
+    pulseaudio
+    libpulseaudio
+    systemd
   ];
 
   NIX_CFLAGS_COMPILE = [
@@ -40,6 +60,12 @@ stdenv.mkDerivation rec {
     "-I${pipewire.dev}/include/spa-0.2"
     "-Wno-pedantic"
   ];
+
+  postFixup = ''
+    wrapProgram $out/bin/discord-screenaudio \
+      --suffix PATH : "${lib.makeBinPath [ pulseaudio ]}" \
+      --prefix LD_LIBRARY_PATH : ${libPath}
+  '';
 
   meta = with lib; {
     description = "A custom discord client that supports streaming with audio on Linux";
