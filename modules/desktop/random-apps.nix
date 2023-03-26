@@ -32,6 +32,7 @@ in
       butler
       musescore
       wine64
+      jellyfin-media-player
     ];
   };
 }
