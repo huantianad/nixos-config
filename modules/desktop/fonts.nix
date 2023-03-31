@@ -13,6 +13,7 @@ in
     fonts.fonts = with pkgs; [
       liberation_ttf
       fira-code
+      corefonts
 
       # Some CJK Fonts
       source-han-serif
