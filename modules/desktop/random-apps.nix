@@ -13,6 +13,7 @@ in
     environment.systemPackages = with pkgs; [
       kate
       element-desktop
+      cinny-desktop
       ark
       # ark already comes with this, but we need it for dolphin extracting
       p7zip
