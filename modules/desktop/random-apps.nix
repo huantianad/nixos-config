@@ -34,6 +34,7 @@ in
       musescore
       wine64
       jellyfin-media-player
+      nix-index
     ];
   };
 }

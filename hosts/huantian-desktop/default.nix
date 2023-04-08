@@ -84,6 +84,7 @@
     my.xmage
     my.discord-screenaudio
     akregator
+    # nix-alien
   ];
 
   # Causes error on rebuild sometime, slows startup => disable
