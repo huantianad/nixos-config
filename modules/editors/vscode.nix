@@ -135,6 +135,10 @@ in
           "--per-file-ignores=__init__.py=F401" # disable __init__ unused imports
         ];
 
+        "[python]" = {
+          "editor.formatOnType" = false;
+        };
+
         "python.defaultInterpreterPath" = "${pkgs.python310Full}/bin/python";
         "python.languageServer" = "Pylance";
         "isort.args" = [ "-l" "120" ];
