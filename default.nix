@@ -17,6 +17,7 @@ with lib.my;
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
   nix = {
     extraOptions = "experimental-features = nix-command flakes";
+
     settings = {
       substituters = [
         "https://nix-community.cachix.org"
@@ -28,12 +29,26 @@ with lib.my;
       ];
       auto-optimise-store = true;
     };
+
     gc = {
       automatic = true;
       dates = "daily";
       options = "--delete-older-than 3d";
     };
+
+    registry.nixpkgs.flake = inputs.nixpkgs;
+
+    nixPath = [
+      "nixpkgs=/etc/nixpkgs/channels/nixpkgs"
+    ];
   };
+
+  systemd.tmpfiles.rules = [
+    "L+ /etc/nixpkgs/channels/nixpkgs - - - - ${inputs.nixpkgs}"
+  ];
+
+  programs.command-not-found.enable = false;
+  home-manager.users.huantian.programs.nix-index.enable = true;
 
   system.configurationRevision = with inputs; mkIf (self ? rev) self.rev;
 
