@@ -18,9 +18,6 @@ in
       tealdeer
       file
       bat
-      yt-dlp
-      xorg.xkill
-      nixpkgs-review
     ];
 
     programs.zsh = {

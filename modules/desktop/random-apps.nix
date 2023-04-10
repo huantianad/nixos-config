@@ -34,6 +34,11 @@ in
       musescore
       wine64
       jellyfin-media-player
+
+      # Command-line apps
+      yt-dlp
+      xorg.xkill
+      nixpkgs-review
     ];
   };
 }
