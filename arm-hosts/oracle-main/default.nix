@@ -24,7 +24,6 @@
   };
 
   # Minecraft server
-  programs.tmux.enable = true;
   networking.firewall.allowedTCPPorts = [ 25565 ];
   environment.systemPackages = with pkgs; [
     # jdk17_headless decursio
