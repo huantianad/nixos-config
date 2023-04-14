@@ -15,7 +15,6 @@ in
 
       config = {
         webVaultEnabled = true;
-        logFile = "/var/log/vaultwarden";
         websocketEnabled = true;
         signupsVerify = false;
         signupsAllowed = false;
