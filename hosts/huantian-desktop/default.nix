@@ -85,6 +85,8 @@
     my.discord-screenaudio
     akregator
     # nix-alien
+    newsflash
+    easyeffects
   ];
 
   # Causes error on rebuild sometime, slows startup => disable
