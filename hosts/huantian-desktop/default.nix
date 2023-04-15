@@ -75,8 +75,9 @@
     };
   };
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  # Disable virtualbox for now, takes a while to compile and I'm not using it
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
 
   programs.dconf.enable = true;
 
