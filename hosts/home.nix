@@ -19,7 +19,7 @@ with lib;
   services.joycond.enable = true;
 
   boot = {
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       efi.canTouchEfiVariables = mkDefault true;
