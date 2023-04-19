@@ -18,6 +18,7 @@ in
       tealdeer
       file
       bat
+      ripgrep
     ];
 
     programs.zsh = {
@@ -27,6 +28,7 @@ in
         cat = "bat --style=plain";
         youtube-dl = "yt-dlp";
         info = "info --vi-keys";
+        grep = "rg";
 
         # git diff to make sure nothing is staged
         bump = "git diff --cached --exit-code && nix flake update && git add flake.lock && git commit -m 'flake.lock: update'";

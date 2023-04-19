@@ -29,6 +29,7 @@ in
         core.autocrlf = "input";
         init.defaultBranch = "main";
         core.askpass = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
+        push.autoSetupRemote = "true";
       };
     };
   };
