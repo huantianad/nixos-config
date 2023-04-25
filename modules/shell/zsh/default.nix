@@ -19,6 +19,7 @@ in
       file
       bat
       ripgrep
+      comma
     ];
 
     programs.zsh = {
