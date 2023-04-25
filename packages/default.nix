@@ -14,6 +14,8 @@ in {
 
   r2modman = callPackage ./r2modman { };
 
+  tjaplayer3-f = callPackage ./tjaplayer3-f { };
+
   unityhub = callPackage ./unityhub { };
 
   webcord = callPackage ./webcord { };

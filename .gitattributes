@@ -1,1 +1,4 @@
 modules/shell/zsh/.p10k.zsh linguist-vendored
+
+* text=auto
+packages/tjaplayer3-f/patch.patch -text

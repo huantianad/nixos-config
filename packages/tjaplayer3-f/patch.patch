@@ -1,0 +1,126 @@
+diff --git a/TJAPlayer3-f/TJAPlayer3-f.csproj b/TJAPlayer3-f/TJAPlayer3-f.csproj
+index be163a65..da72fc06 100644
+--- a/TJAPlayer3-f/TJAPlayer3-f.csproj
++++ b/TJAPlayer3-f/TJAPlayer3-f.csproj
+@@ -20,7 +20,7 @@
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+     <DebugSymbols>true</DebugSymbols>
+     <OutputPath>..\Test\</OutputPath>
+-    <DefineConstants>TRACE;DEBUG;$(MyOption)</DefineConstants>
++    <DefineConstants>PLAYABLE;TRACE;DEBUG;$(MyOption)</DefineConstants>
+     <DebugType>full</DebugType>
+     <PlatformTarget>AnyCPU</PlatformTarget>
+     <UseVSHostingProcess>false</UseVSHostingProcess>
+@@ -28,7 +28,7 @@
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+     <OutputPath>..\Test\</OutputPath>
+-    <DefineConstants>TRACE</DefineConstants>
++    <DefineConstants>PLAYABLE;TRACE</DefineConstants>
+     <Optimize>true</Optimize>
+     <DebugType>none</DebugType>
+     <PlatformTarget>AnyCPU</PlatformTarget>
+diff --git a/TJAPlayer3-f/src/Common/CSkin.cs b/TJAPlayer3-f/src/Common/CSkin.cs
+index f491e3d2..e8178ca6 100644
+--- a/TJAPlayer3-f/src/Common/CSkin.cs
++++ b/TJAPlayer3-f/src/Common/CSkin.cs
+@@ -385,7 +385,7 @@ namespace TJAPlayer3
+ 		}
+ 		private string InitializeSkinPathRoot()
+ 		{
+-			strSystemSkinRoot = System.IO.Path.Combine(TJAPlayer3.strEXEのあるフォルダ, "System/");
++			strSystemSkinRoot = System.IO.Path.Combine(AppContext.BaseDirectory, "System/");
+ 			return strSystemSkinRoot;
+ 		}
+ 
+@@ -2589,4 +2589,4 @@ namespace TJAPlayer3
+ 		#endregion
+ 
+ 	}
+-}
+\ No newline at end of file
++}
+diff --git a/TJAPlayer3-f/src/Common/Program.cs b/TJAPlayer3-f/src/Common/Program.cs
+index 136e73cc..80f36e6a 100644
+--- a/TJAPlayer3-f/src/Common/Program.cs
++++ b/TJAPlayer3-f/src/Common/Program.cs
+@@ -60,15 +60,7 @@ namespace TJAPlayer3
+                         throw new PlatformNotSupportedException($"TJAPlayer3-f does not support this Architecture. ({RuntimeInformation.ProcessArchitecture})");
+                 }
+ 
+-                FFmpeg.AutoGen.ffmpeg.RootPath = AppContext.BaseDirectory + @"FFmpeg/" + osplatform + "-" + platform + "/";
+-
+-                DirectoryInfo info = new DirectoryInfo(AppContext.BaseDirectory + @"Libs/" + osplatform + "-" + platform + "/");
+-
+-                //実行ファイルの階層にライブラリをコピー
+-                foreach (FileInfo fileinfo in info.GetFiles())
+-                {
+-                    fileinfo.CopyTo(AppContext.BaseDirectory + fileinfo.Name, true);
+-                }
++                FFmpeg.AutoGen.ffmpeg.RootPath = @"@ffmpegPath@";
+ 
+                 Trace.WriteLine("Current Directory: " + Environment.CurrentDirectory);
+ 				Trace.WriteLine("EXEのあるフォルダ: " + AppContext.BaseDirectory);
+@@ -114,7 +106,8 @@ namespace TJAPlayer3
+ 					};
+ 					
+ 					//エラーが発生したことをユーザーに知らせるため、HTMLを作成する。
+-					using (StreamWriter writer = new StreamWriter(AppContext.BaseDirectory + "Error.html", false, Encoding.UTF8))
++					var errorHtmlPath = Path.Combine(Path.GetTempPath(), "error.html");
++					using (StreamWriter writer = new StreamWriter(errorHtmlPath, false, Encoding.UTF8))
+ 					{
+ 						writer.WriteLine("<html>");
+ 						writer.WriteLine("<head>");
+@@ -151,7 +144,7 @@ namespace TJAPlayer3
+ 						writer.WriteLine("</body>");
+ 						writer.WriteLine("</html>");
+ 					}
+-					CWebOpen.Open(AppContext.BaseDirectory + "Error.html");
++					CWebOpen.Open(errorHtmlPath);
+ 
+ #if PUBLISH
+ 					//エラーの送信
+diff --git a/TJAPlayer3-f/src/Common/TJAPlayer3.cs b/TJAPlayer3-f/src/Common/TJAPlayer3.cs
+index 9bc7af29..3bae0810 100644
+--- a/TJAPlayer3-f/src/Common/TJAPlayer3.cs
++++ b/TJAPlayer3-f/src/Common/TJAPlayer3.cs
+@@ -1089,7 +1089,38 @@ namespace TJAPlayer3
+ 			//-----------------
+ 			// BEGIN #23629 2010.11.13 from: デバッグ時は Application.ExecutablePath が ($SolutionDir)/bin/x86/Debug/ などになり System/ の読み込みに失敗するので、カレントディレクトリを採用する。（プロジェクトのプロパティ→デバッグ→作業ディレクトリが有効になる）
+ 
+-			strEXEのあるフォルダ = AppContext.BaseDirectory;
++			// Instead of having log, config, songs folder next to the binary,
++			// this will follow XDG standards and put everything in XDG_CONFIG_HOME/TJAPlayer3-f/.
++			strEXEのあるフォルダ = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TJAPlayer3-f/");
++			
++			// Create the config directory if it doesn't exist yet.
++			Directory.CreateDirectory(strEXEのあるフォルダ);
++			
++			// Copy default songs to the Songs subdirectory it doesn't exist yet.
++			var songsFolder = Path.Combine(strEXEのあるフォルダ, "Songs/");
++			if (!Directory.Exists(songsFolder))
++			{
++				// Recursive method to copy a directory
++				void CopyDirectory(string sourceDir, string destinationDir) 
++				{
++					var dir = new DirectoryInfo(sourceDir);
++					var dirs = dir.GetDirectories();
++
++					Directory.CreateDirectory(destinationDir);
++
++					foreach (FileInfo file in dir.GetFiles())
++					{
++						string targetFilePath = Path.Combine(destinationDir, file.Name);
++						file.CopyTo(targetFilePath);
++					}
++					foreach (DirectoryInfo subDir in dirs)
++					{
++						string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
++						CopyDirectory(subDir.FullName, newDestinationDir);
++					}
++				}
++				CopyDirectory(Path.Combine(AppContext.BaseDirectory, "Songs/"), songsFolder);
++			}
+ 
+ 			// END #23629 2010.11.13 from
+ 			//-----------------
