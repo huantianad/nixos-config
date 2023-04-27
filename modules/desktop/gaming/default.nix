@@ -22,7 +22,7 @@ in
         withTetrioPlus = true;
       })
       melonDS
-      my.tjaplayer3-f
+      # my.tjaplayer3-f
     ];
 
     # Don't override `prismlauncher` as that makes Nix rebuild it
