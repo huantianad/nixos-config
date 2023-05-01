@@ -16,6 +16,8 @@ with lib.my;
   # Configure nix and nixpkgs
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
   nix = {
+    package = pkgs.nixVersions.unstable;
+
     extraOptions = "experimental-features = nix-command flakes";
 
     settings = {
