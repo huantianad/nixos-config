@@ -9,7 +9,7 @@ with lib;
   networking.domain = "huantian.dev";
   networking.firewall.enable = true;
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 
   modules = {
     editors = {
