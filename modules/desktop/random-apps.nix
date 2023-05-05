@@ -27,7 +27,7 @@ in
       obs-studio
       kid3
       soulseekqt
-      ffmpeg_5-full
+      ffmpeg_6-full
       bitwarden
       peek
       butler
