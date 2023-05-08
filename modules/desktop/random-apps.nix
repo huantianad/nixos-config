@@ -14,10 +14,6 @@ in
       kate
       element-desktop
       cinny-desktop
-      ark
-      # ark already comes with this, but we need it for dolphin extracting
-      p7zip
-      unrar
       vlc
       gimp
       qbittorrent
@@ -27,18 +23,23 @@ in
       obs-studio
       kid3
       soulseekqt
-      ffmpeg_6-full
       bitwarden
       peek
-      butler
       musescore
-      wine64
       jellyfin-media-player
 
+      ark
+      # ark already comes with this, but we need it for dolphin extracting
+      p7zip
+      unrar
+
       # Command-line apps
+      ffmpeg_6-full
       yt-dlp
       xorg.xkill
       nixpkgs-review
+      wineWowPackages.staging
+      winetricks
     ];
   };
 }
