@@ -112,5 +112,9 @@
   # Earlyoom because unity + rider often locks up system with too much memory usage
   services.earlyoom.enable = true;
 
+  # VLC
   networking.firewall.allowedTCPPorts = [ 8080 ];
+
+  # Factorio
+  networking.firewall.allowedUDPPorts = [ 34197 ];
 }
