@@ -16,13 +16,13 @@ in
       scarab
       cockatrice
       airshipper
-      # osu-lazer
+      osu-lazer-bin
       pkgs.my.r2modman
       (tetrio-desktop.override {
         withTetrioPlus = true;
       })
       melonDS
-      # my.tjaplayer3-f
+      my.tjaplayer3-f
     ];
 
     # Don't override `prismlauncher` as that makes Nix rebuild it
