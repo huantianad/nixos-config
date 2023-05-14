@@ -12,7 +12,7 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      inputs.aw.legacyPackages.${pkgs.system}.activitywatch
+      pkgs.activitywatch
       inputs.aw-watcher-custom.packages.${pkgs.system}.default
     ];
   };

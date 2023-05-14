@@ -12,8 +12,8 @@
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    aw.url = "github:huantianad/nixpkgs/activitywatch";
     aw-watcher-custom.url = "github:huantianad/aw-watcher-custom";
+    aw-watcher-custom.inputs.nixpkgs.follows = "nixpkgs";
 
     nixinate.url = "github:matthewcroughan/nixinate";
     nixinate.inputs.nixpkgs.follows = "nixpkgs";
