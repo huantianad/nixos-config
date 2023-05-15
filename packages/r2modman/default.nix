@@ -1,55 +1,114 @@
-{ lib, stdenv, fetchurl, dpkg, makeWrapper, steam-run }:
+{ lib
+, stdenv
+, fetchFromGitHub
+, fetchYarnDeps
+, nodejs
+, yarn
+, fixup_yarn_lock
+, makeWrapper
+, copyDesktopItems
+, electron
+, makeDesktopItem
+, gitUpdater
+}:
 
 stdenv.mkDerivation rec {
   pname = "r2modman";
-  version = "3.1.39";
+  version = "3.1.41";
 
-  src = fetchurl {
-    url = "https://github.com/ebkr/r2modmanPlus/releases/download/v${version}/r2modman_${version}_amd64.deb ";
-    sha256 = "sha256-Wy3C7acAD5g//DVua+8v3jGF3qHXnu/3vR2e0wcHCKk=";
+  src = fetchFromGitHub {
+    owner = "ebkr";
+    repo = "r2modmanPlus";
+    rev = "v${version}";
+    hash = "sha256-nnmzIpV+Rn2zBJDBUehcUpvh3U4jqGLLGoIoxlZy6SA=";
+  };
+
+  offlineCache = fetchYarnDeps {
+    yarnLock = "${src}/yarn.lock";
+    hash = "sha256-CXitb/b2tvTfrkFrFv4KP4WdmMg+1sDtC/s2u5ezDfI=";
   };
 
   nativeBuildInputs = [
-    dpkg
+    nodejs
+    yarn
+    fixup_yarn_lock
     makeWrapper
+    copyDesktopItems
   ];
 
-  unpackCmd = "dpkg -x $curSrc src";
+  configurePhase = ''
+    runHook preConfigure
+
+    # Workaround for webpack bug
+    # https://github.com/webpack/webpack/issues/14532
+    export NODE_OPTIONS="--openssl-legacy-provider"
+    export HOME=$(mktemp -d)
+    yarn config --offline set yarn-offline-mirror $offlineCache
+    fixup_yarn_lock yarn.lock
+    yarn install --offline --frozen-lockfile --ignore-platform --ignore-scripts --no-progress --non-interactive
+    patchShebangs node_modules/
+
+    runHook postConfigure
+  '';
+
+  buildPhase = ''
+    runHook preBuild
+
+    yarn --offline quasar build --mode electron --skip-pkg
+
+    # Remove dev dependencies.
+    yarn install --production --offline --frozen-lockfile --ignore-platform --ignore-scripts --no-progress --non-interactive
+
+    runHook postBuild
+  '';
 
   installPhase = ''
     runHook preInstall
 
-    mkdir $out
-    cp -r opt/ usr/share/ $out
+    mkdir -p $out/share/${pname}
+    cp -r dist/electron/UnPackaged/. \
+      node_modules \
+      $out/share/${pname}
 
-    mkdir $out/bin
-    ln -s $out/opt/r2modman/r2modman $out/bin/
+    (cd public/icons
+      for img in *png; do
+        dimensions=''${img#favicon-}
+        dimensions=''${dimensions%.png}
+        mkdir -p $out/share/icons/hicolor/$dimensions/apps
+        cp $img $out/share/icons/hicolor/$dimensions/apps/${pname}.png
+      done)
 
-    substituteInPlace $out/share/applications/r2modman.desktop \
-      --replace /opt/ $out/opt/
+    makeWrapper '${electron}/bin/electron' "$out/bin/r2modman" \
+      --inherit-argv0 \
+      --add-flags "$out/share/r2modman" \
+      --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
 
     runHook postInstall
   '';
 
-  # Wrap program with steam-run, as it needs steam's dependencies
-  # to interact with steam and run games.
-  postFixup = ''
-    mv $out/opt/r2modman/r2modman $out/opt/r2modman/.r2modman-unwrapped
-    makeWrapper ${steam-run}/bin/steam-run $out/opt/r2modman/r2modman \
-      --add-flags $out/opt/r2modman/.r2modman-unwrapped \
-      --add-flags --no-sandbox \
-      --prefix LD_LIBRARY_PATH : $out/opt/r2modman \
-      --argv0 r2modman
-  '';
+  desktopItems = [
+    (makeDesktopItem {
+      name = pname;
+      exec = pname;
+      icon = pname;
+      desktopName = pname;
+      comment = meta.description;
+      categories = [ "Game" ];
+      keywords = [ "launcher" "mod manager" "thunderstore" ];
+    })
+  ];
+
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
-    description = "A simple and easy to use mod manager for several games using Thunderstore";
+    description = "Unofficial Thunderstore mod manager";
     homepage = "https://github.com/ebkr/r2modmanPlus";
-    downloadPage = "https://github.com/ebkr/r2modmanPlus/releases";
-    changelog = "https://github.com/ebkr/r2modmanPlus/releases/tag/v${version}";
+    changelog = "https://github.com/ebkr/r2modmanPlus/releases";
     license = licenses.mit;
-    maintainers = with maintainers; [ huantian ];
-    platforms = [ "x86_64-linux" ];
-    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
+    maintainers = with maintainers; [ aidalgol ];
+    inherit (electron.meta) platforms;
+    mainProgram = pname;
   };
 }
