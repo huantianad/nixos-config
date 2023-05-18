@@ -27,6 +27,7 @@ in
       peek
       musescore
       jellyfin-media-player
+      qpwgraph
 
       ark
       # ark already comes with this, but we need it for dolphin extracting
