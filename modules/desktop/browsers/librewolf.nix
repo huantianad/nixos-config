@@ -12,11 +12,8 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs;
       if config.modules.desktop.wayland.enable
-      then [ librewolf-wayland ]
-      else [ librewolf ];
-
-    nixpkgs.config.librewolf.enablePlasmaBrowserIntegration =
-      config.modules.desktop.kde.enable;
+      then [ (librewolf-wayland.override { cfg.enablePlasmaBrowserIntegration = true; }) ]
+      else [ (librewolf.override { cfg.enablePlasmaBrowserIntegration = true; }) ];
 
     home-manager.users.huantian.home.file = {
       ".librewolf/librewolf.overrides.cfg".text = ''
