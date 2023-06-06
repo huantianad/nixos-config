@@ -18,6 +18,8 @@ in {
 
   unityhub = callPackage ./unityhub { };
 
+  unityhub-native = callPackage ./unityhub-native { };
+
   webcord = callPackage ./webcord { };
 
   xmage = callPackage ./xmage { };
