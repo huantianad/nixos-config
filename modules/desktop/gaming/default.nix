@@ -17,12 +17,13 @@ in
       cockatrice
       airshipper
       osu-lazer-bin
-      pkgs.my.r2modman
+      melonDS
       (tetrio-desktop.override {
         withTetrioPlus = true;
       })
-      melonDS
+
       my.tjaplayer3-f
+      my.r2modman
     ];
 
     # Don't override `prismlauncher` as that makes Nix rebuild it

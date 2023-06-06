@@ -13,7 +13,7 @@ in
     environment.systemPackages = with pkgs; [
       kate
       element-desktop
-      cinny-desktop
+      # cinny-desktop disable because it uses openssl 1.1
       vlc
       gimp
       qbittorrent
@@ -28,6 +28,8 @@ in
       musescore
       jellyfin-media-player
       qpwgraph
+      newsflash
+      easyeffects
 
       ark
       # ark already comes with this, but we need it for dolphin extracting

@@ -82,12 +82,9 @@
   programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs; [
-    my.xmage
-    my.discord-screenaudio
-    akregator
+    # my.xmage
+    # my.discord-screenaudio
     # nix-alien
-    newsflash
-    easyeffects
   ];
 
   # Causes error on rebuild sometime, slows startup => disable
