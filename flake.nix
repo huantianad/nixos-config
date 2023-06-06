@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -24,44 +25,37 @@
       inherit (lib.my) mapModules mapModulesRec mapHosts;
 
       system = "x86_64-linux";
-      system-arm = "aarch64-linux";
 
-      pkgs = import nixpkgs {
-        inherit system;
+      mkPkgs = pkgsArg: systemArg: import pkgsArg {
+        system = systemArg;
         config.allowUnfree = true;
         overlays = [ self.overlay ] ++ (lib.attrValues self.overlays);
       };
 
-      arm-pkgs = import nixpkgs {
-        system = system-arm;
-        config.allowUnfree = true;
-        overlays = [ self.overlay ] ++ (lib.attrValues self.overlays);
-      };
+      pkgs = mkPkgs nixpkgs system;
 
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib { inherit pkgs inputs; lib = self; };
       });
-
-      arm-lib = nixpkgs.lib.extend (self: super: {
-        my = import ./lib { inherit inputs; pkgs = arm-pkgs; lib = self; };
-      });
     in
     {
       lib = lib.my;
+
+      nixosModules = mapModulesRec ./modules import;
+
+      nixosConfigurations =
+        mapHosts ./hosts/unstable/x86_64-linux { nixpkgs = nixpkgs; system = "x86_64-linux"; mkPkgs = mkPkgs; }
+        // mapHosts ./hosts/stable/x86_64-linux { nixpkgs = inputs.nixpkgs-stable; system = "x86_64-linux"; mkPkgs = mkPkgs; }
+        // mapHosts ./hosts/stable/aarch64-linux { nixpkgs = inputs.nixpkgs-stable; system = "aarch64-linux"; mkPkgs = mkPkgs; };
+
+      apps = inputs.nixinate.nixinate."${system}" self;
+
+      packages."${system}" = import ./packages { inherit pkgs; };
 
       overlay = final: prev: {
         my = self.packages."${system}";
       };
 
       overlays = mapModules ./overlays import;
-
-      nixosModules = mapModulesRec ./modules import;
-
-      nixosConfigurations = (mapHosts ./hosts { })
-        // (arm-lib.my.mapHosts ./arm-hosts { system = system-arm; });
-
-      apps = inputs.nixinate.nixinate."${system}" self;
-
-      packages."${system}" = import ./packages { inherit pkgs; };
     };
 }

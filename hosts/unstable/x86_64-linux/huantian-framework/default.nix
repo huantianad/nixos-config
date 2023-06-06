@@ -3,7 +3,7 @@
 {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
-    ../home.nix
+    ../../../home.nix
     ./hardware-configuration.nix
   ];
 

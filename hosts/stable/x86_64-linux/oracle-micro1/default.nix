@@ -2,14 +2,14 @@
 
 {
   imports = [
-    ../../hosts/server.nix
+    ../../../server.nix
     ./hardware-configuration.nix
   ];
 
   system.stateVersion = "21.11";
 
   _module.args.nixinate = {
-    host = "oracle-main";
+    host = "oracle-micro1";
     sshUser = "huantian";
     buildOn = "remote";
     substituteOnTarget = true;
@@ -18,15 +18,7 @@
 
   modules = {
     services = {
-      nginx.enable = true;
-      synapse.enable = true;
+      vaultwarden.enable = true;
     };
   };
-
-  # Minecraft server
-  networking.firewall.allowedTCPPorts = [ 25565 ];
-  environment.systemPackages = with pkgs; [
-    # jdk17_headless decursio
-    jre8
-  ];
 }
