@@ -33,7 +33,7 @@
         discord.enable = false;
         fcitx.enable = true;
         gamemode.enable = true;
-        qmk.enable = true;
+        # qmk.enable = true;
         tauon = {
           enable = true;
           openFirewall = true;

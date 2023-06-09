@@ -22,8 +22,8 @@ in
         withTetrioPlus = true;
       })
 
-      my.tjaplayer3-f
-      my.r2modman
+      # my.tjaplayer3-f
+      # my.r2modman
     ];
 
     # Don't override `prismlauncher` as that makes Nix rebuild it

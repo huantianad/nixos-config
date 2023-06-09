@@ -22,9 +22,9 @@ in
       audacity
       obs-studio
       kid3
-      soulseekqt
+      # soulseekqt
       bitwarden
-      peek
+      # peek
       musescore
       jellyfin-media-player
       qpwgraph
