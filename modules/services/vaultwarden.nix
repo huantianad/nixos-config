@@ -27,7 +27,7 @@ in
 
     services.caddy = {
       virtualHosts."vw.huantian.dev".extraConfig = ''
-        encode gzip
+        encode zstd gzip
 
         header {
           # Enable HTTP Strict Transport Security (HSTS)

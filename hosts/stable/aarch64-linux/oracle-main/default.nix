@@ -19,6 +19,7 @@
   modules = {
     services = {
       synapse.enable = true;
+      website.enable = true;
     };
   };
 
