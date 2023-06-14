@@ -23,21 +23,10 @@ in
       };
     };
 
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
+    modules.services.caddy.enable = true;
 
     services.caddy = {
-      enable = true;
-      extraConfig = ''
-      https://vw.huantian.dev {
-        log {
-          level INFO
-          output file /var/log/caddy/vw.huantian.dev-access.log {
-            roll_size 10mb
-            roll_keep 20
-          }
-        }
-
-        tls davidtianli@gmail.com
+      virtualHosts."vw.huantian.dev".extraConfig = ''
         encode gzip
 
         header {
@@ -47,6 +36,8 @@ in
           X-XSS-Protection "1; mode=block"
           # Disallow the site to be rendered within a frame (clickjacking protection)
           X-Frame-Options "DENY"
+          # Avoid MIME type sniffing
+          X-Content-Type-Options "nosniff"
           # Prevent search engines from indexing (optional)
           X-Robots-Tag "none"
           # Server name removing
@@ -65,7 +56,6 @@ in
           # log, so that fail2ban can ban the correct IP.
           header_up X-Real-IP {remote_host}
         }
-      }
       '';
     };
   };
