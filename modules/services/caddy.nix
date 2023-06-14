@@ -12,6 +12,7 @@ in
   config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [ 80 443 ];
 
+    # TODO: Setup custom error code handling pages
     services.caddy = {
       enable = true;
       logFormat = mkForce "level INFO";

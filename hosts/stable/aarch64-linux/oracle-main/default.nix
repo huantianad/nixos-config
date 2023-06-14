@@ -18,7 +18,6 @@
 
   modules = {
     services = {
-      nginx.enable = true;
       synapse.enable = true;
     };
   };
