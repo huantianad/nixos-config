@@ -33,9 +33,28 @@ in
         }
 
         root * /var/www/huantian.dev/
-        file_server
+        file_server {
+          # If we visit /404.html directly we receive a 404 response, and not a 200.
+          hide 404.html
+        }
+
+        handle_errors {
+          @404 {
+            expression {http.error.status_code} == 404
+          }
+          # For 404 errors show custom 404 error page
+          handle @404 {
+            rewrite * /404.html
+            file_server
+          }
+          # For other errors respond with generic message
+          handle {
+            respond "{http.error.status_code} {http.error.status_text}" {http.error.status_code}
+          }
+        }
       '';
 
+      # Redirect www.huantian.dev -> huantian.dev
       "www.${config.networking.domain}".extraConfig = ''
         redir https://${config.networking.domain}{uri}
       '';
