@@ -12,6 +12,8 @@ in {
 
   jetbrains-toolbox = callPackage ./jetbrains-toolbox { };
 
+  musescore3 = pkgs.libsForQt5.callPackage ./musescore3 { };
+
   r2modman = callPackage ./r2modman { };
 
   tjaplayer3-f = callPackage ./tjaplayer3-f { };
