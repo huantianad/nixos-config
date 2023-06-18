@@ -85,6 +85,7 @@
     # my.xmage
     # my.discord-screenaudio
     # nix-alien
+    my.musescore3
   ];
 
   # Causes error on rebuild sometime, slows startup => disable

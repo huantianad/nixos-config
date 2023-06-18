@@ -25,7 +25,7 @@ in
       # soulseekqt
       bitwarden
       # peek
-      musescore
+      # musescore
       jellyfin-media-player
       qpwgraph
       newsflash
