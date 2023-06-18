@@ -10,6 +10,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    home-manager-stable.url = "github:nix-community/home-manager/release-23.05";
+    home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
+
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -44,9 +47,27 @@
       nixosModules = mapModulesRec ./modules import;
 
       nixosConfigurations =
-        mapHosts ./hosts/unstable/x86_64-linux { nixpkgs = nixpkgs; system = "x86_64-linux"; mkPkgs = mkPkgs; }
-        // mapHosts ./hosts/stable/x86_64-linux { nixpkgs = inputs.nixpkgs-stable; system = "x86_64-linux"; mkPkgs = mkPkgs; }
-        // mapHosts ./hosts/stable/aarch64-linux { nixpkgs = inputs.nixpkgs-stable; system = "aarch64-linux"; mkPkgs = mkPkgs; };
+        mapHosts ./hosts/unstable/x86_64-linux
+          {
+            nixpkgs = nixpkgs;
+            system = "x86_64-linux";
+            mkPkgs = mkPkgs;
+            home-manager = inputs.home-manager;
+          }
+        // mapHosts ./hosts/stable/x86_64-linux
+          {
+            nixpkgs = inputs.nixpkgs-stable;
+            system = "x86_64-linux";
+            mkPkgs = mkPkgs;
+            home-manager = inputs.home-manager-stable;
+          }
+        // mapHosts ./hosts/stable/aarch64-linux
+          {
+            nixpkgs = inputs.nixpkgs-stable;
+            system = "aarch64-linux";
+            mkPkgs = mkPkgs;
+            home-manager = inputs.home-manager-stable;
+          };
 
       apps = inputs.nixinate.nixinate."${system}" self;
 

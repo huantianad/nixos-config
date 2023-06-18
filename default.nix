@@ -3,9 +3,7 @@
 with lib;
 with lib.my;
 {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ] ++ (mapModulesRec' (toString ./modules) import);
+  imports = (mapModulesRec' (toString ./modules) import);
 
   # https://nix-community.github.io/home-manager/index.html#sec-install-nixos-module
   # "use the global pkgs that is configured via the system level nixpkgs options"
