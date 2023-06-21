@@ -25,8 +25,10 @@
 
   # Minecraft server
   networking.firewall.allowedTCPPorts = [ 25565 ];
+  # Plasmo voice
+  networking.firewall.allowedUDPPorts = [ 25565 ];
   environment.systemPackages = with pkgs; [
-    # jdk17_headless decursio
-    jre8
+    jdk17_headless
+    # jre8
   ];
 }
