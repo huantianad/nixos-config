@@ -20,6 +20,7 @@ let
 
       # Rider Unity debugging
       xorg.libXcursor
+      xorg.libXrandr
       libglvnd
     ];
   };
