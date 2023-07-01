@@ -39,4 +39,7 @@ with lib;
     unzip
     wget
   ];
+
+  # Disable building documentation, seems to be broken on stable
+  documentation.nixos.enable = false;
 }
