@@ -12,13 +12,13 @@
 
 stdenv.mkDerivation rec {
   pname = "unityhub-native";
-  version = "1.52";
+  version = "1.53";
 
   src = fetchFromGitHub {
     owner = "Ravbug";
     repo = "UnityHubNative";
     rev = version;
-    sha256 = "sha256-TxTwhHSYYCey4oYdtWcHxaz4k0L9W0wXUzFifB0LyKU=";
+    sha256 = "sha256-UDHAhrtYKmDL3p62B0yqLeES9KTH01HMenG4CwRBXw0=";
   };
 
   nativeBuildInputs = [
@@ -29,6 +29,10 @@ stdenv.mkDerivation rec {
     perl
     python3 # Needed for mbedtls code gen
     wrapGAppsHook
+  ];
+
+  patches = [
+    ./patch.patch
   ];
 
   meta = with lib; {
