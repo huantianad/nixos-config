@@ -15,6 +15,7 @@ in
       element-desktop
       # cinny-desktop disable because it uses openssl 1.1
       vlc
+      soundfont-generaluser # for vlc midi
       gimp
       qbittorrent
       baobab
