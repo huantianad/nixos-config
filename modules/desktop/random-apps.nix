@@ -31,6 +31,7 @@ in
       qpwgraph
       newsflash
       easyeffects
+      obsidian
 
       ark
       # ark already comes with this, but we need it for dolphin extracting
