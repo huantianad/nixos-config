@@ -33,6 +33,8 @@ in
 
         # git diff to make sure nothing is staged
         bump = "git diff --cached --exit-code && nix flake update && git add flake.lock && git commit -m 'flake.lock: update'";
+        # quickly remove all result symlinks in current folder
+        ur = "find . -type l -name 'result*' -delete";
 
         ls = "exa --group-directories-first";
         ll = "exa -lbFh --git --group-directories-first";
