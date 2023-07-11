@@ -35,6 +35,7 @@ in
         bump = "git diff --cached --exit-code && nix flake update && git add flake.lock && git commit -m 'flake.lock: update'";
         # quickly remove all result symlinks in current folder
         ur = "find . -type l -name 'result*' -delete";
+        gohugo = "cd /var/www/website && git pull && nix develop --command bash -c 'hugo -d ../huantian.dev/'";
 
         ls = "exa --group-directories-first";
         ll = "exa -lbFh --git --group-directories-first";
