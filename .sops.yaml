@@ -1,0 +1,13 @@
+keys:
+  - &huantian age1945cpwtk4acsuaec6cgmlr55e4ycuvuu47hef54mwfqun4na9u6qtv9555
+  - &oracle-main age1dxf2567j8zmsdxnmpdgm2s8urmfzdpp09ma7xszwda4eqkwl2gfqxpapk2
+  - &oracle-micro1 age1qf2wpgs4uktgcasrzte04058e4ey343qdl9rr4604h3walu65umqvnt7rf
+  - &oracle-micro2 age1v5y3g2xvtkvsxsev7krc3kguh6a6uu8uzdgtes46fystcyw3wfjq8nxzvv
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *huantian
+          - *oracle-main
+          - *oracle-micro1
+          - *oracle-micro2

@@ -20,6 +20,8 @@ in
       bat
       ripgrep
       comma
+      age
+      sops
     ];
 
     programs.zsh = {
