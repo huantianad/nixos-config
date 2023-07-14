@@ -42,4 +42,7 @@ with lib;
 
   # Disable building documentation, seems to be broken on stable
   documentation.nixos.enable = false;
+
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 }

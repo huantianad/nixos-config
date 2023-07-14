@@ -101,6 +101,26 @@
         "type": "github"
       }
     },
+    "minifluxng": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1684837469,
+        "narHash": "sha256-XDrJkpgWizylu59bJrIIR3jDkI1mFpYzMIlGkrkL4JQ=",
+        "owner": "~bwolf",
+        "repo": "miniflux.nix",
+        "rev": "f89879e6b9d7b1a560cb8e963a78d307dd0d14eb",
+        "type": "sourcehut"
+      },
+      "original": {
+        "owner": "~bwolf",
+        "repo": "miniflux.nix",
+        "type": "sourcehut"
+      }
+    },
     "nixinate": {
       "inputs": {
         "nixpkgs": [
@@ -175,6 +195,7 @@
         "fenix": "fenix",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
+        "minifluxng": "minifluxng",
         "nixinate": "nixinate",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",

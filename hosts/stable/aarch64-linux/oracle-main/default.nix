@@ -20,6 +20,7 @@
     services = {
       synapse.enable = true;
       website.enable = true;
+      miniflux.enable = true;
     };
   };
 
