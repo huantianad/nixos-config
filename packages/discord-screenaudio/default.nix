@@ -17,13 +17,13 @@
 
 stdenv.mkDerivation rec {
   pname = "discord-screenaudio";
-  version = "1.7.1";
+  version = "1.8.1";
 
   src = fetchFromGitHub {
     owner = "maltejur";
     repo = "discord-screenaudio";
     rev = "v${version}";
-    sha256 = "sha256-3bYxD3MAzAvwsqtH5D1EoeTzN0Nd/ZM+ZU1CnMa2FZo=";
+    hash = "sha256-dCamrgtXhbtJvn8J1GVbY2mWLC3kZUGWbKcT44ei2MU=";
     fetchSubmodules = true;
   };
 
@@ -55,10 +55,9 @@ stdenv.mkDerivation rec {
     systemd
   ];
 
-  NIX_CFLAGS_COMPILE = [
-    "-I${pipewire.dev}/include/pipewire-0.3"
-    "-I${pipewire.dev}/include/spa-0.2"
-    "-Wno-pedantic"
+  cmakeFlags = [
+    "-DPipeWire_INCLUDE_DIRS=${pipewire.dev}/include/pipewire-0.3"
+    "-DSpa_INCLUDE_DIRS=${pipewire.dev}/include/spa-0.2"
   ];
 
   postFixup = ''
