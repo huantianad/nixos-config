@@ -15,6 +15,7 @@ in
     services.minifluxng = {
       enable = true;
       listenAddress = "127.0.0.1:8877";
+      baseUrl = "https://miniflux.huantian.dev/";
     };
 
     modules.services.caddy.enable = true;
