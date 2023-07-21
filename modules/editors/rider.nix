@@ -5,44 +5,36 @@ with lib.my;
 let
   cfg = config.modules.editors.rider;
 
-  rider-fhs = pkgs.buildFHSUserEnv {
-    name = "rider-fhs";
-    runScript = "";
+  extra-path = with pkgs; [
+    dotnetCorePackages.sdk_6_0
+    dotnetPackages.Nuget
+    mono
+    msbuild
+  ];
 
-    targetPkgs = pkgs: with pkgs; [
-      dotnetCorePackages.sdk_6_0
-      dotnetPackages.Nuget
-      mono
-      msbuild
+  extra-lib = with pkgs;[
+    # Personal development stuff
+    xorg.libX11
 
-      # Personal development stuff
-      xorg.libX11
-
-      # Rider Unity debugging
-      xorg.libXcursor
-      xorg.libXrandr
-      libglvnd
-    ];
-  };
+    # Rider Unity debugging
+    xorg.libXcursor
+    xorg.libXrandr
+    libglvnd
+  ];
 
   rider = pkgs.jetbrains.rider.overrideAttrs (attrs: {
     postInstall = ''
-      # wrap rider in my custom fhs which has some dependencies
+      # Wrap rider with extra tools and libraries
       mv $out/bin/rider $out/bin/.rider-unwrapped
-      makeWrapper ${rider-fhs}/bin/rider-fhs $out/bin/rider \
+      makeWrapper $out/bin/.rider-unwrapped $out/bin/rider \
         --argv0 rider \
-        --add-flags $out/bin/.rider-unwrapped
+        --prefix PATH : "${lib.makeBinPath extra-path}" \
+        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath extra-lib}"
 
-      ## Making Unity Rider plugin work!
-      # unity plugins looks for a build.txt at ../../build.txt, relative to binary
-      # same for the product-info.json, both are used for BuildVersion and Numbers
-      #ln -s $out/rider/build.txt $out/
-      #ln -s $out/rider/product-info.json $out/
-
-      # looks for ../../plugins/rider-unity, relative to binary
-      # it needs some dll file in there, which it uses to bind to rider
-      #ln -s $out/rider/plugins $out/plugins
-
+      # Making Unity Rider plugin work!
+      # The plugin expects the binary to be at /rider/bin/rider, with bundled files at /rider/
+      # It does this by going up one directory from the directory the binary is in
+      # We have rider binary at $out/bin/rider, so we need to link /rider/ to $out/
       shopt -s extglob
       ln -s $out/rider/!(bin) $out/
       shopt -u extglob
