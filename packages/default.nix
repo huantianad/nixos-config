@@ -22,6 +22,8 @@ in {
 
   unityhub-native = callPackage ./unityhub-native { };
 
+  unnamed-sdvx-clone = callPackage ./unnamed-sdvx-clone { };
+
   webcord = callPackage ./webcord { };
 
   xmage = callPackage ./xmage { };
