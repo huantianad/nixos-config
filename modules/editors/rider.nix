@@ -25,8 +25,8 @@ let
   rider = pkgs.jetbrains.rider.overrideAttrs (attrs: {
     postInstall = ''
       # Wrap rider with extra tools and libraries
-      mv $out/bin/rider $out/bin/.rider-unwrapped
-      makeWrapper $out/bin/.rider-unwrapped $out/bin/rider \
+      mv $out/bin/rider $out/bin/.rider-toolless
+      makeWrapper $out/bin/.rider-toolless $out/bin/rider \
         --argv0 rider \
         --prefix PATH : "${lib.makeBinPath extra-path}" \
         --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath extra-lib}"
@@ -49,11 +49,21 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [ rider ];
 
-    # unity looks for rider binary path in this location, trick it!
+    # Unity Rider plugin looks here for a .desktop file,
+    # which it uses to find the path to the rider binary.
     home-manager.users.huantian.home.file = {
-      ".local/share/applications/jetbrains-rider.desktop".text = ''
-        Exec="${rider}/bin/rider"
-      '';
+      ".local/share/applications/jetbrains-rider.desktop".source =
+        let
+          desktopFile = pkgs.makeDesktopItem {
+            name = "jetbrains-rider";
+            desktopName = "Rider";
+            exec = "\"${rider}/bin/rider\"";
+            icon = "rider";
+            type = "Application";
+            extraConfig.NoDisplay = "true";
+          };
+        in
+        "${desktopFile}/share/applications/jetbrains-rider.desktop";
     };
   };
 }
