@@ -212,7 +212,12 @@ in
         #########
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";
-        "nix.serverSettings".nil.formatting.command = [ "nixpkgs-fmt" ];
+        "nix.serverSettings".nil = {
+          formatting.command = [ "nixpkgs-fmt" ];
+          nix.flake = {
+            autoArchive = true;
+          };
+        };
         "[nix]" = {
           "editor.tabSize" = 2;
           "editor.formatOnSave" = true;
