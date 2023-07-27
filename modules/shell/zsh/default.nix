@@ -65,7 +65,7 @@ in
     };
 
     # Font that p10k uses, nerd font includes icons
-    fonts.fonts = with pkgs; [
+    fonts.packages = with pkgs; [
       meslo-lgs-nf
     ];
 
