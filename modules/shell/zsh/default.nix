@@ -64,11 +64,6 @@ in
       };
     };
 
-    # Font that p10k uses, nerd font includes icons
-    fonts.packages = with pkgs; [
-      meslo-lgs-nf
-    ];
-
     home-manager.users.huantian.programs = {
       zsh.enable = true;
       zsh.initExtraFirst = ''

@@ -15,6 +15,9 @@ in
       fira-code
       corefonts
 
+      # Font for p10k theme
+      meslo-lgs-nf
+
       # Some CJK Fonts
       source-han-serif
       source-han-sans
