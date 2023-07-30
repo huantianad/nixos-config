@@ -25,7 +25,7 @@ in
       kid3
       # soulseekqt
       bitwarden
-      # peek
+      peek
       # musescore
       jellyfin-media-player
       qpwgraph
