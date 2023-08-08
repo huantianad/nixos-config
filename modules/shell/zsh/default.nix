@@ -33,17 +33,17 @@ in
         info = "info --vi-keys";
         grep = "rg";
 
-        # git diff to make sure nothing is staged
-        bump = "git diff --cached --exit-code && nix flake update && git add flake.lock && git commit -m 'flake.lock: update'";
+        bump = "nix flake update --commit-lock-file";
         # quickly remove all result symlinks in current folder
         ur = "find . -maxdepth 1 -type l -name 'result*' -delete";
         gohugo = "cd /var/www/website && git pull && nix develop --command bash -c 'hugo -d ../huantian.dev/'";
 
-        ls = "exa --group-directories-first";
-        ll = "exa -lbFh --git --group-directories-first";
-        l = "exa -lbFha --git --group-directories-first";
-        la = "exa -lbhHigmuSa --git --color-scale --group-directories-first";
-        lx = "exa -lbhHigmuSa@ --git --color-scale --group-directories-first";
+        exa = "exa --group-directories-first";
+        ls = "exa";
+        ll = "exa -lbFh --git";
+        l = "exa -lbFha --git";
+        la = "exa -lbhHigmuSa --git --color-scale";
+        lx = "exa -lbhHigmuSa@ --git --color-scale";
         tree = "exa --tree";
       };
 
