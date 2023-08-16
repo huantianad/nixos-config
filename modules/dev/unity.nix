@@ -2,10 +2,10 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.programs.unity;
+let cfg = config.modules.dev.unity;
 in
 {
-  options.modules.desktop.programs.unity = {
+  options.modules.dev.unity = {
     enable = mkBoolOpt false;
   };
 

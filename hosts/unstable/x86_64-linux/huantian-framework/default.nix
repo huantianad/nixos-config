@@ -34,7 +34,6 @@
         fcitx.enable = true;
         qmk.enable = true;
         tauon.enable = true;
-        jetbrains-toolbox.enable = false;
         unity.enable = false;
         xbindkeys.enable = false;
       };
@@ -43,6 +42,7 @@
     dev = {
       cc.enable = true;
       tex.enable = false;
+      unity.enable = true;
     };
 
     editors = {

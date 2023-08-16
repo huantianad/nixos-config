@@ -29,6 +29,6 @@ in
       (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
     ];
 
-    programs.zsh.ohMyZsh.plugins = [ "direnv" ];
+    programs.zsh.ohMyZsh.plugins = mkIf config.modules.shell.zsh.enable [ "direnv" ];
   };
 }

@@ -38,8 +38,6 @@
           enable = true;
           openFirewall = true;
         };
-        jetbrains-toolbox.enable = false;
-        unity.enable = true;
         xbindkeys.enable = true;
       };
     };
@@ -48,6 +46,7 @@
       cc.enable = true;
       nim.enable = true;
       tex.enable = false;
+      unity.enable = true;
     };
 
     editors = {
