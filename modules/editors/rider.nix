@@ -60,6 +60,7 @@ in
             exec = "\"${rider}/bin/rider\"";
             icon = "rider";
             type = "Application";
+            # Don't show desktop icon in search or run launcher
             extraConfig.NoDisplay = "true";
           };
         in

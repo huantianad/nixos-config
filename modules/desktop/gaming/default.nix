@@ -15,15 +15,11 @@ in
       prismlauncher
       scarab
       cockatrice
-      airshipper
-      osu-lazer-bin
       melonDS
       r2modman
       (tetrio-desktop.override {
         withTetrioPlus = true;
       })
-
-      # my.tjaplayer3-f
     ];
 
     # Don't override `prismlauncher` as that makes Nix rebuild it

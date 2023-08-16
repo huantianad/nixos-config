@@ -13,6 +13,7 @@ in
     environment.systemPackages = [ pkgs.xbindkeys ];
 
     home-manager.users.huantian.home.file = {
+      # Use xbindkeys to fix play-pause button on keyboard
       ".xbindkeysrc/".text = ''
         "${pkgs.playerctl}/bin/playerctl play-pause"
           XF86AudioPlay

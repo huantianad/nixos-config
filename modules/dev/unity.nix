@@ -13,6 +13,7 @@ in
     environment.systemPackages = [
       (pkgs.unityhub.override {
         extraPkgs = pkgs: with pkgs; [
+          # Needed for Rhythm Doctor
           harfbuzz
           libogg
         ];
