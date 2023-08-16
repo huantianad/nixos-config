@@ -24,7 +24,7 @@
 
       gaming = {
         enable = true;
-        dolphin.enable = true;
+        dolphin.enable = false;
         dolphin.setUdevRules = true;
         steam.enable = true;
       };
@@ -32,9 +32,8 @@
       programs = {
         armcord.enable = true;
         fcitx.enable = true;
-        qmk.enable = true;
+        qmk.enable = false;
         tauon.enable = true;
-        unity.enable = false;
         xbindkeys.enable = false;
       };
     };
@@ -48,7 +47,7 @@
     editors = {
       vscode.enable = true;
       vim.enable = true;
-      rider.enable = false;
+      rider.enable = true;
     };
 
     hardware = {
@@ -84,6 +83,5 @@
   security.pam.services.login.fprintAuth = false;
 
   environment.systemPackages = with pkgs; [
-    checkra1n
   ];
 }

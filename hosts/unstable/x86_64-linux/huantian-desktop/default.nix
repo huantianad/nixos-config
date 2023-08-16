@@ -33,7 +33,7 @@
         discord.enable = false;
         fcitx.enable = true;
         gamemode.enable = true;
-        # qmk.enable = true;
+        qmk.enable = false;
         tauon = {
           enable = true;
           openFirewall = true;
@@ -85,15 +85,6 @@
     # my.discord-screenaudio
     # nix-alien
     my.musescore3
-    (packwiz.overrideAttrs (attrs: {
-      version = "unstable-2023-05-31";
-      src = fetchFromGitHub {
-        owner = "packwiz";
-        repo = "packwiz";
-        rev = "cbd38b3b73bb1e428c183025b5e1d9e785b6c040";
-        sha256 = "sha256-yCX4/EDD+CUwxYZPXnCkBP/9wTqaadBbazJKVD4wb14=";
-      };
-    }))
   ];
 
   # Causes error on rebuild sometime, slows startup => disable
