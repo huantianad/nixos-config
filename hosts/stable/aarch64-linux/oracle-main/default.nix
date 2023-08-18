@@ -18,6 +18,7 @@
 
   modules = {
     services = {
+      grafana.enable = true;
       synapse.enable = true;
       website.enable = true;
       miniflux.enable = true;
