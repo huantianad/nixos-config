@@ -22,6 +22,7 @@
       synapse.enable = true;
       website.enable = true;
       miniflux.enable = true;
+      prometheus.enable = true;
     };
   };
 

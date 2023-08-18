@@ -12,15 +12,17 @@ in
   config = mkIf cfg.enable {
     services.grafana = {
       enable = true;
-      domain = "grafana.huantian.dev";
-      port = 2342;
-      addr = "127.0.0.1";
+      settings.server = {
+        domain = "grafana.huantian.dev";
+        http_port = 2342;
+        http_addr = "127.0.0.1";
+      };
     };
 
     modules.services.caddy.enable = true;
 
     services.caddy = {
-      virtualHosts.${config.services.grafana.domain}.extraConfig = ''
+      virtualHosts.${config.services.grafana.settings.server.domain}.extraConfig = ''
         encode zstd gzip
 
         header {
@@ -38,7 +40,7 @@ in
           -Server
         }
 
-        reverse_proxy http://localhost:${toString config.services.grafana.port}
+        reverse_proxy http://localhost:${toString config.services.grafana.settings.server.http_port}
       '';
     };
   };
