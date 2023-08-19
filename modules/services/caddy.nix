@@ -17,6 +17,11 @@ in
       enable = true;
       logFormat = mkForce "level INFO";
       email = "davidtianli@gmail.com";
+      globalConfig = ''
+        servers {
+          metrics
+        }
+      '';
     };
   };
 }

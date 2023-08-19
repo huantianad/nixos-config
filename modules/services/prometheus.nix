@@ -21,6 +21,12 @@ in
             targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
           }];
         }
+        {
+          job_name = "oracle-main-caddy";
+          static_configs = [{
+            targets = [ "127.0.0.1:2019" ];
+          }];
+        }
       ];
 
       exporters = {
