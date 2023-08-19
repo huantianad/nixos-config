@@ -34,6 +34,7 @@
         fcitx.enable = true;
         qmk.enable = false;
         tauon.enable = true;
+        waydroid.enable = true;
         xbindkeys.enable = false;
       };
     };
@@ -41,13 +42,13 @@
     dev = {
       cc.enable = true;
       tex.enable = false;
-      unity.enable = true;
+      unity.enable = false;
     };
 
     editors = {
       vscode.enable = true;
       vim.enable = true;
-      rider.enable = true;
+      rider.enable = false;
     };
 
     hardware = {
