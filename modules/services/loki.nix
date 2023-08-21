@@ -13,7 +13,7 @@ in
     services.loki = {
       enable = true;
       configuration = {
-        server.http_listen_port = 3030;
+        server.http_listen_port = 3100;
 
         auth_enabled = false;
 
@@ -82,6 +82,10 @@ in
               store = "inmemory";
             };
           };
+        };
+
+        frontend = {
+          max_outstanding_per_tenant = 2048;
         };
       };
     };
