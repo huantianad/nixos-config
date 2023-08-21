@@ -84,7 +84,7 @@ in
           };
         };
 
-        frontend = {
+        query_scheduler = {
           max_outstanding_per_tenant = 2048;
         };
       };
