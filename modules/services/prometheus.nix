@@ -27,6 +27,12 @@ in
             targets = [ "127.0.0.1:2019" ];
           }];
         }
+        {
+          job_name = "miniflux";
+          static_configs = [{
+            targets = [ "127.0.0.1:8877" ];
+          }];
+        }
       ];
 
       exporters = {

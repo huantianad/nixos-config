@@ -16,6 +16,7 @@ in
       enable = true;
       listenAddress = "127.0.0.1:8877";
       baseUrl = "https://miniflux.huantian.dev/";
+      enableMetrics = true;
     };
 
     modules.services.caddy.enable = true;
@@ -39,7 +40,13 @@ in
           -Server
         }
 
-        reverse_proxy http://localhost:8877
+        @notblacklisted {
+          not {
+            path /metrics*
+          }
+        }
+
+        reverse_proxy @notblacklisted http://localhost:8877
       '';
     };
   };
