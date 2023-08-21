@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ options, config, lib, pkgs, unstable, ... }:
 
 with lib;
 with lib.my;
@@ -15,6 +15,7 @@ in
     # TODO: Setup custom error code handling pages
     services.caddy = {
       enable = true;
+      package = unstable.caddy;
       logFormat = mkForce "level INFO";
       email = "davidtianli@gmail.com";
       globalConfig = ''
