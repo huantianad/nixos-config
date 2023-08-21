@@ -10,7 +10,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    fonts.packages = with pkgs; [
+    fonts.fonts = with pkgs; [
       liberation_ttf
       fira-code
       corefonts
