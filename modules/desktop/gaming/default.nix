@@ -11,12 +11,13 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      lutris
-      prismlauncher
-      scarab
       cockatrice
+      lutris
       melonDS
+      prismlauncher
       r2modman
+      ryujinx
+      scarab
       (tetrio-desktop.override {
         withTetrioPlus = true;
       })
