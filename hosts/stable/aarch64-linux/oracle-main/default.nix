@@ -19,6 +19,7 @@
   modules = {
     services = {
       grafana.enable = true;
+      loki.enable = true;
       synapse.enable = true;
       website.enable = true;
       miniflux.enable = true;
