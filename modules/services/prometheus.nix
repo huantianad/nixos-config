@@ -14,6 +14,13 @@ in
       enable = true;
       port = 9001;
 
+      ruleFiles = [
+        (pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/matrix-org/synapse/ac7e5683d6c8f7cbe835371a05587e7d739b9854/contrib/prometheus/synapse-v2.rules";
+          hash = "sha256-WldlBdCMzul49OlFhJMsrx4MYFakHTa36Y9HnV22EwI=";
+        })
+      ];
+
       scrapeConfigs = [
         {
           job_name = "oracle-main";
@@ -31,6 +38,13 @@ in
           job_name = "miniflux";
           static_configs = [{
             targets = [ "127.0.0.1:8877" ];
+          }];
+        }
+        {
+          job_name = "synapse";
+          metrics_path = "/_synapse/metrics";
+          static_configs = [{
+            targets = [ "127.0.0.1:9003" ];
           }];
         }
       ];

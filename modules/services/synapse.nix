@@ -71,19 +71,34 @@ in
       enable = true;
       settings = {
         server_name = config.networking.domain;
-        listeners = [{
-          port = 8008;
-          bind_addresses = [ "::1" ];
-          type = "http";
-          tls = false;
-          x_forwarded = true;
-          resources = [
-            {
-              names = [ "client" "federation" ];
-              compress = false;
-            }
-          ];
-        }];
+        enable_metrics = true;
+        listeners = [
+          {
+            port = 8008;
+            bind_addresses = [ "::1" ];
+            type = "http";
+            tls = false;
+            x_forwarded = true;
+            resources = [
+              {
+                names = [ "client" "federation" ];
+                compress = false;
+              }
+            ];
+          }
+          {
+            port = 9003;
+            bind_addresses = [ "::1" "127.0.0.1" ];
+            type = "http";
+            tls = false;
+            resources = [
+              {
+                names = [ "metrics" ];
+                compress = false;
+              }
+            ];
+          }
+        ];
       };
     };
   };
