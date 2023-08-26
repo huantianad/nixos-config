@@ -1,7 +1,10 @@
 { pkgs }:
 
-let callPackage = pkgs.callPackage;
-in {
+pkgs.lib.makeScope pkgs.newScope (self:
+let
+  callPackage = self.callPackage;
+in
+{
   musescore3 = pkgs.libsForQt5.callPackage ./musescore3 { };
 
   tjaplayer3-f = callPackage ./tjaplayer3-f { };
@@ -12,3 +15,4 @@ in {
 
   xmage = callPackage ./xmage { };
 }
+)
