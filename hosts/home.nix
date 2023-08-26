@@ -13,11 +13,6 @@ with lib;
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [ pantum-driver ];
 
-  # Steam controller support
-  hardware.steam-hardware.enable = true;
-  # Joycon and Pro Controller support
-  services.joycond.enable = true;
-
   boot = {
     tmp.cleanOnBoot = true;
     kernelPackages = pkgs.linuxPackages_latest;

@@ -26,5 +26,10 @@ in
     # Don't override `prismlauncher` as that makes Nix rebuild it
     environment.variables.PRISMLAUNCHER_JAVA_PATHS = with pkgs;
       lib.makeSearchPath "bin/java" [ jdk19 jdk11 ];
+
+    # Steam controller support
+    hardware.steam-hardware.enable = true;
+    # Joycon and Pro Controller support
+    services.joycond.enable = true;
   };
 }
