@@ -34,7 +34,7 @@
         fcitx.enable = true;
         qmk.enable = false;
         tauon.enable = true;
-        waydroid.enable = true;
+        waydroid.enable = false;
         xbindkeys.enable = false;
       };
     };
