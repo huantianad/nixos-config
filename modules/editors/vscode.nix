@@ -4,6 +4,12 @@ with lib;
 with lib.my;
 let
   cfg = config.modules.editors.vscode;
+
+  extensions-input = inputs.nix-vscode-extensions.extensions.${pkgs.system};
+  # Use latest extension if not found for given vscode version
+  extensions = attrsets.recursiveUpdate
+    extensions-input
+    (extensions-input.forVSCodeVersion pkgs.vscode.version);
 in
 {
   options.modules.editors.vscode = {
@@ -11,10 +17,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [
-      inputs.fenix.overlays.default
-    ];
-
     environment.systemPackages = with pkgs; [
       nixpkgs-fmt
       nil
@@ -22,23 +24,78 @@ in
 
     home-manager.users.huantian.programs.vscode = {
       enable = true;
-      extensions = with pkgs.vscode-extensions; [
-        matklad.rust-analyzer-nightly # Provided by fenix
-
-        ms-dotnettools.csharp
-        vadimcn.vscode-lldb
-        redhat.java
-
-        njpwerner.autodocstring
-        bungcip.better-toml
-        redhat.vscode-yaml
-
-        oderwat.indent-rainbow
-        pkief.material-icon-theme
+      extensions = with extensions.vscode-marketplace; [
+        # Random Utilities
         adpyke.codesnap
+        albert.tabout
+        drrouman.git-coauthors
+        ibm.output-colorizer
+        icrawl.discord-vscode
+        louiswt.regexp-preview
+        mkhl.direnv
+        ms-vscode.live-server
+        oderwat.indent-rainbow
 
-        github.vscode-pull-request-github
+        # Themes
+        code-bizarre.purple-wolf-theme
+        monokai.theme-monokai-pro-vscode
+        pkief.material-icon-theme
+        teabyii.ayu
+
+        # Git/GitHub
         eamodio.gitlens
+        github.vscode-github-actions
+        github.vscode-pull-request-github
+        waderyan.gitblame
+
+        # Tests
+        hbenl.vscode-test-explorer
+        ms-vscode.test-adapter-converter
+
+        # Python
+        ms-python.flake8
+        ms-python.isort
+        ms-python.python
+        ms-python.vscode-pylance
+        littlefoxteam.vscode-python-test-adapter
+        # Python Utils
+        kevinrose.vsc-python-indent
+        njpwerner.autodocstring
+        batisteo.vscode-django
+        # Jupyter
+        ms-toolsai.jupyter
+        ms-toolsai.jupyter-keymap
+        ms-toolsai.jupyter-renderers
+        ms-toolsai.vscode-jupyter-cell-tags
+        ms-toolsai.vscode-jupyter-slideshow
+
+        # Java
+        redhat.java
+        vscjava.vscode-java-debug
+        vscjava.vscode-java-dependency
+        vscjava.vscode-java-test
+
+        # C#
+        ms-dotnettools.csharp
+        ms-dotnettools.vscode-dotnet-runtime
+
+        # C/C++
+        ms-vscode.cmake-tools
+        ms-vscode.cpptools
+        ms-vscode.cpptools-extension-pack
+        ms-vscode.cpptools-themes
+        twxs.cmake
+        vadimcn.vscode-lldb
+
+        # Other Lang Support
+        alexcvzz.vscode-sqlite
+        bradlc.vscode-tailwindcss
+        ecmel.vscode-html-css
+        editorconfig.editorconfig
+        jnoortheen.nix-ide
+        nimsaem.nimvscode
+        redhat.vscode-yaml
+        tamasfe.even-better-toml
       ];
 
 

@@ -13,9 +13,6 @@
     home-manager-stable.url = "github:nix-community/home-manager/release-23.05";
     home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
 
-    fenix.url = "github:nix-community/fenix";
-    fenix.inputs.nixpkgs.follows = "nixpkgs";
-
     aw-watcher-custom.url = "github:huantianad/aw-watcher-custom";
     aw-watcher-custom.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -28,6 +25,9 @@
 
     minifluxng.url = "sourcehut:~bwolf/miniflux.nix";
     minifluxng.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ { self, nixpkgs, ... }:
