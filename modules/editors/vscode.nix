@@ -7,7 +7,7 @@ let
 
   extensions-input = inputs.nix-vscode-extensions.extensions.${pkgs.system};
   # Use latest extension if not found for given vscode version
-  extensions = attrsets.recursiveUpdate
+  extensions = lib.attrsets.recursiveUpdate
     extensions-input
     (extensions-input.forVSCodeVersion pkgs.vscode.version);
 in
@@ -33,7 +33,6 @@ in
         icrawl.discord-vscode
         louiswt.regexp-preview
         mkhl.direnv
-        ms-vscode.live-server
         oderwat.indent-rainbow
 
         # Themes
@@ -87,10 +86,14 @@ in
         twxs.cmake
         vadimcn.vscode-lldb
 
+        # HTML/CSS
+        ecmel.vscode-html-css
+        ms-vscode.live-server
+        bradlc.vscode-tailwindcss
+
         # Other Lang Support
         alexcvzz.vscode-sqlite
-        bradlc.vscode-tailwindcss
-        ecmel.vscode-html-css
+        davidanson.vscode-markdownlint
         editorconfig.editorconfig
         jnoortheen.nix-ide
         nimsaem.nimvscode
@@ -122,9 +125,11 @@ in
         };
         "terminal.integrated.persistentSessionReviveProcess" = "never";
 
-        # "workbench.colorTheme" = "Purple Wolf Theme";
+        # Themes
+        "workbench.colorTheme" = "Default Dark Modern";
         "workbench.iconTheme" = "material-icon-theme";
 
+        # Fonts
         "editor.fontSize" = 14;
         # JetBrains Mono; MonoLisa; Fira Code
         "editor.fontFamily" = "JetBrains Mono";
@@ -134,6 +139,7 @@ in
         "editor.bracketPairColorization.enabled" = true;
         "editor.rulers" = [ 120 ];
 
+        # Cursor and Scrolling
         "editor.cursorBlinking" = "phase";
         "editor.cursorSmoothCaretAnimation" = "on";
         "editor.smoothScrolling" = true;
@@ -146,6 +152,7 @@ in
           "strings" = true;
         };
 
+        # File explorer
         "explorer.confirmDelete" = false;
         "explorer.sortOrder" = "type";
 
@@ -155,6 +162,7 @@ in
         "debug.onTaskErrors" = "abort";
         "debug.terminal.clearBeforeReusing" = true;
 
+        # Files to hide from explorer
         "files.exclude" = {
           "**/.git" = true;
           "**/.svn" = true;
