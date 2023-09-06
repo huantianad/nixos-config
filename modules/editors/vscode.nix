@@ -34,6 +34,7 @@ in
         louiswt.regexp-preview
         mkhl.direnv
         oderwat.indent-rainbow
+        # usernamehw.errorlens
 
         # Themes
         code-bizarre.purple-wolf-theme
