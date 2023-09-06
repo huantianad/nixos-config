@@ -73,6 +73,9 @@
 
   # Some battery life tuning
   services.tlp.enable = true;
+  services.tlp.settings = {
+    PCIE_ASPM_ON_BAT = "powersupersave";
+  };
   # Disable power-profiles-daemon as it conflicts with tlp
   services.power-profiles-daemon.enable = false;
   # Thermal config
