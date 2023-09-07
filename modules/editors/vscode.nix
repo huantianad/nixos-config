@@ -35,6 +35,7 @@ in
         mkhl.direnv
         oderwat.indent-rainbow
         # usernamehw.errorlens
+        streetsidesoftware.code-spell-checker
 
         # Themes
         code-bizarre.purple-wolf-theme
