@@ -13,7 +13,7 @@ in
     environment.systemPackages = with pkgs; [
       kate
       element-desktop
-      # cinny-desktop disable because it uses openssl 1.1
+      cinny-desktop
       vlc
       soundfont-generaluser # for vlc midi
       gimp
@@ -32,6 +32,7 @@ in
       newsflash
       easyeffects
       obsidian
+      libsForQt5.merkuro
 
       ark
       # ark already comes with this, but we need it for dolphin extracting
