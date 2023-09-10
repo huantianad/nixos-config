@@ -1,4 +1,4 @@
-{ options, config, pkgs, lib, inputs, ... }:
+{ options, config, pkgs, lib, inputs, unstable, ... }:
 
 with lib;
 with lib.my;
@@ -11,7 +11,7 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      exa
+      unstable.eza # TODO: Remove the unstable prefix eventually
       killall
       btop
       wget
@@ -38,13 +38,13 @@ in
         ur = "find . -maxdepth 1 -type l -name 'result*' -delete";
         gohugo = "cd /var/www/website && git pull && nix develop --command bash -c 'hugo -d ../huantian.dev/'";
 
-        exa = "exa --group-directories-first";
-        ls = "exa";
-        ll = "exa -lbFh --git";
-        l = "exa -lbFha --git";
-        la = "exa -lbhHigmuSa --git --color-scale";
-        lx = "exa -lbhHigmuSa@ --git --color-scale";
-        tree = "exa --tree";
+        eza = "eza --group-directories-first";
+        ls = "eza";
+        ll = "eza -lbFh --git";
+        l = "eza -lbFha --git";
+        la = "eza -lbhHigmuSa --git --color-scale";
+        lx = "eza -lbhHigmuSa@ --git --color-scale";
+        tree = "eza --tree";
       };
 
       enableCompletion = true;
