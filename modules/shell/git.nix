@@ -28,6 +28,7 @@ in
         commit.gpgsign = true;
         core.autocrlf = "input";
         init.defaultBranch = "main";
+        # TODO: don't reference this if is on server
         core.askpass = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
         push.autoSetupRemote = "true";
       };
