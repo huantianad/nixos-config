@@ -109,6 +109,10 @@ in
         ## General ##
         #############
 
+        # Auto Update
+        "update.mode" = "none";
+        "extensions.autoUpdate" = false;
+
         # Terminal Setup
         "terminal.integrated.fontFamily" = "MesloLGS NF";
         "terminal.external.linuxExec" = "/home/huantian/.nix-profile/bin/zsh";
