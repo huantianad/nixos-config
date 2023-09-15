@@ -35,8 +35,9 @@ in
         # Themes
         code-bizarre.purple-wolf-theme
         monokai.theme-monokai-pro-vscode
-        pkief.material-icon-theme
         teabyii.ayu
+        # Icon Themes
+        pkief.material-icon-theme
 
         # Git/GitHub
         eamodio.gitlens
