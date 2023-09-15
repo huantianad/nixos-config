@@ -54,15 +54,16 @@ in
         ms-vscode.test-adapter-converter
 
         # Python
-        ms-python.flake8
-        ms-python.isort
         ms-python.python
         ms-python.vscode-pylance
-        littlefoxteam.vscode-python-test-adapter
         # Python Utils
-        kevinrose.vsc-python-indent
-        njpwerner.autodocstring
         batisteo.vscode-django
+        charliermarsh.ruff
+        kevinrose.vsc-python-indent
+        littlefoxteam.vscode-python-test-adapter
+        njpwerner.autodocstring
+        ms-python.black-formatter
+
         # Jupyter
         ms-toolsai.jupyter
         ms-toolsai.jupyter-keymap
@@ -131,19 +132,23 @@ in
         };
         "terminal.integrated.persistentSessionReviveProcess" = "never";
 
+        # Debug terminal/process
+        "debug.onTaskErrors" = "abort";
+        "debug.terminal.clearBeforeReusing" = true;
+
         # Themes
         "workbench.colorTheme" = "Default Dark Modern";
         "workbench.iconTheme" = "material-icon-theme";
 
         # Fonts
-        "editor.fontSize" = 14;
-        # JetBrains Mono; MonoLisa; Fira Code
+        "editor.fontSize" = 13;
         "editor.fontFamily" = "JetBrains Mono";
         "editor.fontLigatures" = true;
 
+        # Other editor display
         "editor.guides.bracketPairs" = true;
         "editor.bracketPairColorization.enabled" = true;
-        "editor.rulers" = [ 120 ];
+        "editor.rulers" = [ 80 100 ];
 
         # Cursor and Scrolling
         "editor.cursorBlinking" = "phase";
@@ -162,11 +167,11 @@ in
         "explorer.confirmDelete" = false;
         "explorer.sortOrder" = "type";
 
+        # Auto Save
         "files.autoSave" = "afterDelay";
         "files.autoSaveDelay" = 200;
+
         "files.trimTrailingWhitespace" = true;
-        "debug.onTaskErrors" = "abort";
-        "debug.terminal.clearBeforeReusing" = true;
 
         # Files to hide from explorer
         "files.exclude" = {
@@ -186,40 +191,31 @@ in
           "**/.settings" = true;
           "**/.factorypath" = true;
         };
+        # Additional file associations
         "files.associations" = {
           "**/*.html" = "html";
           "**/templates/**/*.html" = "django-html";
           "**/templates/**/*" = "django-txt";
           "**/requirements{/**;*}.{txt;in}" = "pip-requirements";
         };
+        "workbench.editorAssociations" = {
+          "*.ipynb" = "jupyter-notebook";
+        };
 
 
         ############
         ## Python ##
         ############
-        "python.linting.enabled" = true;
-        "python.linting.pylintEnabled" = false;
-        "python.linting.flake8Enabled" = true;
-        "python.linting.flake8Path" = "/usr/bin/flake8";
-        "python.linting.flake8Args" = [
-          "--max-line-length=120"
-          "--per-file-ignores=__init__.py=F401" # disable __init__ unused imports
-        ];
-
         "[python]" = {
           "editor.formatOnType" = false;
         };
 
-        "python.defaultInterpreterPath" = "${pkgs.python310Full}/bin/python";
         "python.languageServer" = "Pylance";
-        "isort.args" = [ "-l" "120" ];
         "python.analysis.typeCheckingMode" = "basic";
 
+        "ruff.organizeImports" = true;
         "autoDocstring.startOnNewLine" = true;
         "jupyter.askForKernelRestart" = false;
-        "workbench.editorAssociations" = {
-          "*.ipynb" = "jupyter-notebook";
-        };
 
         # Purple self and cls
         "editor.tokenColorCustomizations" = {
@@ -264,15 +260,17 @@ in
         ####################
         ## C# / Omnisharp ##
         ####################
-        "omnisharp.useGlobalMono" = "always";
-        "omnisharp.enableRoslynAnalyzers" = true;
-        "omnisharp.enableAsyncCompletion" = true; # Experimental; possibly disable this later.
+        "omnisharp.enableAsyncCompletion" = true;
+        "omnisharp.enableDecompilationSupport" = false;
+        "omnisharp.enableEditorConfigSupport" = true;
+        "omnisharp.organizeImportsOnFormat" = true;
+        "omnisharp.useModernNet" = true;
 
 
         #########
         ## Nim ##
         #########
-        "nim.nimprettyMaxLineLen" = 120;
+        "nim.nimprettyMaxLineLen" = 100;
         "[nim]" = {
           "editor.tabSize" = 2;
         };
