@@ -17,11 +17,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      nixpkgs-fmt
-      nil
-    ];
-
     home-manager.users.huantian.programs.vscode = {
       enable = true;
       extensions = with extensions.vscode-marketplace; [
@@ -280,9 +275,9 @@ in
         ## Nix ##
         #########
         "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nil";
+        "nix.serverPath" = "${pkgs.nil}/bin/nil";
         "nix.serverSettings".nil = {
-          formatting.command = [ "nixpkgs-fmt" ];
+          formatting.command = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
           nix.flake = {
             autoArchive = true;
           };
