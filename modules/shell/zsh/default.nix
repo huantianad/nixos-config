@@ -86,6 +86,7 @@ in
 
         # Use bat for manpages
         export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+        export MANROFFOPT="-c"
 
         export XDG_DATA_HOME="$HOME/.local/share"
         export XDG_CONFIG_HOME="$HOME/.config"
