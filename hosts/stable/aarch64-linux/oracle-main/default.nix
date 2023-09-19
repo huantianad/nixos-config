@@ -18,12 +18,13 @@
 
   modules = {
     services = {
+      etebase.enable = true;
       grafana.enable = true;
       loki.enable = true;
-      synapse.enable = true;
-      website.enable = true;
       miniflux.enable = true;
       prometheus.enable = true;
+      synapse.enable = true;
+      website.enable = true;
     };
   };
 
