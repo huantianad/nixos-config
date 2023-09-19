@@ -28,6 +28,9 @@
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
+
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.3.0";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ { self, nixpkgs, ... }:

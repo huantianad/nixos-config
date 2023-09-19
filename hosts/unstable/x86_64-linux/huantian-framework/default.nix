@@ -3,6 +3,7 @@
 {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+    inputs.lanzaboote.nixosModules.lanzaboote
     ../../../home.nix
     ./hardware-configuration.nix
   ];
@@ -71,6 +72,17 @@
     };
   };
 
+  # Lanzaboote currently replaces the systemd-boot module.
+  # This setting is usually set to true in configuration.nix
+  # generated at installation time. So we force it to false
+  # for now.
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
+  };
+
   # Some battery life tuning
   services.tlp.enable = true;
   services.tlp.settings = {
@@ -105,5 +117,6 @@
   security.pam.services.login.fprintAuth = false;
 
   environment.systemPackages = with pkgs; [
+    sbctl
   ];
 }
