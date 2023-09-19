@@ -18,7 +18,6 @@
 
   modules = {
     services = {
-      etebase.enable = true;
       grafana.enable = true;
       loki.enable = true;
       miniflux.enable = true;
