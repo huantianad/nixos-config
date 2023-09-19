@@ -10,10 +10,18 @@ in
   };
 
   config = mkIf cfg.enable {
+    sops.secrets."etebase/secret" = { };
+    sops.secrets."etebase/secret".owner = config.services.etebase-server.user;
+
+    users.users.${config.services.etebase-server.user}.extraGroups = [
+      config.users.groups.keys.name
+    ];
+
     services.etebase-server = {
       enable = true;
       port = 8007;
       settings = {
+        global.secret_file = "/run/secrets/etebase/secret";
         allowed_hosts.allowed_host1 = "etebase.huantian.dev";
       };
     };
