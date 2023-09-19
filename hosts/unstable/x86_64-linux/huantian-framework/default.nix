@@ -83,6 +83,8 @@
     pkiBundle = "/etc/secureboot";
   };
 
+  boot.initrd.systemd.enable = true;
+
   # Some battery life tuning
   services.tlp.enable = true;
   services.tlp.settings = {
