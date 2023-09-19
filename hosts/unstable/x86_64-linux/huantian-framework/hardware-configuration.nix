@@ -6,11 +6,18 @@
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   services.fstrim.enable = true;
+
+  boot.initrd.luks.devices = {
+    crypted = {
+      device = "/dev/disk/by-uuid/a8e99653-9b29-4152-a7a8-59d79ee11e70";
+      preLVM = true;
+    };
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/root";
