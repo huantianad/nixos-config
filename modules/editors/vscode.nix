@@ -203,11 +203,16 @@ in
         ## Python ##
         ############
         "[python]" = {
+          "editor.formatOnSave" = true;
           "editor.formatOnType" = false;
+          "editor.defaultFormatter" = "ms-python.black-formatter";
+          "editor.codeActionsOnSave" = {
+            "source.organizeImports" = true;
+          };
         };
 
         "python.languageServer" = "Pylance";
-        "python.analysis.typeCheckingMode" = "basic";
+        "python.analysis.typeCheckingMode" = "strict";
 
         "ruff.organizeImports" = true;
         "autoDocstring.startOnNewLine" = true;
