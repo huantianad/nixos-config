@@ -19,7 +19,6 @@ in
       file
       bat
       ripgrep
-      comma
       age
       sops
     ];

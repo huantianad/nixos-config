@@ -5,6 +5,7 @@ with lib.my;
 {
   imports = [
     inputs.sops-nix.nixosModules.sops
+    inputs.nix-index-database.nixosModules.nix-index
   ] ++ (mapModulesRec' (toString ./modules) import);
 
   # https://nix-community.github.io/home-manager/index.html#sec-install-nixos-module
@@ -48,7 +49,7 @@ with lib.my;
   ];
 
   programs.command-not-found.enable = false;
-  home-manager.users.huantian.programs.nix-index.enable = true;
+  programs.nix-index-database.comma.enable = true;
 
   system.configurationRevision = with inputs; mkIf (self ? rev) self.rev;
 
