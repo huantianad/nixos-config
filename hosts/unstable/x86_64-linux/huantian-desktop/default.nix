@@ -63,6 +63,7 @@
 
     services = {
       usbmuxd.enable = true;
+      ssh.enable = true;
     };
 
     shell = {
