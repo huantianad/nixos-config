@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
-    inputs.lanzaboote.nixosModules.lanzaboote
     ../../../home.nix
     ./hardware-configuration.nix
   ];
@@ -53,8 +52,10 @@
     };
 
     hardware = {
+      battery.enable = true;
       bluetooth.enable = true;
       intel.enable = true;
+      lanzaboote.enable = true;
       pipewire.enable = true;
       touchpad.enable = false;
     };
@@ -72,53 +73,11 @@
     };
   };
 
-  # Lanzaboote currently replaces the systemd-boot module.
-  # This setting is usually set to true in configuration.nix
-  # generated at installation time. So we force it to false
-  # for now.
-  boot.loader.systemd-boot.enable = lib.mkForce false;
-
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/etc/secureboot";
-  };
-
-  boot.initrd.systemd.enable = true;
-
-  # Some battery life tuning
-  services.tlp.enable = true;
-  services.tlp.settings = {
-    PCIE_ASPM_ON_BAT = "powersupersave";
-
-    INTEL_GPU_MIN_FREQ_ON_BAT = 100;
-    INTEL_GPU_MAX_FREQ_ON_BAT = 800;
-    INTEL_GPU_BOOST_FREQ_ON_BAT = 1000;
-    INTEL_GPU_MIN_FREQ_ON_AC = 100;
-    INTEL_GPU_MAX_FREQ_ON_AC = 1300;
-    INTEL_GPU_BOOST_FREQ_ON_AC = 1300;
-
-    CPU_MIN_PERF_ON_AC = 0;
-    CPU_MAX_PERF_ON_AC = 100;
-    CPU_MIN_PERF_ON_BAT = 0;
-    CPU_MAX_PERF_ON_BAT = 30;
-
-    CPU_SCALING_GOVERNOR_ON_AC = "powersave";
-    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-    CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
-    CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-  };
-  # Disable power-profiles-daemon as it conflicts with tlp
-  services.power-profiles-daemon.enable = false;
-  # Thermal config
-  services.thermald.enable = true;
-
   # Disable fingerprint auth on first login
   # SDDM fingerprint is buggy and I need to type password for KWallet anyway
   security.pam.services.sddm.fprintAuth = false;
   security.pam.services.login.fprintAuth = false;
 
   environment.systemPackages = with pkgs; [
-    sbctl
   ];
 }
