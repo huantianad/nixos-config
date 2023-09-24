@@ -79,5 +79,6 @@
   security.pam.services.login.fprintAuth = false;
 
   environment.systemPackages = with pkgs; [
+    webcord
   ];
 }
