@@ -80,5 +80,6 @@
 
   environment.systemPackages = with pkgs; [
     webcord
+    my.musescore3
   ];
 }
