@@ -41,6 +41,7 @@
 
     dev = {
       cc.enable = true;
+      matlab.enable = true;
       tex.enable = false;
       unity.enable = false;
     };
