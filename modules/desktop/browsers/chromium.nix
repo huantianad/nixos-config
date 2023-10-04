@@ -11,8 +11,5 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ chromium ];
-
-    nixpkgs.config.chromium.commandLineArgs = mkIf config.modules.desktop.wayland.enable
-      "--enable-features=UseOzonePlatform --ozone-platform=wayland";
   };
 }

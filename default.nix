@@ -15,6 +15,7 @@ with lib.my;
   home-manager.useGlobalPkgs = true;
 
   # Configure nix and nixpkgs
+  nixpkgs.config.allowUnfree = true;
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
   nix = {
     # package = pkgs.nixVersions.unstable;

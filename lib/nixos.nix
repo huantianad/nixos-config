@@ -3,26 +3,28 @@
 with lib;
 with lib.my;
 {
-  mkHost = path: attrs @ { nixpkgs, unstable, system, mkPkgs, home-manager, ... }:
+  # nixpkgs: the nixpkgs flake
+  # unstable: an `import`ed nixpkgs-unstable, for this system
+  # system: system string
+  # home-manager: the home-manager flake
+  # overlays: list of overlays to use
+  mkHost = path: attrs @ { nixpkgs, unstable, system, home-manager, overlays, ... }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {
-        inherit lib inputs system;
-        unstable = mkPkgs unstable system;
-      };
+      specialArgs = { inherit lib inputs system unstable; };
       modules = [
         {
-          nixpkgs.pkgs = mkPkgs nixpkgs system;
           networking.hostName = mkDefault (removeSuffix ".nix" (baseNameOf path));
+          nixpkgs.overlays = overlays;
         }
+        (filterAttrs (n: v: !elem n [ "nixpkgs" "unstable" "system" "home-manager" "overlays" ]) attrs)
         home-manager.nixosModules.home-manager
-        (filterAttrs (n: v: !elem n [ "nixpkgs" "unstable" "system" "mkPkgs" "home-manager" ]) attrs)
         ../. # /default.nix
         (import path)
       ];
     };
 
-  mapHosts = dir: attrs @ { nixpkgs, unstable, system, mkPkgs, home-manager, ... }:
+  mapHosts = dir: attrs @ { nixpkgs, unstable, system, home-manager, overlays, ... }:
     mapModules dir
       (hostPath: mkHost hostPath attrs);
 }

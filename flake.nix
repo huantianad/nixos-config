@@ -45,10 +45,12 @@
 
       system = "x86_64-linux";
 
+      allOverlays = [ self.overlay ] ++ (lib.attrValues self.overlays);
+
       mkPkgs = pkgsArg: systemArg: import pkgsArg {
         system = systemArg;
         config.allowUnfree = true;
-        overlays = [ self.overlay ] ++ (lib.attrValues self.overlays);
+        overlays = allOverlays;
       };
 
       pkgs = mkPkgs nixpkgs system;
@@ -66,26 +68,27 @@
         mapHosts ./hosts/unstable/x86_64-linux
           {
             nixpkgs = nixpkgs;
-            unstable = nixpkgs;
+            unstable = pkgs;
             system = "x86_64-linux";
-            mkPkgs = mkPkgs;
             home-manager = inputs.home-manager;
+            overlays = allOverlays;
           }
         // mapHosts ./hosts/stable/x86_64-linux
           {
             nixpkgs = inputs.nixpkgs-stable;
-            unstable = nixpkgs;
+            unstable = pkgs;
             system = "x86_64-linux";
-            mkPkgs = mkPkgs;
             home-manager = inputs.home-manager-stable;
+            overlays = allOverlays;
+
           }
         // mapHosts ./hosts/stable/aarch64-linux
           {
             nixpkgs = inputs.nixpkgs-stable;
-            unstable = nixpkgs;
+            unstable = mkPkgs nixpkgs "aarch64-linux";
             system = "aarch64-linux";
-            mkPkgs = mkPkgs;
             home-manager = inputs.home-manager-stable;
+            overlays = allOverlays;
           };
 
       apps = inputs.nixinate.nixinate."${system}" self;
