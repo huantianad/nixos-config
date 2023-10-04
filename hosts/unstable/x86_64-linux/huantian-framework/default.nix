@@ -30,7 +30,7 @@
       };
 
       programs = {
-        armcord.enable = true;
+        armcord.enable = false;
         fcitx.enable = true;
         qmk.enable = false;
         tauon.enable = true;
