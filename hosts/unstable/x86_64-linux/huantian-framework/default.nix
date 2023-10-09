@@ -43,13 +43,13 @@
       cc.enable = true;
       matlab.enable = true;
       tex.enable = false;
-      unity.enable = false;
+      unity.enable = true;
     };
 
     editors = {
       vscode.enable = true;
       vim.enable = true;
-      rider.enable = false;
+      rider.enable = true;
     };
 
     hardware = {
