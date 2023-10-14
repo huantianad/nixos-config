@@ -24,11 +24,6 @@ in
       "/share/nix-direnv"
     ];
 
-    # Flake support
-    nixpkgs.overlays = [
-      (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
-    ];
-
     programs.zsh.ohMyZsh.plugins = mkIf config.modules.shell.zsh.enable [ "direnv" ];
   };
 }
