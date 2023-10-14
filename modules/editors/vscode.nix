@@ -85,6 +85,10 @@ in
         twxs.cmake
         vadimcn.vscode-lldb
 
+        # Haskell
+        haskell.haskell
+        justusadam.language-haskell
+
         # HTML/CSS
         ecmel.vscode-html-css
         ms-vscode.live-server
@@ -292,6 +296,11 @@ in
           "editor.tabSize" = 2;
           "editor.formatOnSave" = true;
         };
+
+
+        ###########
+        # Haskell #
+        ###########
 
 
         #########

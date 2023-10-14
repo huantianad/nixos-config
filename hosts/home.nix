@@ -34,6 +34,14 @@ with lib;
 
   programs.nix-ld.enable = true;
 
+  # Spell check packages
+  environment.systemPackages = with pkgs; [
+    aspell
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.en-science
+  ];
+
   # Fix tauri apps not displaying correctly, ie for cinny
   # see https://github.com/tauri-apps/tauri/issues/4315#issuecomment-1207755694
   # environment.sessionVariables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
