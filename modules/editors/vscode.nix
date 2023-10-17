@@ -338,7 +338,7 @@ in
         "diffEditor.ignoreTrimWhitespace" = false;
 
         "redhat.telemetry.enabled" = true;
-        "window.zoomLevel" = -0.25;
+        #"window.zoomLevel" = -0.25;
       };
     };
   };
