@@ -80,7 +80,7 @@
   security.pam.services.login.fprintAuth = false;
 
   environment.systemPackages = with pkgs; [
-    (webcord-vencord.override { webcord = pkgs.webcord.override { electron_25 = pkgs.electron_24; }; })
+    webcord-vencord
     my.musescore3
   ];
 }
