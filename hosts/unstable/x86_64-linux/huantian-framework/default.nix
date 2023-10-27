@@ -82,6 +82,9 @@
 
   environment.systemPackages = with pkgs; [
     webcord-vencord
+    my.vesktop
     my.musescore3
+    helix
+    nil
   ];
 }

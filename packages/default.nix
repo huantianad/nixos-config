@@ -13,6 +13,8 @@ in
 
   unnamed-sdvx-clone = callPackage ./unnamed-sdvx-clone { };
 
+  vesktop = callPackage ./vesktop { };
+
   xmage = callPackage ./xmage { };
 }
 )
