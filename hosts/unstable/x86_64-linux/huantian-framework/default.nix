@@ -82,7 +82,7 @@
 
   environment.systemPackages = with pkgs; [
     webcord-vencord
-    my.vesktop
+    vesktop
     my.musescore3
     helix
     nil
