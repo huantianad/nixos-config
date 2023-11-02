@@ -31,6 +31,7 @@ in
         # TODO: don't reference this if is on server
         core.askpass = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
         push.autoSetupRemote = "true";
+        pull.rebase = "true";
       };
     };
   };
