@@ -10,11 +10,12 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = if config.modules.desktop.wayland.enable
-      then [ pkgs.librewolf-wayland ]
-      else [ pkgs.librewolf ];
-
-    nixpkgs.config.librewolf.enablePlasmaBrowserIntegration = true;
+    environment.systemPackages = 
+      let
+        withPlasma = pkg: pkg.override ({ nativeMessagingHosts = [ pkgs.libsForQt5.plasma-browser-integration ]; });
+      in if config.modules.desktop.wayland.enable
+        then [ (withPlasma pkgs.librewolf-wayland) ]
+        else [ (withPlasma pkgs.librewolf) ];
 
     home-manager.users.huantian.home.file = {
       ".librewolf/librewolf.overrides.cfg".text = ''
