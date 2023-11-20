@@ -64,7 +64,7 @@
     };
 
     services = {
-      usbmuxd.enable = true;
+      usbmuxd.enable = false;
     };
 
     shell = {
@@ -84,8 +84,7 @@
   security.pam.services.login.fprintAuth = false;
 
   environment.systemPackages = with pkgs; [
-    webcord-vencord
-    vesktop
+    my.vesktop
     my.musescore3
     helix
     nil
