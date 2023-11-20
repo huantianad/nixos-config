@@ -9,6 +9,10 @@ in
     enable = mkBoolOpt false;
   };
 
+  imports = [
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
+  ];
+
   config = mkIf cfg.enable {
     # Enable sound with pipewire.
     security.rtkit.enable = true;
@@ -20,6 +24,14 @@ in
       # jack.enable = true;
 
       wireplumber.enable = true;
+
+      lowLatency = {
+        # enable this module
+        enable = true;
+        # defaults (no need to be set unless modified)
+        quantum = 64;
+        rate = 48000;
+      };
     };
   };
 }

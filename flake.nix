@@ -37,6 +37,9 @@
 
     nix-matlab.url = "gitlab:doronbehar/nix-matlab";
     nix-matlab.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ { self, nixpkgs, ... }:

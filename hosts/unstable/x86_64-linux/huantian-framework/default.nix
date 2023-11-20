@@ -32,6 +32,7 @@
       programs = {
         armcord.enable = false;
         fcitx.enable = true;
+        gamemode.enable = true;
         qmk.enable = false;
         tauon.enable = true;
         tauon.openFirewall = true;
