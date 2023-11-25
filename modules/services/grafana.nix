@@ -44,7 +44,13 @@ in
           -Server
         }
 
-        reverse_proxy http://localhost:${toString config.services.grafana.settings.server.http_port}
+        @notblacklisted {
+          not {
+            path /metrics*
+          }
+        }
+
+        reverse_proxy @notblacklisted http://localhost:${toString config.services.grafana.settings.server.http_port}
       '';
     };
   };
