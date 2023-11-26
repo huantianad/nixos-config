@@ -14,7 +14,7 @@ in
       cockatrice
       lutris
       melonDS
-      prismlauncher
+      my.prismlauncher
       r2modman
       ryujinx
       scarab
