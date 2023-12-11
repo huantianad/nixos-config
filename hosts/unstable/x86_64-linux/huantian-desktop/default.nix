@@ -28,7 +28,7 @@
       };
 
       programs = {
-        armcord.enable = true;
+        armcord.enable = false;
         aw.enable = true;
         discord.enable = false;
         fcitx.enable = true;
@@ -82,10 +82,6 @@
   programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # my.xmage
-    # my.discord-screenaudio
-    # nix-alien
-    my.musescore3
   ];
 
   # Causes error on rebuild sometime, slows startup => disable

@@ -27,12 +27,16 @@ in
       # bitwarden
       peek
       # musescore
+      my.musescore3
       jellyfin-media-player
       qpwgraph
       newsflash
       easyeffects
       # obsidian
       libsForQt5.merkuro
+      vesktop
+
+      helix
 
       ark
       # ark already comes with this, but we need it for dolphin extracting

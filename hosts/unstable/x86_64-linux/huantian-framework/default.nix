@@ -84,9 +84,5 @@
   security.pam.services.login.fprintAuth = false;
 
   environment.systemPackages = with pkgs; [
-    my.vesktop
-    my.musescore3
-    helix
-    nil
   ];
 }
