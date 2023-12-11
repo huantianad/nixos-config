@@ -15,7 +15,7 @@ in
       lutris
       melonDS
       my.prismlauncher
-      r2modman
+      # r2modman
       ryujinx
       scarab
       (tetrio-desktop.override {

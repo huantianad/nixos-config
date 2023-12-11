@@ -24,14 +24,14 @@ in
       obs-studio
       kid3
       # soulseekqt
-      bitwarden
+      # bitwarden
       peek
       # musescore
       jellyfin-media-player
       qpwgraph
       newsflash
       easyeffects
-      obsidian
+      # obsidian
       libsForQt5.merkuro
 
       ark
