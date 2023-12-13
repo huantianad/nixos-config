@@ -11,7 +11,7 @@ with lib.my;
   mkHost = path: attrs @ { nixpkgs, unstable, system, home-manager, overlays, ... }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit lib inputs system unstable; };
+      specialArgs = { inherit lib inputs system unstable; nixpkgs-flake = nixpkgs; };
       modules = [
         {
           networking.hostName = mkDefault (removeSuffix ".nix" (baseNameOf path));

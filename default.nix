@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, nixpkgs-flake, ... }:
 
 with lib;
 with lib.my;
@@ -49,7 +49,7 @@ with lib.my;
   };
 
   systemd.tmpfiles.rules = [
-    "L+ /etc/nixpkgs/channels/nixpkgs - - - - ${inputs.nixpkgs}"
+    "L+ /etc/nixpkgs/channels/nixpkgs - - - - ${nixpkgs-flake}"
   ];
 
   programs.command-not-found.enable = false;
