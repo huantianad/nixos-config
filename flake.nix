@@ -61,6 +61,10 @@
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib { inherit pkgs inputs; lib = self; };
       });
+
+      stable-lib = inputs.nixpkgs-stable.lib.extend (self: super: {
+        my = import ./lib { inherit inputs; pkgs = mkPkgs inputs.nixpkgs-stable system; lib = self; };
+      });
     in
     {
       lib = lib.my;
@@ -76,7 +80,7 @@
             home-manager = inputs.home-manager;
             overlays = allOverlays;
           }
-        // mapHosts ./hosts/stable/x86_64-linux
+        // stable-lib.my.mapHosts ./hosts/stable/x86_64-linux
           {
             nixpkgs = inputs.nixpkgs-stable;
             unstable = pkgs;
@@ -84,7 +88,7 @@
             home-manager = inputs.home-manager-stable;
             overlays = allOverlays;
           }
-        // mapHosts ./hosts/stable/aarch64-linux
+        // stable-lib.my.mapHosts ./hosts/stable/aarch64-linux
           {
             nixpkgs = inputs.nixpkgs-stable;
             unstable = mkPkgs nixpkgs "aarch64-linux";
