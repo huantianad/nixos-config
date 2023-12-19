@@ -217,6 +217,7 @@ in
 
         "python.languageServer" = "Pylance";
         "python.analysis.typeCheckingMode" = "strict";
+        "python.analysis.autoFormatStrings" = true;
 
         "ruff.organizeImports" = true;
         "autoDocstring.startOnNewLine" = true;
