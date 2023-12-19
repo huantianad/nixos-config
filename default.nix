@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, nixpkgs-flake, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 with lib;
 with lib.my;
@@ -42,15 +42,7 @@ with lib.my;
     };
 
     registry.nixpkgs.flake = inputs.nixpkgs;
-
-    nixPath = [
-      "nixpkgs=/etc/nixpkgs/channels/nixpkgs"
-    ];
   };
-
-  systemd.tmpfiles.rules = [
-    "L+ /etc/nixpkgs/channels/nixpkgs - - - - ${nixpkgs-flake}"
-  ];
 
   programs.command-not-found.enable = false;
   programs.nix-index-database.comma.enable = true;

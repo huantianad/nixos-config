@@ -83,7 +83,6 @@
             system = "x86_64-linux";
             home-manager = inputs.home-manager-stable;
             overlays = allOverlays;
-
           }
         // mapHosts ./hosts/stable/aarch64-linux
           {
