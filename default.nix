@@ -44,6 +44,7 @@ with lib.my;
     };
 
     registry.nixpkgs.flake = inputs.nixpkgs;
+    channel.enable = false;
   };
 
   programs.command-not-found.enable = false;
