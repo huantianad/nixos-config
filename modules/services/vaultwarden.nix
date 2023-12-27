@@ -42,19 +42,16 @@ in
           X-Robots-Tag "none"
           # Server name removing
           -Server
+        	# Remove X-Powered-By though this shouldn't be an issue, better opsec to remove
+        	-X-Powered-By
+        	# Remove Last-Modified because etag is the same and is as effective
+        	-Last-Modified
         }
 
-        # Notifications redirected to the websockets server
-        reverse_proxy /notifications/hub http://localhost:3012
-
-        # The negotiation endpoint is also proxied to Rocket
-        reverse_proxy /notifications/hub/negotiate http://localhost:8812
-
-        # Proxy everything else to Rocket
         reverse_proxy http://localhost:8812 {
           # Send the true remote IP to Rocket, so that vaultwarden can put this in the
           # log, so that fail2ban can ban the correct IP.
-          header_up X-Real-IP {remote_host}
+          header_up X-Real-IP {http.request.header.Cf-Connecting-Ip}
         }
       '';
     };
