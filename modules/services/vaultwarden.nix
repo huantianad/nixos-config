@@ -10,8 +10,13 @@ in
   };
 
   config = mkIf cfg.enable {
+    sops.secrets."vaultwarden" = { };
+    sops.secrets."vaultwarden".owner = "vaultwarden";
+
     services.vaultwarden = {
       enable = true;
+
+      environmentFile = "/run/secrets/vaultwarden";
 
       config = {
         webVaultEnabled = true;
@@ -20,6 +25,7 @@ in
         signupsAllowed = false;
         domain = "https://vw.huantian.dev";
         rocketPort = 8812;
+        pushEnabled = true;
       };
     };
 
