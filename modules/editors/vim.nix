@@ -14,7 +14,6 @@ in
       enable = true;
       viAlias = true;
       vimAlias = true;
-      defaultEditor = true;
       configure = {
         customRC = ''
           syntax on                       " Turn on syntax highlighting
