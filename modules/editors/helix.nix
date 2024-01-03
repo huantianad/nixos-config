@@ -21,6 +21,7 @@ in
 
       settings = {
         theme = "dracula";
+        editor.soft-wrap.enable = true;
       };
 
       languages = {
