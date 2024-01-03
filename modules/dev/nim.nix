@@ -12,7 +12,6 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       nim2
-      nil
     ];
   };
 }
