@@ -1,8 +1,10 @@
 { inputs, lib, pkgs, ... }:
 
-with lib;
-with lib.my;
-{
+let
+  inherit (builtins) elem;
+  inherit (lib) filterAttrs mkDefault removeSuffix;
+  inherit (lib.my) mapModules;
+
   # nixpkgs: the nixpkgs flake
   # unstable: an `import`ed nixpkgs-unstable, for this system
   # system: system string
@@ -23,7 +25,8 @@ with lib.my;
         (import path)
       ];
     };
-
+in
+{
   mapHosts = dir: attrs @ { nixpkgs, unstable, system, home-manager, overlays, ... }:
     mapModules dir
       (hostPath: mkHost hostPath attrs);
