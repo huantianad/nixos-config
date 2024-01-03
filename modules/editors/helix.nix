@@ -37,7 +37,7 @@ in
 
         language-server.nil = {
           config = {
-            formatting.command = [(lib.getExe pkgs.nixpkgs-fmt)];
+            formatting.command = [ (lib.getExe pkgs.nixpkgs-fmt) ];
             nix.flake.autoArchive = true;
           };
         };
