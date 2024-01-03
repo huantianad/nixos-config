@@ -44,9 +44,7 @@
 
   outputs = inputs @ { self, nixpkgs, ... }:
     let
-      inherit (lib.my) mapModules mapModulesRec mapHosts;
-
-      system = "x86_64-linux";
+      defaultSystem = "x86_64-linux";
 
       allOverlays = [ self.overlay ] ++ (lib.attrValues self.overlays);
 
@@ -56,52 +54,56 @@
         overlays = allOverlays;
       };
 
-      pkgs = mkPkgs nixpkgs system;
+      pkgs = mkPkgs nixpkgs defaultSystem;
 
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib { inherit pkgs inputs; lib = self; };
       });
 
-      stable-lib = inputs.nixpkgs-stable.lib.extend (self: super: {
-        my = import ./lib { inherit inputs; pkgs = mkPkgs inputs.nixpkgs-stable system; lib = self; };
-      });
+      mapHosts = path: nixpkgsType: system:
+        let
+          table = {
+            unstable = {
+              nixpkgs = nixpkgs;
+              home-manager = inputs.home-manager;
+            };
+            stable = {
+              nixpkgs = inputs.nixpkgs-stable;
+              home-manager = inputs.home-manager-stable;
+            };
+          }.${nixpkgsType};
+
+          thisPkgs = mkPkgs table.nixpkgs system;
+          thisLib = table.nixpkgs.lib.extend (self: super: {
+            my = import ./lib { inherit inputs; pkgs = thisPkgs; lib = self; };
+          });
+        in
+        thisLib.my.mapHosts path
+          {
+            nixosSystem = table.nixpkgs.lib.nixosSystem;
+            system = system;
+            home-manager = table.home-manager;
+            overlays = allOverlays;
+          };
     in
     {
       lib = lib.my;
 
-      nixosModules = mapModulesRec ./modules import;
+      nixosModules = lib.my.mapModulesRec ./modules import;
 
       nixosConfigurations =
-        mapHosts ./hosts/unstable/x86_64-linux
-          {
-            nixpkgs = nixpkgs;
-            system = "x86_64-linux";
-            home-manager = inputs.home-manager;
-            overlays = allOverlays;
-          }
-        // stable-lib.my.mapHosts ./hosts/stable/x86_64-linux
-          {
-            nixpkgs = inputs.nixpkgs-stable;
-            system = "x86_64-linux";
-            home-manager = inputs.home-manager-stable;
-            overlays = allOverlays;
-          }
-        // stable-lib.my.mapHosts ./hosts/stable/aarch64-linux
-          {
-            nixpkgs = inputs.nixpkgs-stable;
-            system = "aarch64-linux";
-            home-manager = inputs.home-manager-stable;
-            overlays = allOverlays;
-          };
+        (mapHosts ./hosts/unstable/x86_64-linux "unstable" "x86_64-linux")
+        // (mapHosts ./hosts/stable/x86_64-linux "stable" "x86_64-linux")
+        // (mapHosts ./hosts/stable/aarch64-linux "stable" "aarch64-linux");
 
-      apps = inputs.nixinate.nixinate."${system}" self;
+      apps = inputs.nixinate.nixinate."${defaultSystem}" self;
 
-      packages."${system}" = import ./packages { inherit pkgs; };
+      packages."${defaultSystem}" = import ./packages { inherit pkgs; };
 
       overlay = final: prev: {
-        my = self.packages."${system}";
+        my = self.packages."${defaultSystem}";
       };
 
-      overlays = mapModules ./overlays import;
+      overlays = lib.my.mapModules ./overlays import;
     };
 }
