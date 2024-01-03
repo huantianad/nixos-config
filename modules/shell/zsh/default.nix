@@ -1,4 +1,4 @@
-{ options, config, pkgs, lib, inputs, unstable, ... }:
+{ options, config, pkgs, lib, inputs, ... }:
 
 with lib;
 with lib.my;
@@ -11,7 +11,7 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      unstable.eza # TODO: Remove the unstable prefix eventually
+      eza
       killall
       btop
       wget

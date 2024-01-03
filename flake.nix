@@ -75,7 +75,6 @@
         mapHosts ./hosts/unstable/x86_64-linux
           {
             nixpkgs = nixpkgs;
-            unstable = pkgs;
             system = "x86_64-linux";
             home-manager = inputs.home-manager;
             overlays = allOverlays;
@@ -83,7 +82,6 @@
         // stable-lib.my.mapHosts ./hosts/stable/x86_64-linux
           {
             nixpkgs = inputs.nixpkgs-stable;
-            unstable = pkgs;
             system = "x86_64-linux";
             home-manager = inputs.home-manager-stable;
             overlays = allOverlays;
@@ -91,7 +89,6 @@
         // stable-lib.my.mapHosts ./hosts/stable/aarch64-linux
           {
             nixpkgs = inputs.nixpkgs-stable;
-            unstable = mkPkgs nixpkgs "aarch64-linux";
             system = "aarch64-linux";
             home-manager = inputs.home-manager-stable;
             overlays = allOverlays;

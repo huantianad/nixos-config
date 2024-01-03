@@ -1,4 +1,4 @@
-{ options, config, pkgs, lib, inputs, unstable, ... }:
+{ options, config, pkgs, lib, inputs, ... }:
 
 with lib;
 with lib.my;
@@ -14,7 +14,6 @@ in
   config = mkIf cfg.enable {
     services.minifluxng = {
       enable = true;
-      package = unstable.miniflux;
       listenAddress = "127.0.0.1:8877";
       baseUrl = "https://miniflux.huantian.dev/";
       enableMetrics = true;
