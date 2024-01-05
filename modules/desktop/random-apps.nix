@@ -35,6 +35,8 @@ in
       # obsidian
       libsForQt5.merkuro
       vesktop
+      kitty
+      inkscape
 
       helix
 
