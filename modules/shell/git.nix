@@ -32,6 +32,7 @@ in
         core.askpass = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
         push.autoSetupRemote = "true";
         pull.rebase = "true";
+        rebase.autoStash = "true";
       };
     };
   };
