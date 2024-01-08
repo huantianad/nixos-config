@@ -25,11 +25,9 @@ in
       diff-so-fancy.enable = true;
 
       extraConfig = {
-        commit.gpgsign = true;
         core.autocrlf = "input";
+        core.askpass = mkIf config.modules.desktop.kde.enable "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
         init.defaultBranch = "main";
-        # TODO: don't reference this if is on server
-        core.askpass = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
         push.autoSetupRemote = "true";
         pull.rebase = "true";
         rebase.autoStash = "true";
