@@ -18,8 +18,8 @@ in
         withWaylandGLFW = true;
       })
       # r2modman
-      ryujinx
-      scarab
+      # ryujinx
+      # scarab
       (tetrio-desktop.override {
         withTetrioPlus = true;
       })
