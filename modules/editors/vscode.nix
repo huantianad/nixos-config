@@ -211,7 +211,7 @@ in
           "editor.formatOnType" = false;
           "editor.defaultFormatter" = "ms-python.black-formatter";
           "editor.codeActionsOnSave" = {
-            "source.organizeImports" = true;
+            "source.organizeImports" = "always";
           };
         };
 
@@ -340,6 +340,8 @@ in
 
         "redhat.telemetry.enabled" = true;
         #"window.zoomLevel" = -0.25;
+
+        "window.titleBarStyle" = "custom";
       };
     };
   };
