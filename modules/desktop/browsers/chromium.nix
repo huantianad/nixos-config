@@ -10,6 +10,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ chromium ];
+    environment.systemPackages = with pkgs; [ ungoogled-chromium ];
   };
 }
