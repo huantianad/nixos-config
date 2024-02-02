@@ -26,12 +26,6 @@ in
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
 
-    # Configure keymap in X11
-    services.xserver = {
-      layout = "us";
-      xkbVariant = "";
-    };
-
     environment.plasma5.excludePackages = with pkgs; [
       elisa # Default KDE video player, use VLC instead
       kwrited # Use kate instead for my basic text editor
