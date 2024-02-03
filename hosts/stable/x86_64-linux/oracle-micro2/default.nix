@@ -17,6 +17,8 @@
   };
 
   modules = {
-    services = { };
+    services = {
+      deluge.enable = true;
+    };
   };
 }

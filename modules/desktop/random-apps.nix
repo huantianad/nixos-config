@@ -18,6 +18,7 @@ in
       soundfont-generaluser # for vlc midi
       gimp
       qbittorrent
+      deluge-gtk
       baobab
       libreoffice-qt
       audacity
