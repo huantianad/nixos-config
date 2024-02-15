@@ -39,8 +39,8 @@ in
 
         eza = "eza --group-directories-first";
         ls = "eza";
-        ll = "eza -lbFh --git";
-        l = "eza -lbFha --git";
+        ll = "eza -lbh --git";
+        l = "eza -lbha --git";
         la = "eza -lbhHigmuSa --git --color-scale";
         lx = "eza -lbhHigmuSa@ --git --color-scale";
         tree = "eza --tree";
