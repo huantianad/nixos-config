@@ -49,7 +49,7 @@
 
     editors = {
       helix.enable = true;
-      vscode.enable = true;
+      vscode.enable = false;
       vim.enable = true;
       rider.enable = true;
     };
