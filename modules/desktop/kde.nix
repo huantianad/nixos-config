@@ -21,7 +21,10 @@ in
       libsForQt5.sddm-kcm # Settings menu for SDDM in KDE
     ];
 
-    services.xserver.displayManager.defaultSession = mkIf config.modules.desktop.wayland.enable "plasmawayland";
+    services.xserver.displayManager.defaultSession = mkIf
+      config.modules.desktop.wayland.enable "plasmawayland";
+    services.xserver.displayManager.sddm.wayland.enable =
+      config.modules.desktop.wayland.enable;
 
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
