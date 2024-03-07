@@ -15,7 +15,7 @@ in
       element-desktop
       cinny-desktop
       vlc
-      soundfont-generaluser # for vlc midi
+      # soundfont-generaluser # for vlc midi
       gimp
       qbittorrent
       deluge-gtk
@@ -37,7 +37,8 @@ in
       libsForQt5.merkuro
       vesktop
       kitty
-      inkscape
+      # inkscape
+      foliate
 
       helix
 
