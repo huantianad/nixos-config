@@ -41,7 +41,6 @@ with lib.my;
       options = "--delete-older-than 3d";
     };
 
-    registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;
   };
 
