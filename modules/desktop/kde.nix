@@ -19,9 +19,9 @@ in
 
     services.xserver.desktopManager.plasma6.enable = true;
 
-    environment.plasma6.excludePackages = with pkgs.kdePackages; [
-      elisa # Default KDE video player, use VLC instead
-      konsole # Use kitty instead
+    environment.plasma6.excludePackages = [
+      pkgs.kdePackages.elisa # Default KDE video player, use VLC instead
+      pkgs.kdePackages.konsole # Use kitty instead
     ];
 
     environment.systemPackages = [
