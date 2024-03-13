@@ -11,13 +11,14 @@ in
 
   config = mkIf cfg.enable {
     # Enable the X11 windowing system.
+    # TODO: #291913 should make it so that we can disable this
     services.xserver.enable = true;
 
     services.xserver.displayManager.sddm.enable = true;
     services.xserver.displayManager.sddm.wayland.enable =
       config.modules.desktop.wayland.enable;
 
-    services.xserver.desktopManager.plasma6.enable = true;
+    services.desktopManager.plasma6.enable = true;
 
     environment.plasma6.excludePackages = [
       pkgs.kdePackages.elisa # Default KDE video player, use VLC instead
