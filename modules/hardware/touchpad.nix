@@ -10,8 +10,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.xserver.libinput.touchpad.naturalScrolling = true;
-
     environment.systemPackages = with pkgs; [
       libinput-gestures
       ydotool
