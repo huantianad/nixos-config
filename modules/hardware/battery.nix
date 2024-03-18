@@ -32,6 +32,8 @@ in
 
       CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+
+      SOUND_POWER_SAVE_ON_AC = 0;
     };
     # Disable power-profiles-daemon as it conflicts with tlp
     services.power-profiles-daemon.enable = false;
