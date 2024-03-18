@@ -33,7 +33,7 @@ in
       newsflash
       easyeffects
       # obsidian
-      libsForQt5.merkuro
+      kdePackages.merkuro
       vesktop
       kitty
       # inkscape

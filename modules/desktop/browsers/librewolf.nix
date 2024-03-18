@@ -12,7 +12,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages =
       let
-        withPlasma = pkgs.librewolf.override { nativeMessagingHosts = [ pkgs.libsForQt5.plasma-browser-integration ]; };
+        withPlasma = pkgs.librewolf.override { nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ]; };
       in
       [ withPlasma ];
 
