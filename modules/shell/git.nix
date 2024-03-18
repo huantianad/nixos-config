@@ -31,6 +31,8 @@ in
         push.autoSetupRemote = "true";
         pull.rebase = "true";
         rebase.autoStash = "true";
+        # Allow root to use this repo when rebuilding
+        safe.directory = "/home/huantian/nixos-config";
       };
     };
   };
