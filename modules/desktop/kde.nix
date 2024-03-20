@@ -14,6 +14,9 @@ in
     # TODO: #291913 should make it so that we can disable this
     services.xserver.enable = true;
 
+    # TODO: remove after #296866
+    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-qt;
+
     services.xserver.displayManager.sddm.enable = true;
     services.xserver.displayManager.sddm.wayland.enable =
       config.modules.desktop.wayland.enable;
