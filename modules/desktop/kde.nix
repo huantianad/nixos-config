@@ -25,7 +25,6 @@ in
 
     environment.plasma6.excludePackages = [
       pkgs.kdePackages.elisa # Default KDE video player, use VLC instead
-      pkgs.kdePackages.konsole # Use kitty instead
     ];
 
     environment.systemPackages = [

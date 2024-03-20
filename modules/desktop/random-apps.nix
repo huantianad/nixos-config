@@ -14,7 +14,7 @@ in
       element-desktop
       cinny-desktop
       vlc
-      # soundfont-generaluser # for vlc midi
+      soundfont-generaluser # for vlc midi
       gimp
       qbittorrent
       deluge-gtk
@@ -23,23 +23,18 @@ in
       audacity
       obs-studio
       kid3
-      # soulseekqt
-      # bitwarden
       peek
-      # musescore
       my.musescore3
       jellyfin-media-player
       qpwgraph
       newsflash
       easyeffects
-      # obsidian
       kdePackages.merkuro
       vesktop
       kitty
-      # inkscape
-      foliate
-
-      helix
+      # soulseekqt
+      # bitwarden
+      # obsidian
 
       ark
       # ark already comes with this, but we need it for dolphin extracting
@@ -49,7 +44,6 @@ in
       # Command-line apps
       ffmpeg_6-full
       yt-dlp
-      xorg.xkill
       nixpkgs-review
       wineWowPackages.staging
       winetricks
