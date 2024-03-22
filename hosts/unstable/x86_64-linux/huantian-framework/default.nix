@@ -83,6 +83,9 @@
   security.pam.services.sddm.fprintAuth = false;
   security.pam.services.login.fprintAuth = false;
 
+  # TODO: Remove once fprintd is fixed
+  services.fprintd.enable = false;
+
   environment.systemPackages = with pkgs; [
   ];
 }
