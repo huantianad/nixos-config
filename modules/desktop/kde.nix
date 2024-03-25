@@ -14,21 +14,16 @@ in
     # TODO: #291913 should make it so that we can disable this
     services.xserver.enable = true;
 
-    # TODO: remove after #296866
-    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-qt;
-
-    services.xserver.displayManager.sddm.enable = true;
-    services.xserver.displayManager.sddm.wayland.enable =
-      config.modules.desktop.wayland.enable;
+    services.xserver.displayManager.sddm = {
+      enable = true;
+      wayland.enable = config.modules.desktop.wayland.enable;
+      wayland.compositor = "kwin";
+    };
 
     services.desktopManager.plasma6.enable = true;
 
     environment.plasma6.excludePackages = [
       pkgs.kdePackages.elisa # Default KDE video player, use VLC instead
-    ];
-
-    environment.systemPackages = [
-      pkgs.kdePackages.sddm-kcm # Settings menu for SDDM in KDE
     ];
 
     programs.partition-manager.enable = true;
