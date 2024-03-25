@@ -17,6 +17,11 @@ with lib.my;
   # Configure nix and nixpkgs
   nixpkgs.config.allowUnfree = true;
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
+
+  # Set this to false for now as it breaks command-not-found and comma's flake detection,
+  # and actually doesn't work because of #9574.
+  nixpkgs.flake.setNixPath = false;
+
   nix = {
     extraOptions = "experimental-features = nix-command flakes";
 
