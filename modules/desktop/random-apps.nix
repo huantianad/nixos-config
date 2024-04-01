@@ -18,7 +18,6 @@ in
       gimp
       qbittorrent
       deluge-gtk
-      baobab
       libreoffice-qt
       audacity
       obs-studio
@@ -29,9 +28,10 @@ in
       qpwgraph
       newsflash
       easyeffects
-      kdePackages.merkuro
       vesktop
       kitty
+      kdePackages.merkuro
+      kdePackages.filelight
       # soulseekqt
       # bitwarden
       # obsidian
