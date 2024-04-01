@@ -28,9 +28,7 @@
       };
 
       programs = {
-        armcord.enable = false;
         aw.enable = true;
-        discord.enable = false;
         fcitx.enable = true;
         gamemode.enable = true;
         qmk.enable = false;

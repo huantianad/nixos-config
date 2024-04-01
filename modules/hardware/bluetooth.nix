@@ -11,11 +11,5 @@ in
 
   config = mkIf cfg.enable {
     hardware.bluetooth.enable = true;
-
-    # this should be part of kde config
-    # environment.systemPackages = mkIf config.modules.desktop.kde.enable [
-    #   pkgs.kdePackages.bluedevil # Bluetooth config
-    #   pkgs.kdePackages.bluez-qt
-    # ];
   };
 }
