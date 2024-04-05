@@ -21,6 +21,7 @@ in
       ripgrep
       age
       sops
+      fzf
     ];
 
     programs.zsh = {
@@ -92,6 +93,7 @@ in
         export XDG_STATE_HOME="$HOME/.local/state"
         export XDG_CACHE_HOME="$HOME/.cache"
       '';
+      zoxide.enable = true;
     };
 
     home-manager.users.huantian.home.file = {
