@@ -32,6 +32,8 @@ in
         youtube-dl = "yt-dlp";
         info = "info --vi-keys";
         grep = "rg";
+        ssh = "kitten ssh";
+        cd = "z";
 
         bump = "nix flake update --commit-lock-file";
         # quickly remove all result symlinks in current folder
