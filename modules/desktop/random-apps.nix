@@ -11,10 +11,13 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      element-desktop
-      cinny-desktop
+      vesktop
+      kitty
       vlc
       soundfont-generaluser # for vlc midi
+
+      element-desktop
+      cinny-desktop
       gimp
       qbittorrent
       deluge-gtk
@@ -28,22 +31,21 @@ in
       qpwgraph
       newsflash
       easyeffects
-      vesktop
-      kitty
-      kdePackages.merkuro
-      kdePackages.filelight
+
       # soulseekqt
       # bitwarden
       # obsidian
 
-      ark
+      kdePackages.merkuro
+      kdePackages.filelight
+      kdePackages.ark
       # ark already comes with this, but we need it for dolphin extracting
       p7zip
       unrar
 
       # Command-line apps
-      ffmpeg_6-full
       yt-dlp
+      ffmpeg-full
       nixpkgs-review
       wineWowPackages.staging
       winetricks
