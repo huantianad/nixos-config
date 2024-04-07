@@ -11,9 +11,9 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      cockatrice
+      # cockatrice
       lutris
-      melonDS
+      # melonDS
       (prismlauncher.override {
         withWaylandGLFW = true;
       })
@@ -24,10 +24,6 @@ in
         withTetrioPlus = true;
       })
     ];
-
-    # Don't override `prismlauncher` as that makes Nix rebuild it
-    environment.variables.PRISMLAUNCHER_JAVA_PATHS = with pkgs;
-      lib.makeSearchPath "bin/java" [ jdk11 ];
 
     # Steam controller support
     hardware.steam-hardware.enable = true;
