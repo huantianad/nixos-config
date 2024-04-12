@@ -10,11 +10,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    # Enable the X11 windowing system.
-    # TODO: #291913 should make it so that we can disable this
-    services.xserver.enable = true;
-
-    services.xserver.displayManager.sddm = {
+    services.displayManager.sddm = {
       enable = true;
       wayland.enable = config.modules.desktop.wayland.enable;
       wayland.compositor = "kwin";
