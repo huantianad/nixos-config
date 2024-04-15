@@ -30,6 +30,8 @@ with lib;
   };
 
   # Tell SSH to use ksshaskpass even when in terminal
+  programs.ssh.enableAskPassword = true;
+  programs.ssh.askPassword = (lib.getExe pkgs.kdePackages.ksshaskpass);
   environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
 
   programs.nix-ld.enable = true;
@@ -41,8 +43,4 @@ with lib;
     aspellDicts.en-computers
     aspellDicts.en-science
   ];
-
-  # Fix tauri apps not displaying correctly, ie for cinny
-  # see https://github.com/tauri-apps/tauri/issues/4315#issuecomment-1207755694
-  # environment.sessionVariables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
 }

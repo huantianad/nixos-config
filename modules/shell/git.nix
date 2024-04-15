@@ -26,7 +26,7 @@ in
 
       extraConfig = {
         core.autocrlf = "input";
-        core.askpass = mkIf config.modules.desktop.kde.enable "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+        core.askpass = mkIf config.modules.desktop.kde.enable (lib.getExe pkgs.kdePackages.ksshaskpass);
         init.defaultBranch = "main";
         push.autoSetupRemote = "true";
         pull.rebase = "true";
