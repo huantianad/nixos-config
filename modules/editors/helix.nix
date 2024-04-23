@@ -36,11 +36,13 @@ in
           }
         ];
 
-        language-server.nil = {
-          config = {
-            formatting.command = [ (lib.getExe pkgs.nixpkgs-fmt) ];
-            nix.flake.autoArchive = true;
-          };
+        language-server.nil.config = {
+          formatting.command = [ (lib.getExe pkgs.nixpkgs-fmt) ];
+          nix.flake.autoArchive = true;
+        };
+
+        language-server.rust-analyzer.config = {
+          check.command = "clippy";
         };
       };
     };
