@@ -78,6 +78,9 @@
 
   time.timeZone = "America/Los_Angeles";
 
+  # Updating firmware and bios
+  services.fwupd.enable = true;
+
   # Disable fingerprint auth on first login
   # SDDM fingerprint is buggy and I need to type password for KWallet anyway
   security.pam.services.sddm.fprintAuth = false;
