@@ -25,7 +25,7 @@ in
       audacity
       obs-studio
       kid3
-      peek
+      kooha
       my.musescore3
       jellyfin-media-player
       qpwgraph
