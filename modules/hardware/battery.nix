@@ -11,8 +11,7 @@ in
 
   config = mkIf cfg.enable {
     # Some battery life tuning
-    services.auto-cpufreq.enable = true;
-    services.tlp.enable = false;
+    services.tlp.enable = true;
     services.tlp.settings = {
       PCIE_ASPM_ON_BAT = "powersupersave";
 
