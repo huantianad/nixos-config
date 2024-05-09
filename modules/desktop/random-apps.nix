@@ -31,6 +31,8 @@ in
       qpwgraph
       newsflash
       easyeffects
+      kicad-small
+      inkscape
 
       # soulseekqt
       # bitwarden
