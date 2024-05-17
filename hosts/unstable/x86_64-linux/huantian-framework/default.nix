@@ -86,6 +86,11 @@
   security.pam.services.sddm.fprintAuth = false;
   security.pam.services.login.fprintAuth = false;
 
+  programs.nh = {
+    enable = true;
+    flake = "/home/huantian/nixos-config";
+  };
+
   environment.systemPackages = with pkgs; [
   ];
 }

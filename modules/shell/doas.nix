@@ -18,6 +18,9 @@ in
       persist = true;
     }];
 
+    environment.systemPackages = [
+      (pkgs.writeScriptBin "sudo" ''exec doas "$@"'')
+    ];
     programs.zsh.shellAliases.sudo = mkIf config.modules.shell.zsh.enable "doas";
   };
 }
