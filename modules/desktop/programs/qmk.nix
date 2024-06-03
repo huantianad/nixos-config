@@ -10,7 +10,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.qmk pkgs.via ];
+    environment.systemPackages = [
+      pkgs.qmk
+      # pkgs.via
+    ];
 
     services.udev.packages = [
       (pkgs.qmk-udev-rules.overrideAttrs (attrs: {
@@ -18,8 +21,8 @@ in
         src = pkgs.fetchFromGitHub {
           owner = "qmk";
           repo = "qmk_firmware";
-          rev = "0.19.2";
-          sha256 = "sha256-f/SFkO+x8aK2dmix75wCJ/ThTy/KyEzzz9FO1VP7rLw=";
+          rev = "0.25.3";
+          sha256 = "sha256-7zQfA5fqxuwZXUCzlJj/Ok3PvZ4TSVZY/tIfuiauhjI=";
         };
       }))
     ];

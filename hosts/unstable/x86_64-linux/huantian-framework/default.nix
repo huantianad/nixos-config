@@ -32,7 +32,7 @@
       programs = {
         fcitx.enable = true;
         gamemode.enable = true;
-        qmk.enable = false;
+        qmk.enable = true;
         tauon = {
           enable = true;
           openFirewall = true;
