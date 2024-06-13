@@ -14,6 +14,7 @@ in
       vesktop
       kitty
       vlc
+      mpv
       soundfont-generaluser # for vlc midi
 
       element-desktop
