@@ -29,7 +29,7 @@ in
           -Server
 
           Referrer-Policy: no-referrer
-          # Content-Security-Policy "default-src 'none'; manifest-src 'self'; font-src 'self'; img-src 'self'; style-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'none'"
+          Content-Security-Policy "default-src 'none'; manifest-src 'self'; font-src 'self'; img-src 'self'; style-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'none'"
         }
 
         root * /var/www/huantian.dev/
