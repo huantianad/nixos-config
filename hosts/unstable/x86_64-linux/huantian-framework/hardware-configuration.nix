@@ -11,7 +11,7 @@
   boot.extraModulePackages = [ ];
 
   services.fstrim.enable = true;
-
+/*
   boot.initrd.luks.devices = {
     crypted = {
       device = "/dev/disk/by-uuid/a8e99653-9b29-4152-a7a8-59d79ee11e70";
@@ -44,7 +44,7 @@
 
   swapDevices = [{ label = "swap"; }];
   boot.resumeDevice = "/dev/disk/by-label/swap";
-
+*/
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction

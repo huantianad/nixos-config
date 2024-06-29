@@ -3,8 +3,10 @@
 {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+    inputs.disko.nixosModules.default
     ../../../home.nix
     ./hardware-configuration.nix
+    ./disko.nix
   ];
 
   system.stateVersion = "22.05";

@@ -2,8 +2,10 @@
 
 {
   imports = [
+    inputs.disko.nixosModules.default
     ../../../home.nix
     ./hardware-configuration.nix
+    ./disko.nix
   ];
 
   system.stateVersion = "22.05";
