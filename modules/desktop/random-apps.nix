@@ -27,7 +27,8 @@ in
       obs-studio
       kid3
       kooha
-      my.musescore3
+      musescore
+      # my.musescore3
       jellyfin-media-player
       qpwgraph
       newsflash
