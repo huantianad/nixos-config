@@ -15,10 +15,9 @@ in
     environment.variables.MOZ_DISABLE_RDD_SANDBOX = "1";
     environment.variables.LIBVA_DRIVER_NAME = "nvidia";
 
-    hardware.opengl = {
+    hardware.graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [
         nvidia-vaapi-driver
       ];
