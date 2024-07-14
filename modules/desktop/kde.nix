@@ -10,6 +10,8 @@ in
   };
 
   config = mkIf cfg.enable {
+    services.xserver.enable = ! config.modules.desktop.wayland.enable;
+
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = config.modules.desktop.wayland.enable;
