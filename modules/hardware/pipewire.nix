@@ -14,7 +14,6 @@ in
   ];
 
   config = mkIf cfg.enable {
-    # Enable sound with pipewire.
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
@@ -26,11 +25,21 @@ in
       wireplumber.enable = true;
 
       lowLatency = {
-        # enable this module
         enable = true;
-        # defaults (no need to be set unless modified)
         quantum = 64;
         rate = 48000;
+      };
+
+      extraConfig.pipewire = {
+        "99-z-clock-rate" = {
+          "context.properties" = {
+            "default.clock.rate" = 48000;
+
+            "default.clock.quantum" = 64;
+            "default.clock.min-quantum" = 16;
+            "default.clock.max-quantum" = 1024;
+          };
+        };
       };
     };
   };
