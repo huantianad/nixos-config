@@ -33,7 +33,7 @@ in
       qpwgraph
       newsflash
       easyeffects
-      kicad-small
+      # kicad-small
       inkscape
 
       # soulseekqt
@@ -48,7 +48,7 @@ in
       unrar
 
       # Command-line apps
-      yt-dlp
+      # yt-dlp
       ffmpeg-full
       nixpkgs-review
       wineWowPackages.staging

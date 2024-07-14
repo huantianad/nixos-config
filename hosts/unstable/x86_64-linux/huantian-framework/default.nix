@@ -99,4 +99,6 @@
 
   environment.systemPackages = with pkgs; [
   ];
+
+  services.fprintd.enable = false;
 }
