@@ -13,6 +13,7 @@
       kde.enable = true;
       random-apps.enable = true;
       fonts.enable = true;
+      wayland.enable = true;
 
       browsers = {
         default = "librewolf";
@@ -28,7 +29,7 @@
       };
 
       programs = {
-        aw.enable = true;
+        aw.enable = false;
         fcitx.enable = true;
         gamemode.enable = true;
         qmk.enable = false;
@@ -49,7 +50,7 @@
 
     editors = {
       helix.enable = true;
-      vscode.enable = true;
+      vscode.enable = false;
       vim.enable = true;
       rider.enable = true;
     };
