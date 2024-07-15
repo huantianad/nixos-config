@@ -32,6 +32,7 @@
         aw.enable = false;
         fcitx.enable = true;
         gamemode.enable = true;
+        kitty.enable = true;
         qmk.enable = false;
         tauon = {
           enable = true;

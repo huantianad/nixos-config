@@ -32,6 +32,7 @@
       programs = {
         fcitx.enable = true;
         gamemode.enable = true;
+        kitty.enable = true;
         qmk.enable = true;
         tauon = {
           enable = true;

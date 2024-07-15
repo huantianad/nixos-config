@@ -12,7 +12,6 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       vesktop
-      kitty
       vlc
       mpv
       soundfont-generaluser # for vlc midi
