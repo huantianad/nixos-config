@@ -87,11 +87,6 @@
   security.pam.services.sddm.fprintAuth = false;
   security.pam.services.login.fprintAuth = false;
 
-  programs.nh = {
-    enable = true;
-    flake = "/home/huantian/nixos-config";
-  };
-
   # Seems to fix a crash/freeze with RD
   # see https://gitlab.freedesktop.org/drm/i915/kernel/-/issues/10548
   environment.variables.INTEL_DEBUG = "reemit,capture-all";

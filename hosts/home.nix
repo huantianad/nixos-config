@@ -43,4 +43,9 @@ with lib;
     aspellDicts.en-computers
     aspellDicts.en-science
   ];
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/huantian/nixos-config";
+  };
 }
