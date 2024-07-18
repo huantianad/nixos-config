@@ -25,6 +25,7 @@
         enable = true;
         dolphin.enable = true;
         dolphin.setUdevRules = true;
+        qrookie.enable = true;
         steam.enable = true;
       };
 

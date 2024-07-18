@@ -201,6 +201,26 @@
         "type": "github"
       }
     },
+    "glaumar": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721247640,
+        "narHash": "sha256-JxryKKHbbUv1Dyo69AkGpWRGCg3+8CbzjFu06GRHOOU=",
+        "owner": "glaumar",
+        "repo": "nur",
+        "rev": "eb33e835deab0c1f6d77680d8581bec6667ab5dc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "glaumar",
+        "repo": "nur",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -482,6 +502,7 @@
     "root": {
       "inputs": {
         "aw-watcher-custom": "aw-watcher-custom",
+        "glaumar": "glaumar",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
         "lanzaboote": "lanzaboote",
