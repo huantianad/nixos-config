@@ -30,17 +30,17 @@ in
         rate = 48000;
       };
 
-      extraConfig.pipewire = {
-        "99-z-clock-rate" = {
-          "context.properties" = {
-            "default.clock.rate" = 48000;
+      # extraConfig.pipewire = {
+      #   "99-z-clock-rate" = {
+      #     "context.properties" = {
+      #       "default.clock.rate" = 48000;
 
-            "default.clock.quantum" = 64;
-            "default.clock.min-quantum" = 16;
-            "default.clock.max-quantum" = 1024;
-          };
-        };
-      };
+      #       "default.clock.quantum" = 64;
+      #       "default.clock.min-quantum" = 16;
+      #       "default.clock.max-quantum" = 1024;
+      #     };
+      #   };
+      # };
     };
   };
 }
