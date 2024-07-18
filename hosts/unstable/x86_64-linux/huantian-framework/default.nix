@@ -89,8 +89,6 @@
   # see https://gitlab.freedesktop.org/drm/i915/kernel/-/issues/10548
   environment.variables.INTEL_DEBUG = "reemit,capture-all";
 
-  services.mullvad-vpn.enable = true;
-
   environment.systemPackages = with pkgs; [
   ];
 }
