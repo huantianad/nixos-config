@@ -3,7 +3,7 @@
 with builtins;
 with lib;
 {
-  time.timeZone = mkDefault "America/Phoenix";
+  services.automatic-timezoned.enable = true;
   i18n.defaultLocale = mkDefault "en_US.utf8";
 
   # Network Manager + wifi

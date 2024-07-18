@@ -3,7 +3,7 @@
 with builtins;
 with lib;
 {
-  time.timeZone = mkDefault "America/Phoenix";
+  time.timeZone = mkDefault "Etc/UTC";
   i18n.defaultLocale = mkDefault "en_US.utf8";
 
   networking.domain = "huantian.dev";

@@ -77,8 +77,6 @@
     };
   };
 
-  time.timeZone = "America/Los_Angeles";
-
   # Updating firmware and bios
   services.fwupd.enable = true;
 
