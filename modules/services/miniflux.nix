@@ -1,15 +1,20 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.services.miniflux;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.services.miniflux;
+in {
   options.modules.services.miniflux = {
     enable = mkBoolOpt false;
   };
 
-  imports = [ inputs.minifluxng.nixosModules.minifluxng ];
+  imports = [inputs.minifluxng.nixosModules.minifluxng];
 
   config = mkIf cfg.enable {
     services.minifluxng = {

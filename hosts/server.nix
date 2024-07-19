@@ -1,8 +1,11 @@
-{ pkgs, config, lib, ... }:
-
-with builtins;
-with lib;
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with builtins;
+with lib; {
   time.timeZone = mkDefault "Etc/UTC";
   i18n.defaultLocale = mkDefault "en_US.utf8";
 
@@ -45,5 +48,5 @@ with lib;
   documentation.nixos.enable = false;
 
   sops.defaultSopsFile = ../secrets/secrets.yaml;
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 }

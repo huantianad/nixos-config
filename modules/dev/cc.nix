@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.dev.cc;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.dev.cc;
+in {
   options.modules.dev.cc = {
     enable = mkBoolOpt false;
   };

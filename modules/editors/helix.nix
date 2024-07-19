@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.editors.helix;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.editors.helix;
+in {
   options.modules.editors.helix = {
     enable = mkBoolOpt false;
   };
@@ -38,7 +43,7 @@ in
         ];
 
         language-server.nil.config = {
-          formatting.command = [ "alejandra" ];
+          formatting.command = ["alejandra"];
           nix.flake.autoArchive = true;
         };
 

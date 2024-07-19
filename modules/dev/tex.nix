@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.dev.tex;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.dev.tex;
+in {
   options.modules.dev.tex = {
     enable = mkBoolOpt false;
   };

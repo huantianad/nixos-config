@@ -1,16 +1,20 @@
-{ options, config, lib, pkgs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.services.vaultwarden;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.services.vaultwarden;
+in {
   options.modules.services.vaultwarden = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    sops.secrets."vaultwarden" = { };
+    sops.secrets."vaultwarden" = {};
     sops.secrets."vaultwarden".owner = "vaultwarden";
 
     services.vaultwarden = {

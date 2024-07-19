@@ -1,10 +1,14 @@
-{ options, config, lib, pkgs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.services.minecraft-server;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.services.minecraft-server;
+in {
   options.modules.services.minecraft-server = {
     enable = mkBoolOpt false;
   };

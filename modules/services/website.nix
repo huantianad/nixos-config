@@ -1,10 +1,14 @@
-{ options, config, lib, pkgs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.services.website;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.services.website;
+in {
   options.modules.services.website = {
     enable = mkBoolOpt false;
   };

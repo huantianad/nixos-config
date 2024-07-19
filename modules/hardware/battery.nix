@@ -1,10 +1,15 @@
-{ options, config, lib, pkgs, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.hardware.battery;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.hardware.battery;
+in {
   options.modules.hardware.battery = {
     enable = mkBoolOpt false;
   };

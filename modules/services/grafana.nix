@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.services.grafana;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.services.grafana;
+in {
   options.modules.services.grafana = {
     enable = mkBoolOpt false;
   };

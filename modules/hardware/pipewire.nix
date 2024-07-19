@@ -1,10 +1,15 @@
-{ options, config, lib, pkgs, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.hardware.pipewire;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.hardware.pipewire;
+in {
   options.modules.hardware.pipewire = {
     enable = mkBoolOpt false;
   };

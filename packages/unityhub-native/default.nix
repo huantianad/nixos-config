@@ -1,15 +1,15 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, cmake
-, ninja
-, pkg-config
-, gtk3
-, perl
-, python3
-, wrapGAppsHook
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  ninja,
+  pkg-config,
+  gtk3,
+  perl,
+  python3,
+  wrapGAppsHook,
 }:
-
 stdenv.mkDerivation rec {
   pname = "unityhub-native";
   version = "1.53";
@@ -41,7 +41,7 @@ stdenv.mkDerivation rec {
     downloadPage = "https://github.com/Ravbug/UnityHubNative/releases";
     changelog = "https://github.com/Ravbug/UnityHubNative/releases/tag/${version}";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [ huantian ];
-    platforms = [ "x86_64-linux" ];
+    maintainers = with maintainers; [huantian];
+    platforms = ["x86_64-linux"];
   };
 }

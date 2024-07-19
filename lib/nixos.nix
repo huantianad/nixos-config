@@ -1,14 +1,22 @@
-{ inputs, lib, pkgs, ... }:
-
-let
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkDefault removeSuffix;
   inherit (lib.my) mapModules;
 
   # nixosSystem: the flake system builder, accessed from the nixpkgs flake using nixpkgs.lib.nixosSystem
-  mkHost = path: { nixosSystem, system, home-manager, overlays }:
+  mkHost = path: {
+    nixosSystem,
+    system,
+    home-manager,
+    overlays,
+  }:
     nixosSystem {
       inherit system;
-      specialArgs = { inherit lib inputs; };
+      specialArgs = {inherit lib inputs;};
       modules = [
         {
           networking.hostName = mkDefault (removeSuffix ".nix" (baseNameOf path));
@@ -19,9 +27,8 @@ let
         ../. # /default.nix
       ];
     };
-in
-{
+in {
   mapHosts = dir: attrs:
     mapModules dir
-      (hostPath: mkHost hostPath attrs);
+    (hostPath: mkHost hostPath attrs);
 }

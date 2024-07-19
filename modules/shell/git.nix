@@ -1,16 +1,21 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.shell.git;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.shell.git;
+in {
   options.modules.shell.git = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.git ];
+    environment.systemPackages = [pkgs.git];
 
     home-manager.users.huantian.programs.git = {
       enable = true;

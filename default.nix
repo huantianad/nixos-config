@@ -1,12 +1,18 @@
-{ inputs, config, lib, pkgs, ... }:
-
-with lib;
-with lib.my;
 {
-  imports = [
-    inputs.sops-nix.nixosModules.sops
-    inputs.nix-index-database.nixosModules.nix-index
-  ] ++ (mapModulesRec' (toString ./modules) import);
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+with lib.my; {
+  imports =
+    [
+      inputs.sops-nix.nixosModules.sops
+      inputs.nix-index-database.nixosModules.nix-index
+    ]
+    ++ (mapModulesRec' (toString ./modules) import);
 
   # https://nix-community.github.io/home-manager/index.html#sec-install-nixos-module
   # "use the global pkgs that is configured via the system level nixpkgs options"
@@ -37,7 +43,7 @@ with lib.my;
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       ];
       auto-optimise-store = true;
-      trusted-users = [ "@wheel" ];
+      trusted-users = ["@wheel"];
     };
 
     gc = {

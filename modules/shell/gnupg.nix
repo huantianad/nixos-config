@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.shell.gnupg;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.shell.gnupg;
+in {
   options.modules.shell.gnupg = {
     enable = mkBoolOpt false;
   };

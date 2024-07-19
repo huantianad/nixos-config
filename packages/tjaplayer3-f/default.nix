@@ -1,14 +1,14 @@
-{ lib
-, buildDotnetModule
-, fetchFromGitHub
-, dotnetCorePackages
-, SDL2
-, alsa-lib
-, copyDesktopItems
-, icoutils
-, makeDesktopItem
+{
+  lib,
+  buildDotnetModule,
+  fetchFromGitHub,
+  dotnetCorePackages,
+  SDL2,
+  alsa-lib,
+  copyDesktopItems,
+  icoutils,
+  makeDesktopItem,
 }:
-
 buildDotnetModule rec {
   pname = "tjaplayer3-f";
   version = "1.8.2.1";
@@ -35,7 +35,7 @@ buildDotnetModule rec {
     icoutils
   ];
 
-  patches = [ ./patch.patch ];
+  patches = [./patch.patch];
 
   postFixup = ''
     # This used to happen at runtime, but is removed in the patch.
@@ -64,7 +64,7 @@ buildDotnetModule rec {
       icon = "TJAPlayer3-f";
       comment = meta.description;
       type = "Application";
-      categories = [ "Game" ];
+      categories = ["Game"];
     })
   ];
 
@@ -74,7 +74,7 @@ buildDotnetModule rec {
     downloadPage = "https://github.com/Mr-Ojii/TJAPlayer3-f/releases";
     changelog = "https://github.com/Mr-Ojii/TJAPlayer3-f/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [ huantian ];
+    maintainers = with maintainers; [huantian];
     mainPrograms = "TJAPlayer3-f";
     platforms = platforms.linux;
   };

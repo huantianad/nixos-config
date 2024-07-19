@@ -1,13 +1,10 @@
-{ lib, ... }:
-
-let
+{lib, ...}: let
   inherit (builtins) any listToAttrs;
   inherit (lib) count filterAttrs mapAttrs' mapAttrsToList;
 
   attrsToList = attrs:
-    mapAttrsToList (name: value: { inherit name value; }) attrs;
-in
-{
+    mapAttrsToList (name: value: {inherit name value;}) attrs;
+in {
   inherit attrsToList;
 
   # mapFilterAttrs ::

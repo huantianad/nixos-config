@@ -1,14 +1,18 @@
-{ config, lib, pkgs, modulesPath, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
+  boot.initrd.kernelModules = ["dm-snapshot"];
+  boot.kernelModules = ["kvm-intel"];
+  boot.extraModulePackages = [];
 
   services.fstrim.enable = true;
 
@@ -34,7 +38,7 @@
     device = "/dev/disk/by-label/nix";
     fsType = "ext4";
     neededForBoot = true;
-    options = [ "noatime" ];
+    options = ["noatime"];
   };
 
   fileSystems."/home" = {
@@ -42,7 +46,7 @@
     fsType = "ext4";
   };
 
-  swapDevices = [{ label = "swap"; }];
+  swapDevices = [{label = "swap";}];
   boot.resumeDevice = "/dev/disk/by-label/swap";
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

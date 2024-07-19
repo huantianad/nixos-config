@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.desktop.gaming.dolphin;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.desktop.gaming.dolphin;
+in {
   options.modules.desktop.gaming.dolphin = {
     enable = mkBoolOpt false;
     setUdevRules = mkBoolOpt false;
@@ -19,7 +24,7 @@ in
     ];
 
     # GameCube controllers
-    services.udev.packages = mkIf cfg.setUdevRules [ pkgs.dolphinEmu ];
+    services.udev.packages = mkIf cfg.setUdevRules [pkgs.dolphinEmu];
 
     # DolphinBar
     services.udev.extraRules = mkIf cfg.setUdevRules ''

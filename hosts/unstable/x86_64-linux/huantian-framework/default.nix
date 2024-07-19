@@ -1,6 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
     ../../../home.nix

@@ -1,5 +1,12 @@
-{ lib, stdenv, fetchurl, copyDesktopItems, p7zip, makeDesktopItem, jdk8 }:
-
+{
+  lib,
+  stdenv,
+  fetchurl,
+  copyDesktopItems,
+  p7zip,
+  makeDesktopItem,
+  jdk8,
+}:
 stdenv.mkDerivation rec {
   name = "xmage";
   version = "1.4.51-dev_2023-03-04_14-42";
@@ -42,9 +49,9 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Magic Another Game Engine";
-    sourceProvenance = with sourceTypes; [ binaryBytecode ];
+    sourceProvenance = with sourceTypes; [binaryBytecode];
     license = licenses.mit;
-    maintainers = with maintainers; [ huantian ];
+    maintainers = with maintainers; [huantian];
     homepage = "http://xmage.de/";
   };
 }

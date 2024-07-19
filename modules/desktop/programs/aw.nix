@@ -1,11 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let
-  cfg = config.modules.desktop.programs.aw;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.desktop.programs.aw;
+in {
   options.modules.desktop.programs.aw = {
     enable = mkBoolOpt false;
   };

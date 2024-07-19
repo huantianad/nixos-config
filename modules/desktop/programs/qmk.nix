@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.desktop.programs.qmk;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.desktop.programs.qmk;
+in {
   options.modules.desktop.programs.qmk = {
     enable = mkBoolOpt false;
   };

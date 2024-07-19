@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.shell.direnv;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.shell.direnv;
+in {
   options.modules.shell.direnv = {
     enable = mkBoolOpt false;
   };
@@ -24,6 +29,6 @@ in
       "/share/nix-direnv"
     ];
 
-    programs.zsh.ohMyZsh.plugins = mkIf config.modules.shell.zsh.enable [ "direnv" ];
+    programs.zsh.ohMyZsh.plugins = mkIf config.modules.shell.zsh.enable ["direnv"];
   };
 }

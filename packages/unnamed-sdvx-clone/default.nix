@@ -1,17 +1,17 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, cmake
-, freetype
-, SDL2
-, libjpeg
-, libvorbis
-, libarchive
-, openssl
-, rapidjson
-, curl
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  freetype,
+  SDL2,
+  libjpeg,
+  libvorbis,
+  libarchive,
+  openssl,
+  rapidjson,
+  curl,
 }:
-
 stdenv.mkDerivation rec {
   pname = "unnamed-sdvx-clone";
   version = "0.5.0";
@@ -69,8 +69,8 @@ stdenv.mkDerivation rec {
     downloadPage = "https://github.com/Drewol/unnamed-sdvx-clone/releases";
     changelog = "https://github.com/Drewol/unnamed-sdvx-clone/releases/tag/${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [ huantian ];
+    maintainers = with maintainers; [huantian];
     mainProgram = "usc-game";
-    platforms = [ "x86_64-linux" ];
+    platforms = ["x86_64-linux"];
   };
 }

@@ -1,8 +1,11 @@
-{ pkgs, config, lib, ... }:
-
-with builtins;
-with lib;
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with builtins;
+with lib; {
   services.automatic-timezoned.enable = true;
   i18n.defaultLocale = mkDefault "en_US.utf8";
 
@@ -11,7 +14,7 @@ with lib;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.printing.drivers = with pkgs; [ pantum-driver ];
+  services.printing.drivers = with pkgs; [pantum-driver];
 
   boot = {
     tmp.cleanOnBoot = true;
@@ -31,7 +34,7 @@ with lib;
 
   # Tell SSH to use ksshaskpass even when in terminal
   programs.ssh.enableAskPassword = true;
-  programs.ssh.askPassword = (lib.getExe pkgs.kdePackages.ksshaskpass);
+  programs.ssh.askPassword = lib.getExe pkgs.kdePackages.ksshaskpass;
   environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
 
   programs.nix-ld.enable = true;

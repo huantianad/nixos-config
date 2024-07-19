@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.editors.vim;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.editors.vim;
+in {
   options.modules.editors.vim = {
     enable = mkBoolOpt false;
   };
@@ -87,15 +92,13 @@ in
       };
     };
 
-    environment.systemPackages = with pkgs;
-      let
-        clipboard-tool =
-          if config.modules.desktop.wayland.enable
-          then wl-clipboard
-          else xclip;
-      in
-      [
-        clipboard-tool
-      ];
+    environment.systemPackages = with pkgs; let
+      clipboard-tool =
+        if config.modules.desktop.wayland.enable
+        then wl-clipboard
+        else xclip;
+    in [
+      clipboard-tool
+    ];
   };
 }

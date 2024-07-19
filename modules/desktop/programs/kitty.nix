@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.desktop.programs.kitty;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.desktop.programs.kitty;
+in {
   options.modules.desktop.programs.kitty = {
     enable = mkBoolOpt false;
   };

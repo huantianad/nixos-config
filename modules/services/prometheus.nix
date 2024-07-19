@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.services.prometheus;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.services.prometheus;
+in {
   options.modules.services.prometheus = {
     enable = mkBoolOpt false;
   };
@@ -24,35 +29,43 @@ in
       scrapeConfigs = [
         {
           job_name = "oracle-main";
-          static_configs = [{
-            targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
-          }];
+          static_configs = [
+            {
+              targets = ["127.0.0.1:${toString config.services.prometheus.exporters.node.port}"];
+            }
+          ];
         }
         {
           job_name = "oracle-main-caddy";
-          static_configs = [{
-            targets = [ "127.0.0.1:2019" ];
-          }];
+          static_configs = [
+            {
+              targets = ["127.0.0.1:2019"];
+            }
+          ];
         }
         {
           job_name = "miniflux";
-          static_configs = [{
-            targets = [ "127.0.0.1:8877" ];
-          }];
+          static_configs = [
+            {
+              targets = ["127.0.0.1:8877"];
+            }
+          ];
         }
         {
           job_name = "synapse";
           metrics_path = "/_synapse/metrics";
-          static_configs = [{
-            targets = [ "127.0.0.1:9003" ];
-          }];
+          static_configs = [
+            {
+              targets = ["127.0.0.1:9003"];
+            }
+          ];
         }
       ];
 
       exporters = {
         node = {
           enable = true;
-          enabledCollectors = [ "systemd" ];
+          enabledCollectors = ["systemd"];
           port = 9002;
         };
       };

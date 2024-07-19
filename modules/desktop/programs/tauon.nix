@@ -1,10 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.desktop.programs.tauon;
-in
 {
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.desktop.programs.tauon;
+in {
   options.modules.desktop.programs.tauon = {
     enable = mkBoolOpt false;
     openFirewall = mkBoolOpt false;
@@ -18,7 +23,7 @@ in
     ];
 
     networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts = [ 7590 ];
+      allowedTCPPorts = [7590];
     };
   };
 }

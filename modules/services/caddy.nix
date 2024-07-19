@@ -1,16 +1,20 @@
-{ options, config, lib, pkgs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.services.caddy;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.services.caddy;
+in {
   options.modules.services.caddy = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
+    networking.firewall.allowedTCPPorts = [80 443];
 
     # TODO: Setup custom error code handling pages
     services.caddy = {
@@ -33,36 +37,42 @@ in
           grpc_listen_port = 0;
         };
 
-        clients = [{
-          url = "http://127.0.0.1:3100/loki/api/v1/push";
-        }];
+        clients = [
+          {
+            url = "http://127.0.0.1:3100/loki/api/v1/push";
+          }
+        ];
 
-        scrape_configs = [{
-          job_name = "caddy_access_log";
+        scrape_configs = [
+          {
+            job_name = "caddy_access_log";
 
-          static_configs = [{
-            targets = [ "localhost" ];
-            labels = {
-              job = "caddy_access_log";
-              host = "huantian.dev";
-              agent = "caddy-promtail";
-              __path__ = "/var/log/caddy/*.log";
-            };
-          }];
+            static_configs = [
+              {
+                targets = ["localhost"];
+                labels = {
+                  job = "caddy_access_log";
+                  host = "huantian.dev";
+                  agent = "caddy-promtail";
+                  __path__ = "/var/log/caddy/*.log";
+                };
+              }
+            ];
 
-          pipeline_stages = [
-            {
-              json.expressions.client_ip = "request.client_ip";
-            }
-            {
-              geoip = {
-                db = "/var/db/GeoLite2-City.mmdb";
-                source = "client_ip";
-                db_type = "city";
-              };
-            }
-          ];
-        }];
+            pipeline_stages = [
+              {
+                json.expressions.client_ip = "request.client_ip";
+              }
+              {
+                geoip = {
+                  db = "/var/db/GeoLite2-City.mmdb";
+                  source = "client_ip";
+                  db_type = "city";
+                };
+              }
+            ];
+          }
+        ];
       };
     };
   };

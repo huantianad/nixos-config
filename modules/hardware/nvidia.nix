@@ -1,16 +1,21 @@
-{ options, config, lib, pkgs, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.hardware.nvidia;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.hardware.nvidia;
+in {
   options.modules.hardware.nvidia = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    services.xserver.videoDrivers = [ "nvidia" ];
+    services.xserver.videoDrivers = ["nvidia"];
 
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
     hardware.nvidia.modesetting.enable = true;

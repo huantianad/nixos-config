@@ -1,10 +1,15 @@
-{ options, config, lib, pkgs, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.hardware.lanzaboote;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.hardware.lanzaboote;
+in {
   options.modules.hardware.lanzaboote = {
     enable = mkBoolOpt false;
   };

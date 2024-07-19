@@ -1,17 +1,22 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.editors.vscode;
 
   extensions-input = inputs.nix-vscode-extensions.extensions.${pkgs.system};
   # Use latest extension if not found for given vscode version
-  extensions = lib.attrsets.recursiveUpdate
+  extensions =
+    lib.attrsets.recursiveUpdate
     extensions-input
     (extensions-input.forVSCodeVersion pkgs.vscode.version);
-in
-{
+in {
   options.modules.editors.vscode = {
     enable = mkBoolOpt false;
   };
@@ -104,7 +109,6 @@ in
         tamasfe.even-better-toml
       ];
 
-
       userSettings = {
         #############
         ## General ##
@@ -148,7 +152,7 @@ in
         # Other editor display
         "editor.guides.bracketPairs" = true;
         "editor.bracketPairColorization.enabled" = true;
-        "editor.rulers" = [ 80 100 ];
+        "editor.rulers" = [80 100];
 
         # Cursor and Scrolling
         "editor.cursorBlinking" = "phase";
@@ -202,7 +206,6 @@ in
           "*.ipynb" = "jupyter-notebook";
         };
 
-
         ############
         ## Python ##
         ############
@@ -240,7 +243,6 @@ in
           ];
         };
 
-
         ##########
         ## Java ##
         ##########
@@ -262,7 +264,6 @@ in
           }
         ];
 
-
         ####################
         ## C# / Omnisharp ##
         ####################
@@ -272,7 +273,6 @@ in
         "omnisharp.organizeImportsOnFormat" = true;
         "omnisharp.useModernNet" = true;
 
-
         #########
         ## Nim ##
         #########
@@ -281,14 +281,13 @@ in
           "editor.tabSize" = 2;
         };
 
-
         #########
         ## Nix ##
         #########
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "${pkgs.nil}/bin/nil";
         "nix.serverSettings".nil = {
-          formatting.command = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
+          formatting.command = ["${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt"];
           nix.flake = {
             autoArchive = true;
           };
@@ -298,11 +297,9 @@ in
           "editor.formatOnSave" = true;
         };
 
-
         ###########
         # Haskell #
         ###########
-
 
         #########
         ## Vim ##
@@ -310,12 +307,12 @@ in
         "vim.useSystemClipboard" = true;
         "vim.statusBarColorControl" = true;
 
-        "vim.statusBarColors.normal" = [ "#9876aa" "#323232" ];
-        "vim.statusBarColors.insert" = [ "#629755" "#323232" ];
-        "vim.statusBarColors.visual" = [ "#ffc66d" "#323232" ];
-        "vim.statusBarColors.visualline" = [ "#ffc66d" "#323232" ];
-        "vim.statusBarColors.visualblock" = [ "#ffc66d" "#323232" ];
-        "vim.statusBarColors.replace" = [ "#ff6b68" "#323232" ];
+        "vim.statusBarColors.normal" = ["#9876aa" "#323232"];
+        "vim.statusBarColors.insert" = ["#629755" "#323232"];
+        "vim.statusBarColors.visual" = ["#ffc66d" "#323232"];
+        "vim.statusBarColors.visualline" = ["#ffc66d" "#323232"];
+        "vim.statusBarColors.visualblock" = ["#ffc66d" "#323232"];
+        "vim.statusBarColors.replace" = ["#ff6b68" "#323232"];
         "workbench.colorCustomizations" = {
           # "statusBar.background" = "#9876aa";
           # "statusBar.noFolderBackground" = "#9876aa";
@@ -327,7 +324,6 @@ in
           "editor.lineHighlightBackground" = "#1073cf2d";
           "editor.lineHighlightBorder" = "#9fced11f";
         };
-
 
         #########
         ## Git ##

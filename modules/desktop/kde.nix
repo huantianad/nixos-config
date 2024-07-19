@@ -1,10 +1,15 @@
-{ options, config, lib, pkgs, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.desktop.kde;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.desktop.kde;
+in {
   options.modules.desktop.kde = {
     enable = mkBoolOpt false;
   };

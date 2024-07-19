@@ -1,10 +1,15 @@
-{ options, config, lib, pkgs, inputs, ... }:
-
-with lib;
-with lib.my;
-let cfg = config.modules.desktop.random-apps;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.desktop.random-apps;
+in {
   options.modules.desktop.random-apps = {
     enable = mkBoolOpt false;
   };

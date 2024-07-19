@@ -1,6 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
   imports = [
     ../../../home.nix
     ./hardware-configuration.nix
@@ -109,8 +113,8 @@
   services.earlyoom.enable = true;
 
   # VLC
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [8080];
 
   # Factorio
-  networking.firewall.allowedUDPPorts = [ 34197 ];
+  networking.firewall.allowedUDPPorts = [34197];
 }
