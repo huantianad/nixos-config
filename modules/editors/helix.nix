@@ -16,7 +16,8 @@ in
 
       extraPackages = [
         pkgs.nil
-        pkgs.nixpkgs-fmt
+        pkgs.nixfmt-rfc-style
+        pkgs.alejandra
       ];
 
       settings = {
@@ -37,7 +38,7 @@ in
         ];
 
         language-server.nil.config = {
-          formatting.command = [ (lib.getExe pkgs.nixpkgs-fmt) ];
+          formatting.command = [ "alejandra" ];
           nix.flake.autoArchive = true;
         };
 
