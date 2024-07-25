@@ -89,4 +89,8 @@
 
   # Earlyoom because unity + rider often locks up system with too much memory usage
   services.earlyoom.enable = true;
+
+  networking.firewall = {
+    allowedTCPPorts = [25565];
+  };
 }

@@ -19,6 +19,7 @@ in {
 
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
     hardware.nvidia.modesetting.enable = true;
+    hardware.nvidia.open = true;
 
     environment.variables.MOZ_DISABLE_RDD_SANDBOX = "1";
     environment.variables.LIBVA_DRIVER_NAME = "nvidia";
