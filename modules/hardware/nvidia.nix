@@ -21,6 +21,11 @@ in {
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.open = true;
 
+    specialisation.nvidia-beta.configuration = {
+      hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+      boot.loader.systemd-boot.sortKey = "nvidia-beta";
+    };
+
     environment.variables.MOZ_DISABLE_RDD_SANDBOX = "1";
     environment.variables.LIBVA_DRIVER_NAME = "nvidia";
 
