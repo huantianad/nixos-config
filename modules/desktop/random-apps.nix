@@ -41,8 +41,8 @@ in {
       inkscape
 
       # soulseekqt
-      # bitwarden
-      # obsidian
+      bitwarden
+      obsidian
 
       kdePackages.merkuro
       kdePackages.filelight
