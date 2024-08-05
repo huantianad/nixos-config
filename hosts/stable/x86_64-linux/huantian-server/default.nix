@@ -15,7 +15,7 @@
   _module.args.nixinate = {
     host = "huantian-server";
     sshUser = "huantian";
-    buildOn = "local";
+    buildOn = "remote";
     substituteOnTarget = true;
     hermetic = false;
   };
