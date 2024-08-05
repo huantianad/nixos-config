@@ -30,7 +30,7 @@ in {
     };
 
     services.promtail = {
-      enable = true;
+      enable = config.modules.services.loki.enable;
       configuration = {
         server = {
           http_listen_port = 28183;

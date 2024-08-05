@@ -23,6 +23,7 @@
   modules = {
     services = {
       ddclient.enable = true;
+      jellyfin.enable = true;
     };
   };
 
