@@ -24,4 +24,6 @@
     services = {
     };
   };
+
+  services.logind.lidSwitch = "ignore";
 }
