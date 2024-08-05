@@ -40,6 +40,9 @@
 
     glaumar.url = "github:glaumar/nur";
     glaumar.inputs.nixpkgs.follows = "nixpkgs";
+
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {

@@ -16,7 +16,6 @@ with lib; {
 
   modules = {
     editors = {
-      vim.enable = true;
       helix.enable = true;
     };
 
