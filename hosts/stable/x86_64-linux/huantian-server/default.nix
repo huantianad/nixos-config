@@ -22,6 +22,7 @@
 
   modules = {
     services = {
+      ddclient.enable = true;
     };
   };
 
