@@ -19,6 +19,7 @@ in {
       enable = true;
       settings = {
         MusicFolder = "/mnt/music";
+        EnableSharing = true;
       };
     };
 
