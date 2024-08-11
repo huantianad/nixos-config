@@ -21,9 +21,9 @@ in {
     hardware.nvidia.modesetting.enable = true;
     hardware.nvidia.open = true;
 
-    specialisation.nvidia-beta.configuration = {
+    specialisation.nvidiaBeta.configuration = {
       hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-      boot.loader.systemd-boot.sortKey = "nvidia-beta";
+      boot.loader.systemd-boot.sortKey = "nvidiaBeta";
     };
 
     environment.variables.MOZ_DISABLE_RDD_SANDBOX = "1";
