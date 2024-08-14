@@ -55,7 +55,7 @@
     editors = {
       helix.enable = true;
       vscode.enable = false;
-      vim.enable = true;
+      vim.enable = false;
       rider.enable = true;
     };
 
