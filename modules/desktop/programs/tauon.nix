@@ -17,7 +17,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      (pkgs.tauon.override {
+      (pkgs.my.tauon.override {
         withDiscordRPC = true;
       })
     ];

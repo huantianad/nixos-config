@@ -5,6 +5,8 @@ pkgs.lib.makeScope pkgs.newScope (
   in {
     musescore3 = pkgs.libsForQt5.callPackage ./musescore3 {};
 
+    tauon = callPackage ./tauon {};
+
     tjaplayer3-f = callPackage ./tjaplayer3-f {};
 
     unityhub-native = callPackage ./unityhub-native {};
