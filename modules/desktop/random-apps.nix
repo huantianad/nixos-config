@@ -21,7 +21,7 @@ in {
       soundfont-generaluser # for vlc midi
 
       element-desktop
-      cinny-desktop
+      # cinny-desktop
       gimp
       qbittorrent
       deluge-gtk
