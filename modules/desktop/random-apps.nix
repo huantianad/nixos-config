@@ -20,7 +20,7 @@ in {
       mpv
       soundfont-generaluser # for vlc midi
 
-      element-desktop
+      # element-desktop
       # cinny-desktop
       gimp
       qbittorrent
