@@ -19,7 +19,13 @@ in {
       enable = true;
       defaultEditor = true;
 
-      extraPackages = [
+      extraPackages = let
+        clipboard-tool =
+          if config.modules.desktop.wayland.enable
+          then pkgs.wl-clipboard
+          else pkgs.xclip;
+      in [
+        clipboard-tool
         pkgs.nil
         pkgs.nixfmt-rfc-style
         pkgs.alejandra
