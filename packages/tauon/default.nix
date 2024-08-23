@@ -7,7 +7,6 @@
   pkg-config,
   python3Packages,
   gobject-introspection,
-  ffmpeg,
   flac,
   game-music-emu,
   gtk3,
@@ -22,18 +21,19 @@
   pango,
   pipewire,
   wavpack,
+  ffmpeg,
   pulseaudio,
   withDiscordRPC ? false,
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "tauon";
-  version = "unstable-2024-08-14";
+  version = "unstable-2024-08-20";
 
   src = fetchFromGitHub {
     owner = "Taiko2k";
-    repo = "TauonMusicBox";
-    rev = "361eb16f92d3984d29726545ccd5b37fa6fcaca5";
-    hash = "sha256-UVluO7VVJiC/atdSeww9jK/8yd9/srSM57CGl5rdT/k=";
+    repo = "Tauon";
+    rev = "9659f98aab0d1384f89c775d026b3b32a48c0f67";
+    hash = "sha256-8dB6h85R/5Z7fA/XVNDz78/L7Y28J5vzaE0OEgA7MkQ=";
   };
 
   postUnpack = ''
@@ -54,7 +54,7 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail 'libopenmpt.so' '${lib.getLib libopenmpt}/lib/libopenmpt.so'
 
     substituteInPlace t_modules/t_phazor.py \
-      --replace 'lib/libphazor' '../../lib/libphazor'
+      --replace-fail 'lib/libphazor' '../../lib/libphazor'
 
     substituteInPlace compile-phazor*.sh --replace-fail 'gcc' '${stdenv.cc.targetPrefix}cc'
 
@@ -89,8 +89,7 @@ stdenv.mkDerivation (finalAttrs: {
     wavpack
   ];
 
-  pythonPath =
-    with python3Packages;
+  pythonPath = with python3Packages;
     [
       beautifulsoup4
       dbus-python
@@ -113,7 +112,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional stdenv.isLinux pulsectl;
 
   makeWrapperArgs = [
-    "--prefix PATH : ${lib.makeBinPath [ ffmpeg ]}"
+    "--prefix PATH : ${lib.makeBinPath [ffmpeg]}"
     "--prefix LD_LIBRARY_PATH : ${
       lib.makeLibraryPath [
         game-music-emu
@@ -144,7 +143,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://tauonmusicbox.rocks/";
     changelog = "https://github.com/Taiko2k/TauonMusicBox/releases/tag/v${finalAttrs.version}";
     license = licenses.gpl3;
-    maintainers = with maintainers; [ jansol ];
+    maintainers = with maintainers; [jansol];
     platforms = platforms.linux ++ platforms.darwin;
   };
 })
