@@ -39,10 +39,10 @@ in {
         "99-z-clock-rate" = {
           "context.properties" = {
             "default.clock.rate" = 48000;
-            "default.clock.allowed-rates" = [44100 48000 88200 96000 192000];
+            "default.clock.allowed-rates" = [44100 48000 88200 96000 176400 192000];
 
-            "default.clock.quantum" = 128;
-            "default.clock.min-quantum" = 16;
+            "default.clock.quantum" = 64;
+            "default.clock.min-quantum" = 64;
             "default.clock.max-quantum" = 1024;
           };
         };
