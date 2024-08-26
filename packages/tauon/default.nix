@@ -27,13 +27,13 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "tauon";
-  version = "unstable-2024-08-20";
+  version = "7.8.1";
 
   src = fetchFromGitHub {
     owner = "Taiko2k";
     repo = "Tauon";
-    rev = "9659f98aab0d1384f89c775d026b3b32a48c0f67";
-    hash = "sha256-8dB6h85R/5Z7fA/XVNDz78/L7Y28J5vzaE0OEgA7MkQ=";
+    rev = "v${finalAttrs.version}";
+    hash = "sha256-cxsM3eVPn3iZDSAM/TOigTLwx6CAPf2x42wiYU+ND0M=";
   };
 
   postUnpack = ''
@@ -94,6 +94,7 @@ stdenv.mkDerivation (finalAttrs: {
       beautifulsoup4
       dbus-python
       unidecode
+      jxlpy
       musicbrainzngs
       mutagen
       natsort
