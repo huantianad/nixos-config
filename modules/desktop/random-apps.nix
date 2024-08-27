@@ -18,10 +18,12 @@ in {
     environment.systemPackages = with pkgs; [
       vesktop
       mpv
-      soundfont-generaluser # for vlc midi
+      # vlc
+      # soundfont-generaluser # for vlc midi
 
       # element-desktop
       # cinny-desktop
+      feishin
       gimp
       qbittorrent
       deluge-gtk
