@@ -37,7 +37,7 @@ in {
       jellyfin-media-player
       qpwgraph
       newsflash
-      # easyeffects
+      easyeffects
       kicad-small
       inkscape
       varia
