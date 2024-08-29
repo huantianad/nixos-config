@@ -29,6 +29,8 @@ in {
         pkgs.nil
         pkgs.nixfmt-rfc-style
         pkgs.alejandra
+        pkgs.nimlangserver
+        pkgs.nph
       ];
 
       settings = {
@@ -45,6 +47,14 @@ in {
           {
             name = "nix";
             auto-format = true;
+          }
+          {
+            name = "nim";
+            auto-format = true;
+            formatter = {
+              command = "nph";
+              args = ["-"];
+            };
           }
         ];
 
