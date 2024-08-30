@@ -21,7 +21,7 @@ in {
       # vlc
       # soundfont-generaluser # for vlc midi
 
-      # element-desktop
+      element-desktop
       # cinny-desktop
       feishin
       gimp
@@ -41,7 +41,6 @@ in {
       kicad-small
       inkscape
       varia
-
       # soulseekqt
       bitwarden
       obsidian
