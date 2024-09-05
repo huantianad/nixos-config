@@ -19,9 +19,7 @@ in {
       cockatrice
       lutris
       # melonDS
-      (prismlauncher.override {
-        withWaylandGLFW = true;
-      })
+      prismlauncher
       # r2modman
       # ryujinx
       # scarab
