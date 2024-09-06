@@ -15,9 +15,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    fonts.enableDefaultPackages = true;
     fonts.packages = with pkgs; [
       # General Fonts
-      liberation_ttf
       corefonts
 
       # Monospace fonts
@@ -30,6 +30,17 @@ in {
       source-han-sans
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
+      wqy_zenhei
+      wqy_microhei
     ];
+
+    fonts.fontconfig = {
+      subpixel.rgba = "rgb";
+      defaultFonts = {
+        serif = ["Noto Serif" "Source Han Serif SC" "Source Han Serif TC" "Source Han Serif JP"];
+        sansSerif = ["Noto Sans" "Source Han Sans SC" "Source Han Sans TC" "Source Han Sans JP"];
+        monospace = ["MesloLGS NF"];
+      };
+    };
   };
 }
