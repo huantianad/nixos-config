@@ -10,7 +10,7 @@ with lib;
 with lib.my; let
   cfg = config.modules.hardware.pipewire;
 
-  quantum = 64;
+  quantum = 128;
   rate = 48000;
   qr = "${toString quantum}/${toString rate}";
 in {
@@ -65,8 +65,8 @@ in {
                 "pulse.default.req" = qr;
 
                 # recording latency
-                "pulse.min.frag" = qr;
-                "pulse.default.frag" = qr;
+                # "pulse.min.frag" = qr;
+                # "pulse.default.frag" = qr;
                 # "pulse.max.frag" = qr;
 
                 # data stored on server
