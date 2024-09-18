@@ -10,7 +10,7 @@ with lib;
 with lib.my; let
   cfg = config.modules.hardware.pipewire;
 
-  quantum = 128;
+  quantum = 256;
   rate = 48000;
   qr = "${toString quantum}/${toString rate}";
 in {
@@ -33,7 +33,7 @@ in {
         "99-lowlatency" = {
           "context.properties" = {
             "default.clock.rate" = rate;
-            "default.clock.allowed-rates" = [44100 48000 88200 96000 176400 192000];
+            "default.clock.allowed-rates" = [44100 48000 88200 96000 176400 192000 352800 384000];
 
             "default.clock.quantum" = quantum;
             "default.clock.min-quantum" = quantum;
@@ -58,8 +58,6 @@ in {
             {
               name = "libpipewire-module-protocol-pulse";
               args = {
-                # "server.address" = ["unix:native"];
-
                 # playback latency
                 "pulse.min.req" = qr;
                 "pulse.default.req" = qr;
@@ -70,7 +68,7 @@ in {
                 # "pulse.max.frag" = qr;
 
                 # data stored on server
-                "pulse.default.tlength" = "6000/${toString rate}";
+                "pulse.default.tlength" = "12000/${toString rate}";
 
                 # buffer size in samples, calculated from req/tlength
                 "pulse.min.quantum" = qr;
