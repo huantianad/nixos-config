@@ -23,7 +23,7 @@ in {
       # Monospace fonts
       fira-code
       jetbrains-mono
-      meslo-lgs-nf # Font for p10k theme
+      monaspace
 
       # CJK Fonts
       source-han-serif
@@ -39,7 +39,7 @@ in {
       defaultFonts = {
         serif = ["Noto Serif" "Source Han Serif SC" "Source Han Serif TC" "Source Han Serif JP"];
         sansSerif = ["Noto Sans" "Source Han Sans SC" "Source Han Sans TC" "Source Han Sans JP"];
-        monospace = ["MesloLGS NF"];
+        monospace = ["Monaspace Neon"];
       };
     };
   };

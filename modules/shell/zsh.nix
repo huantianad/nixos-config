@@ -71,17 +71,32 @@ in {
       };
     };
 
+    programs.starship = {
+      enable = true;
+      presets = [
+        "nerd-font-symbols"
+      ];
+      settings = {
+        command_timeout = 1000;
+
+        git_status = {
+          conflicted = "~$count";
+          stashed = "*$count";
+          deleted = "✘$count";
+          renamed = "»$count";
+          modified = "!$count";
+          staged = "+$count";
+          untracked = "?$count";
+          ahead = "⇡$count";
+          diverged = "⇡\${ahead_count}⇣\${behind_count}";
+          behind = "⇣$count";
+        };
+      };
+    };
+
     home-manager.users.huantian.programs = {
       zsh.enable = true;
-      zsh.initExtraFirst = ''
-        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-        fi
-      '';
       zsh.initExtraBeforeCompInit = ''
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        source ${./p10k.zsh}
-
         bindkey '^[[A' history-substring-search-up
         bindkey '^[[B' history-substring-search-down
 
