@@ -27,6 +27,8 @@ in {
       age
       sops
       fzf
+      zoxide
+      pokeget-rs
     ];
 
     programs.zsh = {
@@ -38,7 +40,6 @@ in {
         info = "info --vi-keys";
         grep = "rg";
         ssh = "kitten ssh";
-        cd = "z";
 
         bump = "nix flake update --commit-lock-file";
         # quickly remove all result symlinks in current folder
@@ -69,6 +70,26 @@ in {
           # "rust"
         ];
       };
+
+      shellInit = ''
+        # Use bat for manpages
+        export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+        export MANROFFOPT="-c"
+
+        export XDG_DATA_HOME="$HOME/.local/share"
+        export XDG_CONFIG_HOME="$HOME/.config"
+        export XDG_STATE_HOME="$HOME/.local/state"
+        export XDG_CACHE_HOME="$HOME/.cache"
+      '';
+
+      interactiveShellInit = ''
+        bindkey '^[[A' history-substring-search-up
+        bindkey '^[[B' history-substring-search-down
+
+        eval "$(zoxide init zsh --cmd cd)"
+
+        pokeget random
+      '';
     };
 
     programs.starship = {
@@ -92,26 +113,6 @@ in {
           behind = "⇣$count";
         };
       };
-    };
-
-    home-manager.users.huantian.programs = {
-      zsh.enable = true;
-      zsh.initExtraBeforeCompInit = ''
-        bindkey '^[[A' history-substring-search-up
-        bindkey '^[[B' history-substring-search-down
-
-        source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
-
-        # Use bat for manpages
-        export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-        export MANROFFOPT="-c"
-
-        export XDG_DATA_HOME="$HOME/.local/share"
-        export XDG_CONFIG_HOME="$HOME/.config"
-        export XDG_STATE_HOME="$HOME/.local/state"
-        export XDG_CACHE_HOME="$HOME/.cache"
-      '';
-      zoxide.enable = true;
     };
 
     home-manager.users.huantian.home.file = {
