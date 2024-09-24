@@ -15,9 +15,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    environment.variables.EDITOR = "helix";
     home-manager.users.huantian.programs.helix = {
       enable = true;
-      defaultEditor = true;
 
       extraPackages = let
         clipboard-tool =
