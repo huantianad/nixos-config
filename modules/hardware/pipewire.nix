@@ -9,10 +9,6 @@
 with lib;
 with lib.my; let
   cfg = config.modules.hardware.pipewire;
-
-  quantum = 64;
-  rate = 48000;
-  qr = "${toString quantum}/${toString rate}";
 in {
   options.modules.hardware.pipewire = {
     enable = mkBoolOpt false;
@@ -20,39 +16,6 @@ in {
 
   config = mkIf cfg.enable {
     security.rtkit.enable = true;
-    security.pam.loginLimits = [
-      {
-        domain = "@audio";
-        item = "memlock";
-        type = "-";
-        value = "unlimited";
-      }
-      {
-        domain = "@audio";
-        item = "rtprio";
-        type = "-";
-        value = "99";
-      }
-      {
-        domain = "@audio";
-        item = "nofile";
-        type = "soft";
-        value = "99999";
-      }
-      {
-        domain = "@audio";
-        item = "nofile";
-        type = "hard";
-        value = "99999";
-      }
-    ];
-    services.udev = {
-      extraRules = ''
-        KERNEL=="rtc0", GROUP="audio"
-        KERNEL=="hpet", GROUP="audio"
-        DEVPATH=="/devices/virtual/misc/cpu_dma_latency", OWNER="root", GROUP="audio", MODE="0660"
-      '';
-    };
 
     services.pipewire = {
       enable = true;
@@ -65,16 +28,8 @@ in {
       extraConfig.pipewire = {
         "99-lowlatency" = {
           "context.properties" = {
-            "default.clock.rate" = rate;
+            "default.clock.rate" = 48000;
             "default.clock.allowed-rates" = [44100 48000 88200 96000 176400 192000 352800 384000];
-
-            "default.clock.quantum" = quantum;
-            "default.clock.min-quantum" = quantum;
-            "default.clock.max-quantum" = quantum;
-
-            # This is because quantum is scaled down by factor of 2 when using 44100khz
-            # and we don't want our quantum to actually go that low
-            "default.clock.quantum-floor" = quantum;
           };
 
           "context.modules" = [
@@ -88,32 +43,7 @@ in {
                 "rt.time.hard" = 200000;
               };
             }
-            {
-              name = "libpipewire-module-protocol-pulse";
-              args = {
-                # playback latency
-                "pulse.min.req" = qr;
-                "pulse.default.req" = qr;
-
-                # recording latency
-                # "pulse.min.frag" = qr;
-                # "pulse.default.frag" = qr;
-                # "pulse.max.frag" = qr;
-
-                # data stored on server
-                "pulse.default.tlength" = "12000/${toString rate}";
-
-                # buffer size in samples, calculated from req/tlength
-                "pulse.min.quantum" = qr;
-                # "pulse.max.quantum" = qr;
-              };
-            }
           ];
-
-          "stream.properties" = {
-            "node.latency" = qr;
-            "resample.quality" = 1;
-          };
         };
       };
 
@@ -124,11 +54,7 @@ in {
             {
               matches = {{{ "node.name", "matches", "alsa_output.*" }}};
               apply_properties = {
-                -- ["audio.format"] = "S32LE",
-                -- ["audio.rate"] = "${toString (rate * 2)}", -- for USB soundcards it should be twice your desired rate
-                ["api.alsa.period-size"] = 2, -- defaults to 1024, tweak by trial-and-error
-                -- ["api.alsa.period-num"] = 2,
-                -- ["api.alsa.headroom"] = 0
+                ["api.alsa.period-size"] = 2
               },
             },
           }
