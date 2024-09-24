@@ -6,7 +6,6 @@
 }:
 with builtins;
 with lib; {
-  services.automatic-timezoned.enable = true;
   i18n.defaultLocale = mkDefault "en_US.utf8";
 
   # Network Manager + wifi
