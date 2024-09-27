@@ -65,7 +65,6 @@
       intel.enable = true;
       lanzaboote.enable = true;
       pipewire.enable = true;
-      touchpad.enable = false;
     };
 
     services = {
