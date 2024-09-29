@@ -44,6 +44,7 @@ with lib.my; {
       ];
       auto-optimise-store = true;
       trusted-users = ["@wheel"];
+      use-xdg-base-directories = true;
     };
 
     gc = {
