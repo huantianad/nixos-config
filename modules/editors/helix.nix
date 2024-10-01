@@ -15,7 +15,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.variables.EDITOR = "helix";
+    environment.variables.EDITOR = "hx";
     home-manager.users.huantian.programs.helix = {
       enable = true;
 
@@ -26,11 +26,16 @@ in {
           else pkgs.xclip;
       in [
         clipboard-tool
+
         pkgs.nil
         pkgs.nixfmt-rfc-style
         pkgs.alejandra
+
         pkgs.nimlangserver
         pkgs.nph
+
+        pkgs.tinymist
+        pkgs.typstyle
       ];
 
       settings = {
@@ -56,11 +61,21 @@ in {
               args = ["-"];
             };
           }
+          {
+            name = "typst";
+            auto-format = true;
+            formatter.command = "typstyle";
+          }
         ];
 
         language-server.nil.config = {
           formatting.command = ["alejandra"];
           nix.flake.autoArchive = true;
+        };
+
+        language-server.tinymist.config = {
+          exportPdf = "onType";
+          outputPath = "$root/target/$dir/$name";
         };
 
         language-server.rust-analyzer.config = {
