@@ -38,7 +38,7 @@ in {
       qpwgraph
       newsflash
       easyeffects
-      kicad-small
+      # kicad-small
       inkscape
       varia
       # soulseekqt
