@@ -12,7 +12,7 @@ with lib; {
   networking.networkmanager.enable = true;
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = false;
   services.printing.drivers = with pkgs; [pantum-driver];
 
   boot = {
