@@ -20,7 +20,6 @@ in {
         extraPkgs = pkgs:
           with pkgs; [
             # Needed for Rhythm Doctor
-            harfbuzz
             libogg
           ];
       })
