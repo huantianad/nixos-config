@@ -46,6 +46,20 @@ in {
           ];
         };
       };
+
+      wireplumber = {
+        enable = true;
+        extraConfig.main."99-alsa-lowlatency" = ''
+          alsa_monitor.rules = {
+            {
+              matches = {{{ "node.name", "matches", "alsa_output.*" }}};
+              apply_properties = {
+                ["api.alsa.period-size"] = 2
+              },
+            },
+          }
+        '';
+      };
     };
   };
 }
