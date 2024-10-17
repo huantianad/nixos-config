@@ -26,7 +26,11 @@ in {
     services.desktopManager.plasma6.enable = true;
 
     environment.plasma6.excludePackages = [
-      pkgs.kdePackages.elisa # Default KDE video player, use VLC instead
+      # Default KDE video player, use VLC/mpv instead
+      pkgs.kdePackages.elisa
+      # I don't have any x11 apps that need to screen record
+      # Plus this app auto starts which is annoying
+      pkgs.kdePackages.xwaylandvideobridge
     ];
 
     programs.partition-manager.enable = true;
