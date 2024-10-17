@@ -54,7 +54,8 @@ in {
             {
               matches = {{{ "node.name", "matches", "alsa_output.*" }}};
               apply_properties = {
-                ["api.alsa.period-size"] = 2
+                ["api.alsa.period-size"] = 2,
+                ["session.suspend-timeout-seconds"] = 0
               },
             },
           }
