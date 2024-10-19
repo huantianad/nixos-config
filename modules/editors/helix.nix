@@ -32,7 +32,7 @@ in {
         pkgs.alejandra
 
         pkgs.nimlangserver
-        pkgs.nph
+        # pkgs.nph
 
         pkgs.tinymist
         pkgs.typstyle
