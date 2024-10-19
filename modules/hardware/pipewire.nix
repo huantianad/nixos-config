@@ -49,17 +49,21 @@ in {
 
       wireplumber = {
         enable = true;
-        extraConfig.main."99-alsa-lowlatency" = ''
-          alsa_monitor.rules = {
-            {
-              matches = {{{ "node.name", "matches", "alsa_output.*" }}};
-              apply_properties = {
-                ["api.alsa.period-size"] = 2,
-                ["session.suspend-timeout-seconds"] = 0
-              },
-            },
+        extraConfig."51-alsa-lowlatency"."monitor.alsa.rules" = [
+          {
+            matches = [
+              {
+                "node.name" = "alsa_output.pci-0000_00_1f.3.output_analog-stereo";
+              }
+            ];
+            actions = {
+              update-props = {
+                "api.alsa.period-size" = 2;
+                "session.suspend-timeout-seconds" = 0;
+              };
+            };
           }
-        '';
+        ];
       };
     };
   };

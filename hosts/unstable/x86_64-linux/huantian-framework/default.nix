@@ -39,7 +39,7 @@
         kitty.enable = true;
         qmk.enable = true;
         tauon = {
-          enable = true;
+          enable = false;
           openFirewall = true;
         };
         xbindkeys.enable = false;
