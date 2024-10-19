@@ -53,7 +53,7 @@ in {
           {
             matches = [
               {
-                "node.name" = "alsa_output.pci-0000_00_1f.3.output_analog-stereo";
+                "node.name" = "alsa_output.*";
               }
             ];
             actions = {
