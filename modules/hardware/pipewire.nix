@@ -53,12 +53,14 @@ in {
           {
             matches = [
               {
-                "node.name" = "alsa_output.*";
+                "node.name" = "~alsa_output.*";
               }
             ];
             actions = {
               update-props = {
-                "api.alsa.period-size" = 2;
+                "api.alsa.period-num" = 1028;
+                "api.alsa.period-size" = 64;
+                # "api.alsa.headroom" = 0;
                 "session.suspend-timeout-seconds" = 0;
               };
             };
