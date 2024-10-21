@@ -18,7 +18,7 @@ in {
     programs.steam.enable = true;
 
     environment.systemPackages = with pkgs; [
-      steamPackages.steamcmd
+      steamcmd
     ];
 
     # better for steam proton games
