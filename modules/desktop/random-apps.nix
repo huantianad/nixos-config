@@ -17,7 +17,12 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       vesktop
-      mpv
+      (mpv.override {
+        scripts = [
+          mpvScripts.autoload
+          mpvScripts.mpris
+        ];
+      })
       # vlc
       # soundfont-generaluser # for vlc midi
 
