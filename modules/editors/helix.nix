@@ -28,6 +28,7 @@ in {
         clipboard-tool
 
         pkgs.nil
+        pkgs.nixd
         pkgs.nixfmt-rfc-style
         pkgs.alejandra
 
