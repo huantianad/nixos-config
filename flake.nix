@@ -21,7 +21,6 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs-stable";
 
     minifluxng.url = "sourcehut:~bwolf/miniflux.nix";
     minifluxng.inputs.nixpkgs.follows = "nixpkgs";
