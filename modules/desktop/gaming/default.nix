@@ -23,9 +23,9 @@ in {
       # r2modman
       # ryujinx
       # scarab
-      # (tetrio-desktop.override {
-      #   withTetrioPlus = true;
-      # })
+      (tetrio-desktop.override {
+        withTetrioPlus = true;
+      })
     ];
 
     # Steam controller support
