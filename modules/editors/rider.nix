@@ -11,7 +11,7 @@ with lib.my; let
   cfg = config.modules.editors.rider;
 
   extra-path = with pkgs; [
-    dotnetCorePackages.sdk_6_0
+    dotnetCorePackages.sdk_8_0
     dotnetPackages.Nuget
     mono
     msbuild
