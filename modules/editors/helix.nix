@@ -16,6 +16,19 @@ in {
 
   config = mkIf cfg.enable {
     environment.variables.EDITOR = "hx";
+    environment.systemPackages = [
+      pkgs.nil
+      pkgs.nixd
+      pkgs.nixfmt-rfc-style
+      pkgs.alejandra
+
+      pkgs.nimlangserver
+      # pkgs.nph
+
+      pkgs.tinymist
+      pkgs.typstyle
+    ];
+
     home-manager.users.huantian.programs.helix = {
       enable = true;
 
@@ -26,17 +39,6 @@ in {
           else pkgs.xclip;
       in [
         clipboard-tool
-
-        pkgs.nil
-        pkgs.nixd
-        pkgs.nixfmt-rfc-style
-        pkgs.alejandra
-
-        pkgs.nimlangserver
-        # pkgs.nph
-
-        pkgs.tinymist
-        pkgs.typstyle
       ];
 
       settings = {
