@@ -14,7 +14,7 @@ with lib.my; let
     dotnetCorePackages.sdk_8_0
     dotnetPackages.Nuget
     mono
-    msbuild
+    # msbuild
   ];
 
   extra-lib = with pkgs; [
@@ -29,7 +29,8 @@ with lib.my; let
 
   rider = pkgs.jetbrains.rider.overrideAttrs (attrs: {
     postInstall =
-      ''
+      (attrs.postInstall or "")
+      + ''
         # Wrap rider with extra tools and libraries
         mv $out/bin/rider $out/bin/.rider-toolless
         makeWrapper $out/bin/.rider-toolless $out/bin/rider \
@@ -44,8 +45,7 @@ with lib.my; let
         shopt -s extglob
         ln -s $out/rider/!(bin) $out/
         shopt -u extglob
-      ''
-      + attrs.postInstall or "";
+      '';
   });
 in {
   options.modules.editors.rider = {
