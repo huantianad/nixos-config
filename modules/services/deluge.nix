@@ -15,5 +15,6 @@ in {
 
   config = mkIf cfg.enable {
     services.deluge.enable = true;
+    networking.firewall.allowedTCPPorts = [54637];
   };
 }
