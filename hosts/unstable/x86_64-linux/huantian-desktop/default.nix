@@ -27,7 +27,7 @@
 
       gaming = {
         enable = true;
-        dolphin.enable = true;
+        dolphin.enable = false;
         dolphin.setUdevRules = true;
         qrookie.enable = true;
         steam.enable = true;

@@ -24,7 +24,7 @@ in {
     ];
 
     # GameCube controllers
-    services.udev.packages = mkIf cfg.setUdevRules [pkgs.dolphinEmu];
+    services.udev.packages = mkIf cfg.setUdevRules [pkgs.dolphin-emu-beta];
 
     # DolphinBar
     services.udev.extraRules = mkIf cfg.setUdevRules ''
