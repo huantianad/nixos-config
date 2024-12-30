@@ -49,7 +49,7 @@
     dev = {
       cc.enable = true;
       tex.enable = false;
-      unity.enable = true;
+      # unity.enable = true;
     };
 
     editors = {
