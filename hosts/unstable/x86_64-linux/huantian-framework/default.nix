@@ -90,25 +90,7 @@
 
   # Seems to fix a crash/freeze with RD
   # see https://gitlab.freedesktop.org/drm/i915/kernel/-/issues/10548
-  environment.variables.INTEL_DEBUG = "reemit,capture-all";
+  environment.variables.INTEL_DEBUG = "reemit";
 
   networking.firewall.allowedTCPPorts = [40432];
-
-  nixpkgs.config.android_sdk.accept_license = true;
-  environment.systemPackages = let
-    androidComposition = pkgs.androidenv.composeAndroidPackages {
-      includeEmulator = true;
-      platformVersions = ["31" "35"];
-      includeSystemImages = true;
-      abiVersions = ["x86_64"];
-      systemImageTypes = ["google_apis_playstore"];
-      useGoogleAPIs = true;
-      includeExtras = [
-        "extras;google;gcm"
-        "extras;google;market_licensing"
-        "extras;google;google_play_services"
-      ];
-    };
-    androidStudio = pkgs.android-studio.withSdk androidComposition.androidsdk;
-  in [androidStudio];
 }
