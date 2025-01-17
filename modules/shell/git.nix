@@ -22,7 +22,7 @@ in {
       userName = "huantian";
       userEmail = "davidtianli@gmail.com";
 
-      signing.key = "731A7A05AD8B3AE5956AC2274A0318E04E555DE5";
+      signing.key = "~/.ssh/id_ed25519.pub";
       signing.signByDefault = true;
 
       lfs.enable = true;
@@ -32,6 +32,7 @@ in {
       extraConfig = {
         core.autocrlf = "input";
         core.askpass = mkIf config.modules.desktop.kde.enable (lib.getExe pkgs.kdePackages.ksshaskpass);
+        gpg.format = "ssh";
         init.defaultBranch = "main";
         push.autoSetupRemote = "true";
         pull.rebase = "true";
