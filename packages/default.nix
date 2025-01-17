@@ -3,6 +3,10 @@ pkgs.lib.makeScope pkgs.newScope (
   self: let
     callPackage = self.callPackage;
   in {
+    libjportaudio = callPackage ./libjportaudio {};
+
+    lr2oraja-endlessdream = callPackage ./lr2oraja-endlessdream {};
+
     musescore3 = pkgs.libsForQt5.callPackage ./musescore3 {};
 
     tauon = callPackage ./tauon {};
