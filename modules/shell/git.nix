@@ -37,6 +37,8 @@ in {
         push.autoSetupRemote = "true";
         pull.rebase = "true";
         rebase.autoStash = "true";
+        rebase.autoSquash = "true";
+        rebase.updateRefs = "true";
       };
     };
   };
