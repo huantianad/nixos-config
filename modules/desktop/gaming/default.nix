@@ -26,6 +26,7 @@ in {
       (tetrio-desktop.override {
         withTetrioPlus = true;
       })
+      my.lr2oraja-endlessdream
     ];
 
     # Steam controller support
