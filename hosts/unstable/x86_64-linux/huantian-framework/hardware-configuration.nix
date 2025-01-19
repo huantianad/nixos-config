@@ -34,18 +34,6 @@
     fsType = "vfat";
   };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-label/nix";
-    fsType = "ext4";
-    neededForBoot = true;
-    options = ["noatime"];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-label/home";
-    fsType = "ext4";
-  };
-
   zramSwap.enable = true;
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
