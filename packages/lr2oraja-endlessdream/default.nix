@@ -19,7 +19,7 @@
   libPath = lib.makeLibraryPath [openal libjportaudio];
 
   startupScript = writeShellScript "beatoraja.sh" ''
-    export _JAVA_OPTIONS='-Dsun.java2d.opengl=true -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dfile.encoding=UTF8'
+    export _JAVA_OPTIONS="'-Dsun.java2d.opengl=true -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel' -Dfile.encoding=UTF8"
     dataDir="''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja"
     if [ ! -d "$dataDir" ]; then
       mkdir -p "$dataDir"
