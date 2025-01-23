@@ -93,4 +93,7 @@
   environment.variables.INTEL_DEBUG = "reemit";
 
   networking.firewall.allowedTCPPorts = [40432];
+
+  # temp workaround
+  hardware.framework.enableKmod = false;
 }
