@@ -28,7 +28,7 @@
       find "$dataDir" -type d -exec chmod 755 {} \;
     fi
     cd "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja"
-    exec ${jdkFx}/bin/java -Xms1G -Xmx4G -jar $out/opt/beatoraja/beatoraja.jar $@
+    exec ${jdkFx}/bin/java -Xms1G -Xmx4G -cp $out/opt/beatoraja/beatoraja.jar:ir/* bms.player.beatoraja.MainLoader $@
   '';
 
   lr2oraja-jar = fetchurl {
