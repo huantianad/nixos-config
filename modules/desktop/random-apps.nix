@@ -45,7 +45,7 @@ in {
       easyeffects
       # kicad-small
       inkscape
-      varia
+      # varia
       # soulseekqt
       bitwarden
       obsidian
