@@ -23,7 +23,6 @@
   modules = {
     services = {
       grafana.enable = true;
-      loki.enable = true;
       miniflux.enable = true;
       prometheus.enable = true;
       synapse.enable = true;
