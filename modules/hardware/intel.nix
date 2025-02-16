@@ -15,8 +15,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.xserver.videoDrivers = ["intel"];
-
     environment.variables.LIBVA_DRIVER_NAME = "iHD";
 
     hardware.graphics = {
