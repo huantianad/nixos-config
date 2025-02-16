@@ -16,7 +16,9 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      vesktop
+      (vesktop.override {
+        electron = pkgs.electron_32;
+      })
       (mpv.override {
         scripts = [
           mpvScripts.autoload
@@ -63,6 +65,8 @@ in {
       nixpkgs-review
       wineWowPackages.staging
       winetricks
+
+      puredata
     ];
   };
 }
