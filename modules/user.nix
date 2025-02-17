@@ -15,7 +15,6 @@
     };
 
     home-manager.users.huantian.home.stateVersion = config.system.stateVersion;
-    home-manager.users.huantian.nixpkgs.config.allowUnfree = true;
     home-manager.users.huantian.nix.gc = {
       automatic = true;
       frequency = "weekly";
