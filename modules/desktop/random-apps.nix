@@ -16,9 +16,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      (vesktop.override {
-        electron = pkgs.electron_32;
-      })
+      vesktop
       (mpv.override {
         scripts = [
           mpvScripts.autoload
