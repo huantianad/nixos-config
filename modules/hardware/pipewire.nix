@@ -58,9 +58,9 @@ in {
             ];
             actions = {
               update-props = {
-                "api.alsa.period-num" = 1028;
+                "api.alsa.period-num" = 512;
                 "api.alsa.period-size" = 64;
-                # "api.alsa.headroom" = 0;
+                "api.alsa.headroom" = 0;
                 "session.suspend-timeout-seconds" = 0;
               };
             };
