@@ -17,10 +17,15 @@ in {
   config = mkIf cfg.enable {
     services.xserver.enable = ! config.modules.desktop.wayland.enable;
 
+    environment.sessionVariables.XAUTHORITY = "$XDG_CONFIG_HOME/sddm/Xauthority";
+
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = config.modules.desktop.wayland.enable;
       wayland.compositor = "kwin";
+      settings = {
+        X11.UserAuthFile = ".local/share/sddm/Xauthority";
+      };
     };
 
     services.desktopManager.plasma6.enable = true;

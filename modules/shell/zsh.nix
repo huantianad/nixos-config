@@ -55,6 +55,8 @@ in {
         tree = "eza --tree";
       };
 
+      histFile = "$XDG_STATE_HOME/zsh/history";
+
       enableCompletion = true;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
@@ -72,17 +74,13 @@ in {
       };
 
       shellInit = ''
-        # Use bat for manpages
-        export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-        export MANROFFOPT="-c"
-
-        export XDG_DATA_HOME="$HOME/.local/share"
-        export XDG_CONFIG_HOME="$HOME/.config"
-        export XDG_STATE_HOME="$HOME/.local/state"
-        export XDG_CACHE_HOME="$HOME/.cache"
       '';
 
       interactiveShellInit = ''
+        # folders for history and completion files
+        mkdir -p $XDG_CACHE_HOME/zsh $XDG_STATE_HOME/zsh
+        compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+
         bindkey '^[[A' history-substring-search-up
         bindkey '^[[B' history-substring-search-down
 
@@ -90,6 +88,20 @@ in {
 
         pokeget random
       '';
+    };
+
+    environment.sessionVariables = {
+      XDG_CACHE_HOME = "$HOME/.cache";
+      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_DATA_HOME = "$HOME/.local/share";
+      XDG_STATE_HOME = "$HOME/.local/state";
+
+      # .zshrc location
+      ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
+
+      # Use bat for manpages
+      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+      MANROFFOPT = "-c";
     };
 
     programs.starship = {
