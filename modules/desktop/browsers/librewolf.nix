@@ -25,6 +25,7 @@ in {
     home-manager.users.huantian.home.file = {
       ".librewolf/librewolf.overrides.cfg".text = ''
         defaultPref("dom.event.clipboardevents.enabled", true);
+        defaultPref("dom.events.testing.asyncClipboard", true);
 
         // defaultPref("dom.webaudio.enabled", true);
 
