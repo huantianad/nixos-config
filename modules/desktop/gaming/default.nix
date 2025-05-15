@@ -19,7 +19,9 @@ in {
       cockatrice
       lutris
       # melonDS
-      prismlauncher
+      (prismlauncher.override {
+        jdks = [jdk24];
+      })
       # r2modman
       # ryujinx
       # scarab
