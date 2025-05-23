@@ -6,8 +6,6 @@
 }:
 with builtins;
 with lib; {
-  i18n.defaultLocale = mkDefault "en_US.utf8";
-
   # Network Manager + wifi
   networking.networkmanager.enable = true;
 
