@@ -16,6 +16,7 @@ in {
 
   config = mkIf cfg.enable {
     programs.steam.enable = true;
+    programs.steam.remotePlay.openFirewall = true;
 
     environment.systemPackages = with pkgs; [
       steamcmd
