@@ -50,7 +50,6 @@ in {
       bitwarden
       obsidian
 
-      kdePackages.merkuro
       kdePackages.filelight
       kdePackages.ark
       # ark already comes with this, but we need it for dolphin extracting

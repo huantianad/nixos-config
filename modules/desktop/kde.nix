@@ -40,5 +40,6 @@ in {
 
     programs.partition-manager.enable = true;
     programs.kdeconnect.enable = false;
+    programs.kde-pim.enable = false;
   };
 }
