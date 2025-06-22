@@ -49,7 +49,7 @@
     dev = {
       cc.enable = true;
       tex.enable = false;
-      unity.enable = true;
+      # unity.enable = true;
     };
 
     editors = {
@@ -93,8 +93,4 @@
   environment.variables.INTEL_DEBUG = "reemit";
 
   networking.firewall.allowedTCPPorts = [40432];
-
-  environment.systemPackages = with pkgs; [
-    quartus-prime-lite
-  ];
 }
