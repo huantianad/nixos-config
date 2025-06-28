@@ -15,7 +15,28 @@ in {
   };
 
   config = mkIf cfg.enable {
+    boot.kernelParams = ["preempt=full"];
     security.rtkit.enable = true;
+    security.pam.loginLimits = [
+      {
+        domain = "@pipewire";
+        type = "-";
+        item = "rtprio";
+        value = "95";
+      }
+      {
+        domain = "@pipewire";
+        type = "-";
+        item = "nice";
+        value = "-19";
+      }
+      {
+        domain = "@pipewire";
+        type = "-";
+        item = "memlock";
+        value = "4194304";
+      }
+    ];
 
     services.pipewire = {
       enable = true;
@@ -24,7 +45,6 @@ in {
       pulse.enable = true;
       jack.enable = true;
 
-      # write extra config
       extraConfig.pipewire = {
         "99-lowlatency" = {
           "context.properties" = {
@@ -34,16 +54,25 @@ in {
 
           "context.modules" = [
             {
-              name = "libpipewire-module-rtkit";
-              flags = ["ifexists" "nofail"];
+              name = "libpipewire-module-rt";
               args = {
-                "nice.level" = -20;
-                "rt.prio" = 88;
+                "nice.level" = -19;
+                "rt.prio" = 95;
                 "rt.time.soft" = 200000;
                 "rt.time.hard" = 200000;
               };
             }
           ];
+        };
+      };
+
+      extraConfig.pipewire-pulse = {
+        "99-lowlatency-pulse" = {
+          "pulse.properties" = {
+            "pulse.min.req" = "64/48000";
+            "pulse.min.frag" = "64/48000";
+            "pulse.min.quantum" = "64/48000";
+          };
         };
       };
 
@@ -53,15 +82,14 @@ in {
           {
             matches = [
               {
-                "node.name" = "~alsa_output.*";
+                "node.name" = "~alsa_output.pci*";
               }
             ];
             actions = {
               update-props = {
-                "api.alsa.period-num" = 512;
+                # "api.alsa.period-num" = 2;
                 "api.alsa.period-size" = 64;
                 "api.alsa.headroom" = 0;
-                "session.suspend-timeout-seconds" = 0;
               };
             };
           }
