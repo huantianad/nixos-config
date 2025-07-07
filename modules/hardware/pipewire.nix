@@ -88,7 +88,7 @@ in {
             actions = {
               update-props = {
                 # "api.alsa.period-num" = 2;
-                "api.alsa.period-size" = 64;
+                # "api.alsa.period-size" = 64;
                 "api.alsa.headroom" = 0;
               };
             };
