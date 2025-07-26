@@ -16,7 +16,7 @@ in {
 
   config = mkIf cfg.enable {
     # Some battery life tuning
-    services.tlp.enable = true;
+    services.tlp.enable = false;
     services.tlp.settings = {
       PCIE_ASPM_ON_BAT = "powersupersave";
 
@@ -41,8 +41,8 @@ in {
       SOUND_POWER_SAVE_ON_AC = 0;
     };
     # Disable power-profiles-daemon as it conflicts with tlp
-    services.power-profiles-daemon.enable = false;
+    services.power-profiles-daemon.enable = true;
     # Thermal config
-    services.thermald.enable = true;
+    services.thermald.enable = false;
   };
 }
