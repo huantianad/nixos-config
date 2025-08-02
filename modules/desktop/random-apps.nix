@@ -42,13 +42,13 @@ in {
       jellyfin-media-player
       qpwgraph
       newsflash
-      easyeffects
+      # easyeffects
       # kicad-small
       inkscape
       # varia
       # soulseekqt
       bitwarden
-      obsidian
+      # obsidian
 
       kdePackages.filelight
       kdePackages.ark
@@ -63,7 +63,7 @@ in {
       wineWowPackages.staging
       winetricks
 
-      puredata
+      # puredata
     ];
   };
 }
