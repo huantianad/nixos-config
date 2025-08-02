@@ -21,8 +21,5 @@ in {
     environment.systemPackages = with pkgs; [
       steamcmd
     ];
-
-    # better for steam proton games
-    systemd.extraConfig = "DefaultLimitNOFILE=1048576";
   };
 }
