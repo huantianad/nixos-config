@@ -82,7 +82,7 @@ in {
           {
             matches = [
               {
-                "node.name" = "~alsa_output.pci*";
+                "node.name" = "~alsa_output.usb*";
               }
             ];
             actions = {
