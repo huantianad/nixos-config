@@ -39,7 +39,7 @@
         kitty.enable = true;
         qmk.enable = false;
         tauon = {
-          enable = true;
+          enable = false;
           openFirewall = true;
         };
         xbindkeys.enable = true;
@@ -48,7 +48,6 @@
 
     dev = {
       cc.enable = true;
-      nim.enable = true;
       tex.enable = false;
       unity.enable = true;
     };
@@ -67,8 +66,7 @@
     };
 
     services = {
-      usbmuxd.enable = true;
-      ssh.enable = true;
+      usbmuxd.enable = false;
     };
 
     shell = {
@@ -84,7 +82,7 @@
   ];
 
   # Increase size of /run/user/1000
-  services.logind.extraConfig = "RuntimeDirectorySize=4G";
+  # services.logind.settings.Login = "RuntimeDirectorySize=4G";
 
   # Earlyoom because unity + rider often locks up system with too much memory usage
   services.earlyoom.enable = true;
