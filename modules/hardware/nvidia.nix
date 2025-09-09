@@ -17,19 +17,19 @@ in {
   config = mkIf cfg.enable {
     services.xserver.videoDrivers = ["nvidia"];
 
-    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-    hardware.nvidia.modesetting.enable = true;
-    hardware.nvidia.open = true;
-
-    environment.variables.MOZ_DISABLE_RDD_SANDBOX = "1";
-    environment.variables.LIBVA_DRIVER_NAME = "nvidia";
+    hardware.nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      modesetting.enable = true;
+      open = true;
+      videoAcceleration = true;
+    };
 
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
-      extraPackages = with pkgs; [
-        nvidia-vaapi-driver
-      ];
     };
+
+    environment.variables.MOZ_DISABLE_RDD_SANDBOX = "1";
+    environment.variables.LIBVA_DRIVER_NAME = "nvidia";
   };
 }
