@@ -18,7 +18,7 @@ in {
     environment.systemPackages = with pkgs; [
       cockatrice
       (prismlauncher.override {
-        jdks = [jdk24];
+        jdks = [jdk25];
         glfw3-minecraft = glfw3-minecraft.overrideAttrs (old: {
           src = fetchFromGitHub {
             owner = "LWJGL-CI";
