@@ -41,8 +41,10 @@ in {
       SOUND_POWER_SAVE_ON_AC = 0;
     };
     # Disable power-profiles-daemon as it conflicts with tlp
-    services.power-profiles-daemon.enable = true;
+    services.power-profiles-daemon.enable = false;
     # Thermal config
     services.thermald.enable = false;
+
+    services.tuned.enable = true;
   };
 }
