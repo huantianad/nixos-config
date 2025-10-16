@@ -1,22 +1,24 @@
 {
   lib,
   stdenv,
-  fetchzip,
-  fetchurl,
-  jdk,
-  libjportaudio,
-  makeWrapper,
-  openal,
-  writeShellScript,
+  jdk17,
   xrandr,
+  openal,
+  libjportaudio,
+  egl-wayland,
+  libGL,
+  writeShellScript,
+  fetchurl,
+  fetchzip,
+  makeWrapper,
+  addDriverRunpath,
 }: let
-  pname = "lr2oraja-endlessdream";
-  version = "0.8.8";
-  fullName = "beatoraja${version}-modernchic";
+  beatoraja-version = "0.8.8";
+  lr2oraja-version = "0.3.0";
 
-  jdkFx = jdk.override {enableJavaFX = true;};
+  jdkFx = jdk17.override {enableJavaFX = true;};
   binPath = lib.makeBinPath [xrandr];
-  libPath = lib.makeLibraryPath [openal libjportaudio];
+  libPath = lib.makeLibraryPath [openal libjportaudio egl-wayland libGL];
 
   startupScript = writeShellScript "beatoraja.sh" ''
     export _JAVA_OPTIONS="'-Dsun.java2d.opengl=true -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel' -Dfile.encoding=UTF8"
@@ -32,15 +34,16 @@
   '';
 
   lr2oraja-jar = fetchurl {
-    url = "https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.2.1/lr2oraja-0.8.7-endlessdream-linux-0.2.1.jar";
-    hash = "sha256-czkFZP3gn9ieq5w6NLCvvSTufgesFhtD7YGEwyD3HYs=";
+    url = "https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v${lr2oraja-version}/lr2oraja-${beatoraja-version}-endlessdream-linux-${lr2oraja-version}.jar";
+    hash = "sha256-x3cZ5b5fZQdVKX6Df44m35mGYtBmM0FTxj4hm8A6hR0=";
   };
 in
   stdenv.mkDerivation {
-    inherit pname version;
-    name = "${pname}-${version}";
+    pname = "lr2oraja-endlessdream";
+    version = lr2oraja-version;
+
     src = fetchzip {
-      url = "https://mocha-repository.info/download/${fullName}.zip";
+      url = "https://mocha-repository.info/download/beatoraja${beatoraja-version}-modernchic.zip";
       hash = "sha256-aw5jvYccH+Mnus2G9f7hTAMuC+HdjR6I8pzYDrOm98E=";
     };
 
@@ -66,7 +69,7 @@ in
       wrapProgram $out/bin/beatoraja \
         --set out $out \
         --suffix PATH : "${binPath}" \
-        --prefix LD_LIBRARY_PATH : "${libPath}" \
+        --prefix LD_LIBRARY_PATH : "${addDriverRunpath.driverLink}/lib:${libPath}" \
 
       runHook postInstall
     '';
