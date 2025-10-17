@@ -19,12 +19,12 @@ in {
       cockatrice
       (prismlauncher.override {
         jdks = [jdk25];
-        glfw3-minecraft = glfw3-minecraft.overrideAttrs (old: {
+        glfw3-minecraft = glfw3.overrideAttrs (old: {
           src = fetchFromGitHub {
             owner = "LWJGL-CI";
             repo = "GLFW";
-            rev = "eb9046fc59e20f0d21aa3b4d1e879f789f6eccfa";
-            hash = "sha256-KLjd371wc2IHpdviicNxWhNnz5lm3KoxE51hTdcyW00=";
+            rev = "c1636b906be78a9f59ad435297c6b9126e0cc10c";
+            hash = "sha256-WZWYCL3rP5OJxMDA+0747+XNvaEENTc5muG0qFZuE4c=";
           };
         });
       })
