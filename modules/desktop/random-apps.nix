@@ -37,7 +37,7 @@ in {
       obs-studio
       kid3
       kooha
-      musescore
+      # musescore
       # my.musescore3
       qpwgraph
       newsflash
