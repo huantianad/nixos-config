@@ -55,14 +55,14 @@ in {
               <string>Monaspace</string>
             </test>
             <edit name="fontfeatures" mode="append">
-              <string>calt on</string>
+              <string>calt off</string>
               <string>liga on</string>
               <string>ss01 on</string>
               <string>ss02 on</string>
               <string>ss03 on</string>
               <string>ss04 on</string>
               <string>ss05 on</string>
-              <string>ss06 on</string>
+              <string>ss06 off</string>
               <string>ss07 on</string>
               <string>ss08 on</string>
               <string>ss09 on</string>
