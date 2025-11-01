@@ -37,7 +37,7 @@
         fcitx.enable = true;
         gamemode.enable = true;
         kitty.enable = true;
-        qmk.enable = true;
+        qmk.enable = false;
         tauon = {
           enable = false;
           openFirewall = true;
