@@ -18,6 +18,7 @@ in {
     services.xserver.enable = ! config.modules.desktop.wayland.enable;
 
     environment.sessionVariables.XAUTHORITY = "$XDG_CONFIG_HOME/sddm/Xauthority";
+    environment.sessionVariables.KWIN_USE_OVERLAYS = "1";
 
     services.displayManager.sddm = {
       enable = true;
