@@ -28,7 +28,7 @@ in {
 
       element-desktop
       # cinny-desktop
-      feishin
+      # feishin
       gimp
       qbittorrent
       deluge-gtk
