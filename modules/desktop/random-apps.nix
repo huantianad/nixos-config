@@ -29,7 +29,7 @@ in {
       element-desktop
       # cinny-desktop
       # feishin
-      gimp
+      # gimp
       qbittorrent
       deluge-gtk
       libreoffice-qt
