@@ -33,9 +33,9 @@ in {
       # r2modman
       # ryujinx
       # scarab
-      (tetrio-desktop.override {
-        withTetrioPlus = true;
-      })
+      # (tetrio-desktop.override {
+      #   withTetrioPlus = true;
+      # })
       # my.lr2oraja-endlessdream
     ];
 
