@@ -19,10 +19,12 @@ in {
 
     hardware.nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.beta;
-      modesetting.enable = true;
+      modesetting.enable = false;
       open = true;
       videoAcceleration = true;
     };
+
+    boot.kernelParams = ["nvidia-drm.modeset=1" "nvidia-drm.fbdev=0"];
 
     hardware.graphics = {
       enable = true;
