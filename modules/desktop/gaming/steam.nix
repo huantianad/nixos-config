@@ -24,5 +24,7 @@ in {
     environment.systemPackages = with pkgs; [
       steamcmd
     ];
+
+    boot.kernelModules = ["ntsync"];
   };
 }
