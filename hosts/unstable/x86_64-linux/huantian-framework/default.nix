@@ -93,7 +93,4 @@
   environment.variables.INTEL_DEBUG = "reemit";
 
   networking.firewall.allowedTCPPorts = [40432];
-
-  boot.supportedFilesystems = ["ntfs"];
-  boot.blacklistedKernelModules = ["ntfs3"];
 }

@@ -53,4 +53,7 @@ with lib; {
   environment.sessionVariables.GDBHISTFILE = "$XDG_CONFIG_HOME/gdb/.gdb_history";
   environment.sessionVariables.GNUPGHOME = "$XDG_DATA_HOME/gnupg";
   environment.sessionVariables.GTK2_RC_FILES = "$XDG_CONFIG_HOME/gtk-2.0/gtkrc";
+
+  boot.supportedFilesystems = ["ntfs"];
+  boot.blacklistedKernelModules = ["ntfs3"];
 }
