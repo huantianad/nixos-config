@@ -207,11 +207,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766850661,
-        "narHash": "sha256-486mDjavmMSHN4EenKWg3QvYexKlOxopgxk6MOd105g=",
+        "lastModified": 1767475739,
+        "narHash": "sha256-lXs8sei64JU1A+yNhbDX0ohxxz4rT7SC5cAyaXClc+w=",
         "owner": "~bwolf",
         "repo": "miniflux.nix",
-        "rev": "231fb4ba4a8caa98dc9567958c64746326a344ff",
+        "rev": "db76b1906fcc97968905a37bf36a415b2e302c45",
         "type": "sourcehut"
       },
       "original": {
