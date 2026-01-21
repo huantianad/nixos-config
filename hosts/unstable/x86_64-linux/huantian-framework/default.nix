@@ -93,4 +93,14 @@
   environment.variables.INTEL_DEBUG = "reemit";
 
   networking.firewall.allowedTCPPorts = [40432];
+
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
+  services.v2raya = {
+    enable = true;
+    cliPackage = pkgs.xray;
+  };
 }
