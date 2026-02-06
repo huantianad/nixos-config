@@ -19,7 +19,7 @@ in {
     environment.systemPackages = [
       pkgs.nil
       pkgs.nixd
-      pkgs.nixfmt-rfc-style
+      pkgs.nixfmt
       pkgs.alejandra
 
       pkgs.nimlangserver
