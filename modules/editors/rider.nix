@@ -19,11 +19,11 @@ with lib.my; let
 
   extra-lib = with pkgs; [
     # Personal development stuff
-    xorg.libX11
+    libx11
 
     # Rider Unity debugging
-    xorg.libXcursor
-    xorg.libXrandr
+    libxcursor
+    libxrandr
     libglvnd
   ];
 
