@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }:
 with builtins;
@@ -13,9 +14,11 @@ with lib; {
   services.printing.enable = false;
   services.printing.drivers = with pkgs; [pantum-driver];
 
+  nixpkgs.overlays = [inputs.nix-cachyos-kernel.overlays.pinned];
   boot = {
     tmp.cleanOnBoot = true;
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
     loader = {
       efi.canTouchEfiVariables = mkDefault true;
       systemd-boot.configurationLimit = 10;
