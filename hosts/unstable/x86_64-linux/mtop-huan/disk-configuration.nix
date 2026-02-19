@@ -1,9 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
+  imports = [
+    inputs.disko.nixosModules.disko
+  ];
+
   services.fstrim.enable = true;
 
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
