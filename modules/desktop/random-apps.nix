@@ -59,7 +59,7 @@ in {
       yt-dlp
       ffmpeg-full
       nixpkgs-review
-      wineWowPackages.staging
+      # wineWowPackages.staging
       winetricks
 
       # puredata
