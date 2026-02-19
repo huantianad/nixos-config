@@ -17,8 +17,8 @@ with lib; {
   nixpkgs.overlays = [inputs.nix-cachyos-kernel.overlays.pinned];
   boot = {
     tmp.cleanOnBoot = true;
-    # kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
+    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
     loader = {
       efi.canTouchEfiVariables = mkDefault true;
       systemd-boot.configurationLimit = 10;
