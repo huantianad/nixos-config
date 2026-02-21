@@ -79,6 +79,8 @@
     };
   };
 
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
