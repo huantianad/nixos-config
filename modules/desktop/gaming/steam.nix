@@ -19,6 +19,7 @@ in {
     programs.steam.remotePlay.openFirewall = true;
     programs.steam.extraCompatPackages = [
       pkgs.proton-ge-bin
+      pkgs.steam-play-none
     ];
 
     environment.systemPackages = with pkgs; [
