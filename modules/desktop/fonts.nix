@@ -21,8 +21,8 @@ in {
       corefonts
 
       # Monospace fonts
-      fira-code
-      jetbrains-mono
+      # fira-code
+      # jetbrains-mono
       monaspace
 
       # CJK Fonts
