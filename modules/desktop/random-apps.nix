@@ -32,7 +32,7 @@ in {
       # gimp
       qbittorrent
       deluge-gtk
-      libreoffice-qt
+      # libreoffice-qt
       audacity
       obs-studio
       kid3
