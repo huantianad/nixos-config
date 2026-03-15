@@ -43,7 +43,7 @@
           enable = false;
           openFirewall = true;
         };
-        xbindkeys.enable = true;
+        xbindkeys.enable = false;
       };
     };
 
