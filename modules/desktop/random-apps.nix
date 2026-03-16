@@ -39,6 +39,7 @@ in {
       kooha
       # musescore
       # my.musescore3
+      jellyfin-desktop
       qpwgraph
       newsflash
       # easyeffects
