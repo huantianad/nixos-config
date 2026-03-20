@@ -47,7 +47,7 @@ in {
       inkscape
       # varia
       # soulseekqt
-      bitwarden-desktop
+      # bitwarden-desktop
       # obsidian
 
       kdePackages.filelight
