@@ -17,18 +17,9 @@ in {
   config = mkIf cfg.enable {
     services.xserver.enable = ! config.modules.desktop.wayland.enable;
 
-    environment.sessionVariables.XAUTHORITY = "$XDG_CONFIG_HOME/sddm/Xauthority";
     environment.sessionVariables.KWIN_USE_OVERLAYS = "1";
 
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = config.modules.desktop.wayland.enable;
-      wayland.compositor = "kwin";
-      settings = {
-        X11.UserAuthFile = ".local/share/sddm/Xauthority";
-      };
-    };
-
+    services.displayManager.plasma-login-manager.enable = true;
     services.desktopManager.plasma6.enable = true;
 
     environment.plasma6.excludePackages = [
