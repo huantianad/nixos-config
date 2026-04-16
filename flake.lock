@@ -275,15 +275,13 @@
       "locked": {
         "lastModified": 1776149069,
         "narHash": "sha256-f8hUdIFRCHKyWwVsOssWCoFgNXKIiY25wrlYoy2uFqc=",
-        "owner": "~bwolf",
-        "repo": "miniflux.nix",
         "rev": "b016517c3fdd807247d6db77b56dd8c8b604a796",
-        "type": "sourcehut"
+        "type": "tarball",
+        "url": "https://codeberg.org/api/v1/repos/bwolf/miniflux.nix/archive/b016517c3fdd807247d6db77b56dd8c8b604a796.tar.gz"
       },
       "original": {
-        "owner": "~bwolf",
-        "repo": "miniflux.nix",
-        "type": "sourcehut"
+        "type": "tarball",
+        "url": "https://codeberg.org/bwolf/miniflux.nix/archive/master.tar.gz"
       }
     },
     "nix-cachyos-kernel": {
