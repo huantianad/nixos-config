@@ -19,14 +19,14 @@ in {
       cockatrice
       (prismlauncher.override {
         jdks = [jdk25];
-        # glfw3-minecraft = glfw3.overrideAttrs (old: {
-        #   src = fetchFromGitHub {
-        #     owner = "LWJGL-CI";
-        #     repo = "GLFW";
-        #     rev = "c1636b906be78a9f59ad435297c6b9126e0cc10c";
-        #     hash = "sha256-WZWYCL3rP5OJxMDA+0747+XNvaEENTc5muG0qFZuE4c=";
-        #   };
-        # });
+        glfw3-minecraft = glfw3.overrideAttrs (old: {
+          src = fetchFromGitHub {
+            owner = "LWJGL-CI";
+            repo = "glfw";
+            rev = "63e379983175bff6d66d1f5443d137167be26e4a";
+            hash = "sha256-reaGIASszkBckm6JzhkdM+6Ktd96bma8GRVlZ8XXwL0=";
+          };
+        });
       })
       # lutris
       # melonDS
@@ -42,6 +42,6 @@ in {
     # Steam controller support
     hardware.steam-hardware.enable = true;
     # Joycon and Pro Controller support
-    services.joycond.enable = true;
+    services.joycond.enable = false;
   };
 }
