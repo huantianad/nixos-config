@@ -26,6 +26,16 @@ in {
             rev = "63e379983175bff6d66d1f5443d137167be26e4a";
             hash = "sha256-reaGIASszkBckm6JzhkdM+6Ktd96bma8GRVlZ8XXwL0=";
           };
+          prePatch = let
+            minecraftPatches = fetchFromGitHub {
+              owner = "BoyOrigin";
+              repo = "glfw-wayland";
+              rev = "f62b4ae8f93149fd754cadecd51d8b1a07d20522";
+              hash = "sha256-kvWP34rOD4HSTvnKb33nvVquTGZoqP8/l+8XQ0h3b7Y=";
+            };
+          in ''
+            patches+=(${minecraftPatches}/patches/0005-Avoid-error-on-startup.patch)
+          '';
         });
       })
       # lutris
