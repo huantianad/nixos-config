@@ -40,6 +40,7 @@ in {
       # musescore
       # my.musescore3
       jellyfin-desktop
+      jellyfin-mpv-shim
       qpwgraph
       newsflash
       # easyeffects
@@ -49,6 +50,8 @@ in {
       # soulseekqt
       # bitwarden-desktop
       # obsidian
+      vrc-get
+      vrcx
 
       kdePackages.filelight
       kdePackages.ark
