@@ -17,6 +17,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       vesktop
+      signal-desktop
       (mpv.override {
         scripts = [
           mpvScripts.autoload
