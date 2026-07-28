@@ -15,6 +15,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    sops.secrets.grafana.owner = config.users.users.grafana.name;
+    sops.secrets.grafana.group = config.users.users.grafana.group;
+
     services.grafana = {
       enable = true;
       settings.server = {
@@ -26,6 +29,7 @@ in {
         http_addr = "127.0.0.1";
         enable_gzip = false; # Use caddy compression
       };
+      settings.security.secret_key = "$__file{${config.sops.secrets.grafana.path}}";
     };
 
     modules.services.caddy.enable = true;

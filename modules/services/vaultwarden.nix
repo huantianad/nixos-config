@@ -14,13 +14,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    sops.secrets."vaultwarden" = {};
-    sops.secrets."vaultwarden".owner = "vaultwarden";
+    sops.secrets.vaultwarden.owner = config.users.users.vaultwarden.name;
+    sops.secrets.vaultwarden.group = config.users.users.vaultwarden.group;
 
     services.vaultwarden = {
       enable = true;
 
-      environmentFile = "/run/secrets/vaultwarden";
+      environmentFile = config.sops.secrets.vaultwarden.path;
 
       config = {
         webVaultEnabled = true;
