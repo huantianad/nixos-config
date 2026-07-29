@@ -25,4 +25,12 @@
       vaultwarden.enable = true;
     };
   };
+
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.efiSysMountPoint = "/boot";
+    efi.canTouchEfiVariables = true;
+  };
+  boot.kernelParams = ["console=ttyS0,115200n8"];
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 }
