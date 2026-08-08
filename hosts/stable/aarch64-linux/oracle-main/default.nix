@@ -27,6 +27,7 @@
       prometheus.enable = true;
       synapse.enable = true;
       website.enable = true;
+      vaultwarden.enable = true;
     };
   };
 
