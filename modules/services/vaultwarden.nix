@@ -42,20 +42,20 @@ in {
         header {
           # Enable HTTP Strict Transport Security (HSTS)
           Strict-Transport-Security "max-age=31536000;"
-          # Enable cross-site filter (XSS) and tell browser to block detected attacks
-          X-XSS-Protection "1; mode=block"
+          # Disable cross-site filter (XSS)
+          X-XSS-Protection "0"
           # Disallow the site to be rendered within a frame (clickjacking protection)
           X-Frame-Options "DENY"
-          # Avoid MIME type sniffing
-          X-Content-Type-Options "nosniff"
           # Prevent search engines from indexing (optional)
-          X-Robots-Tag "none"
+          X-Robots-Tag "noindex, nofollow"
+          # Disallow sniffing of X-Content-Type-Options
+          X-Content-Type-Options "nosniff"
           # Server name removing
           -Server
-        	# Remove X-Powered-By though this shouldn't be an issue, better opsec to remove
-        	-X-Powered-By
-        	# Remove Last-Modified because etag is the same and is as effective
-        	-Last-Modified
+          # Remove X-Powered-By though this shouldn't be an issue, better opsec to remove
+          -X-Powered-By
+          # Remove Last-Modified because etag is the same and is as effective
+          -Last-Modified
         }
 
         reverse_proxy http://localhost:8812 {
