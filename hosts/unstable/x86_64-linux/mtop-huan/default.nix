@@ -79,10 +79,15 @@
     };
   };
 
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-rt-bore;
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
+
+  # Allow nuphy webui to configure keyboard
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", ATTRS{idVendor}=="19f5", MODE="0666"
+  '';
 }
