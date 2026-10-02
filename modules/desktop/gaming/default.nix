@@ -49,8 +49,6 @@ in {
       # my.lr2oraja-endlessdream
     ];
 
-    # Steam controller support
-    hardware.steam-hardware.enable = true;
     # Joycon and Pro Controller support
     services.joycond.enable = false;
   };

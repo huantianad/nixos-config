@@ -15,17 +15,24 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.steam.enable = true;
-    programs.steam.remotePlay.openFirewall = true;
-    programs.steam.extraCompatPackages = [
-      pkgs.proton-ge-bin
-      pkgs.steam-play-none
-    ];
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      extraCompatPackages = [
+        pkgs.proton-ge-bin
+        pkgs.steam-play-none
+      ];
+    };
 
     environment.systemPackages = with pkgs; [
       steamcmd
     ];
 
     boot.kernelModules = ["ntsync"];
+
+    hardware.steam-hardware.enable = true;
+    boot.extraModprobeConfig = ''
+      options cfg80211 ieee80211_regdom=US
+    '';
   };
 }
