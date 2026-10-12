@@ -32,7 +32,7 @@ in {
 
     hardware.steam-hardware.enable = true;
     boot.extraModprobeConfig = ''
-      options cfg80211 ieee80211_regdom=US
+      options cfg80211 ieee80211_regdom=BO
     '';
   };
 }
