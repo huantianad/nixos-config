@@ -34,7 +34,7 @@ in {
       qbittorrent
       deluge-gtk
       # libreoffice-qt
-      audacity
+      # audacity
       obs-studio
       kid3
       kooha
