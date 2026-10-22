@@ -14,7 +14,6 @@ with lib; {
   services.printing.enable = false;
   services.printing.drivers = with pkgs; [pantum-driver];
 
-  nixpkgs.overlays = [inputs.nix-cachyos-kernel.overlays.pinned];
   boot = {
     tmp.cleanOnBoot = true;
     kernelPackages = mkDefault pkgs.linuxPackages_latest;

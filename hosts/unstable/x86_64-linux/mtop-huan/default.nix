@@ -79,8 +79,6 @@
     };
   };
 
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-rt-bore;
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
