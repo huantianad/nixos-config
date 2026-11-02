@@ -35,7 +35,7 @@
 
       programs = {
         aw.enable = false;
-        fcitx.enable = true;
+        fcitx.enable = false;
         gamemode.enable = true;
         kitty.enable = true;
         qmk.enable = false;
