@@ -26,13 +26,14 @@ in {
 
     environment.systemPackages = with pkgs; [
       steamcmd
+      iw # for steam frame...
     ];
 
     boot.kernelModules = ["ntsync"];
 
     hardware.steam-hardware.enable = true;
     boot.extraModprobeConfig = ''
-      options cfg80211 ieee80211_regdom=BO
+      options cfg80211 ieee80211_regdom=US
     '';
   };
 }
